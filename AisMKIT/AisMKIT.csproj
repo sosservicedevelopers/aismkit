@@ -12,6 +12,25 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="NLog" Version="4.6.8" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Areas\Account\Data\" />
+    <Folder Include="Areas\Account\Models\" />
+    <Folder Include="Areas\CityDistrictCulturalOffices\Controllers\" />
+    <Folder Include="Areas\CityDistrictCulturalOffices\Views\" />
+    <Folder Include="Areas\EducationalInstitutions\Controllers\" />
+    <Folder Include="Areas\EducationalInstitutions\Views\" />
+    <Folder Include="Areas\InformationMassCommunications\Controllers\" />
+    <Folder Include="Areas\InformationMassCommunications\Views\" />
+    <Folder Include="Areas\SubordinateInstitutions\Controllers\" />
+    <Folder Include="Areas\SubordinateInstitutions\Views\" />
+    <Folder Include="Areas\Tourism\Controllers\" />
+    <Folder Include="Areas\Tourism\Views\" />
   </ItemGroup>
 
 </Project>
