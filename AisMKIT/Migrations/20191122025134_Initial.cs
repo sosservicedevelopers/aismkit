@@ -22,13 +22,97 @@ namespace AisMKIT.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ClNagradTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Desciption = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClNagradTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ClObjProizIskusCategory",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Desciption = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClObjProizIskusCategory", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ClObjProizIskusTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Desciption = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClObjProizIskusTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ClOKNTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Desciption = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClOKNTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ClServices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Desciption = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClServices", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ClUchZavedCategory",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Desciption = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClUchZavedCategory", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false),
-                    Address = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: false),
                     Contacts = table.Column<string>(nullable: true),
                     Phone = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true)
@@ -55,6 +139,30 @@ namespace AisMKIT.Migrations
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ListOfEducations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    INN = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
+                    DomenNames = table.Column<string>(nullable: true),
+                    DateOfCreated = table.Column<DateTime>(nullable: false),
+                    ClUchZavedCategoryId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListOfEducations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ListOfEducations_ClUchZavedCategory_ClUchZavedCategoryId",
+                        column: x => x.ClUchZavedCategoryId,
+                        principalTable: "ClUchZavedCategory",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -219,6 +327,11 @@ namespace AisMKIT.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListOfEducations_ClUchZavedCategoryId",
+                table: "ListOfEducations",
+                column: "ClUchZavedCategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -239,10 +352,31 @@ namespace AisMKIT.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "ClNagradTypes");
+
+            migrationBuilder.DropTable(
+                name: "ClObjProizIskusCategory");
+
+            migrationBuilder.DropTable(
+                name: "ClObjProizIskusTypes");
+
+            migrationBuilder.DropTable(
+                name: "ClOKNTypes");
+
+            migrationBuilder.DropTable(
+                name: "ClServices");
+
+            migrationBuilder.DropTable(
+                name: "ListOfEducations");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "ClUchZavedCategory");
 
             migrationBuilder.DropTable(
                 name: "Departments");

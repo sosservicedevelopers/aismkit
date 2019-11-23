@@ -86,6 +86,8 @@ namespace AisMKIT.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            ViewData["roles"] = _roleManager.Roles.ToList();
+            ViewData["departments"] = db.Departments.ToList();
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             var role = _roleManager.FindByIdAsync(Input.Name).Result;

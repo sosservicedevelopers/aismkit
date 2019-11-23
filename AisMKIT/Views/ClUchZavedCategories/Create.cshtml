@@ -1,9 +1,12 @@
-﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+﻿@model AisMKIT.Models.ClUchZavedCategory
 
 @{
     ViewData["Title"] = "Create";
 }
-<h2>Добавление роли</h2>
+
+<h2>Добавление</h2>
+
+<h4>Категория учебных заведений</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,15 +18,21 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Desciption" class="control-label"></label>
+                <input asp-for="Desciption" class="form-control" />
+                <span asp-validation-for="Desciption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Добавить" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
 <div>
     <a asp-action="Index">Назад</a>
 </div>
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
