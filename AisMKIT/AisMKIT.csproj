@@ -5,6 +5,13 @@
     <UserSecretsId>aspnet-AisMKIT-EC9171DB-F1E9-4695-9486-217CB70A8137</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\InformationMassCommunications\**" />
+    <Content Remove="Areas\InformationMassCommunications\**" />
+    <EmbeddedResource Remove="Areas\InformationMassCommunications\**" />
+    <None Remove="Areas\InformationMassCommunications\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
@@ -27,8 +34,10 @@
     <Folder Include="Areas\CityDistrictCulturalOffices\Views\" />
     <Folder Include="Areas\EducationalInstitutions\Controllers\" />
     <Folder Include="Areas\EducationalInstitutions\Views\" />
-    <Folder Include="Areas\InformationMassCommunications\Controllers\" />
-    <Folder Include="Areas\InformationMassCommunications\Views\" />
+    <Folder Include="Areas\Media\Controllers\" />
+    <Folder Include="Areas\Media\Data\" />
+    <Folder Include="Areas\Media\Models\" />
+    <Folder Include="Areas\Media\Views\" />
     <Folder Include="Areas\SubordinateInstitutions\Controllers\" />
     <Folder Include="Areas\SubordinateInstitutions\Views\" />
     <Folder Include="Areas\Tourism\Controllers\" />
