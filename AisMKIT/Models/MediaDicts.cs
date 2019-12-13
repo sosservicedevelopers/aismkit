@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace AisMKIT.Models
 {
@@ -10,11 +11,26 @@ namespace AisMKIT.Models
     public class DictMediaType
     {
         public int Id;
+
+        [Display(Name = "Наименование вида СМИ (Кырг)")]
         public string NameKyrg;
+
+        [Display(Name = "Наименование вида СМИ (Русск)")]
         public string NameRus;
+
+        [Display(Name = "Дата ввода записи")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime CreateDate;
+
+        [Display(Name = "Статус")]
         public Enum Status;
+
+        [Display(Name = "Дата, с которой запись признана неактуальной")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DeactiveDate;
+
         public int UsersId;
     }
 

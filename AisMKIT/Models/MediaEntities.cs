@@ -12,11 +12,11 @@ namespace AisMKIT.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Аталышы")]
-        public string NameKyrg { get; set; }
-        
-        [Display(Name = "Наименование")]
+        [Display(Name = "Наименование/ФИО органа СМИ(на русском)")]
         public string NameRus { get; set; }
+
+        [Display(Name = "Наименование/ФИО органа СМИ(на кыргызском)")]
+        public string NameKyrg { get; set; }
 
         [Display(Name = "ИНН")]
         public string INN { get; set; }
@@ -26,6 +26,9 @@ namespace AisMKIT.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime RegistrationDate { get; set; }
 
+        [Display(Name = "Наименование СМИ")]
+        public string Name { get; set; }
+
         [Display(Name = "Язык вещания")]
         public int? DictLangMediaTypeId { get; set; }
         public DictLangMediaType DictLangMediaType { get;set; }
@@ -34,10 +37,10 @@ namespace AisMKIT.Models
         public int? DictMediaTypeId { get; set; }
         public DictMediaType DictMediaType { get; set; }
 
-        [Display(Name = "Адрес")]
+        [Display(Name = "Адрес (на кыргызском)")]
         public string AddressRus { get; set; }
 
-        [Display(Name = "Адрес")]
+        [Display(Name = "Адрес (на кыргызском)")]
         public string AddressKyrg { get; set; }
 
         [Display(Name = "Территория распространения продукции")]
