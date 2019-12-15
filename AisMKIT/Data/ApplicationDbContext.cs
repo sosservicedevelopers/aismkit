@@ -42,6 +42,12 @@ namespace AisMKIT.Data
                 );
         }
         public DbSet<AisMKIT.Models.DictMediaType> DictMediaType { get; set; }
+        public DbSet<AisMKIT.Models.DictLegalForm> DictLegalForm { get; set; }
+        public DbSet<AisMKIT.Models.DictLangMediaType> DictLangMediaType { get; set; }
+        public DbSet<AisMKIT.Models.DictRegion> DictRegion { get; set; }
+        public DbSet<AisMKIT.Models.DictDistrict> DictDistrict { get; set; }
+        public DbSet<AisMKIT.Models.DictMediaFreqRelease> DictMediaFreqRelease { get; set; }
+        public DbSet<AisMKIT.Models.DictMediaFinSource> DictMediaFinSource { get; set; }
         //Для postgresql
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

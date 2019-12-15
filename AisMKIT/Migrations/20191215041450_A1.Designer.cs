@@ -4,14 +4,16 @@ using AisMKIT.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AisMKIT.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191215041450_A1")]
+    partial class A1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,67 +234,6 @@ namespace AisMKIT.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("AisMKIT.Models.DictDistrict", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DeactiveDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NameKyrg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameRus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StatusForDictId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StatusForDictId");
-
-                    b.ToTable("DictDistrict");
-                });
-
-            modelBuilder.Entity("AisMKIT.Models.DictLangMediaType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DeactiveDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NameKyrg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameRus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StatusForDictId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StatusForDictId");
-
-                    b.ToTable("DictLangMediaType");
-                });
-
             modelBuilder.Entity("AisMKIT.Models.DictLegalForm", b =>
                 {
                     b.Property<int>("Id")
@@ -322,64 +263,6 @@ namespace AisMKIT.Migrations
                     b.ToTable("DictLegalForm");
                 });
 
-            modelBuilder.Entity("AisMKIT.Models.DictMediaFinSource", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DeactiveDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NameKyrg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameRus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StatusForDictId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StatusForDictId");
-
-                    b.ToTable("DictMediaFinSource");
-                });
-
-            modelBuilder.Entity("AisMKIT.Models.DictMediaFreqRelease", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DeactiveDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NameKyrg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameRus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StatusForDictId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StatusForDictId");
-
-                    b.ToTable("DictMediaFreqRelease");
-                });
-
             modelBuilder.Entity("AisMKIT.Models.DictMediaType", b =>
                 {
                     b.Property<int>("Id")
@@ -407,35 +290,6 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictMediaType");
-                });
-
-            modelBuilder.Entity("AisMKIT.Models.DictRegion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DeactiveDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NameKyrg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameRus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StatusForDictId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StatusForDictId");
-
-                    b.ToTable("DictRegion");
                 });
 
             modelBuilder.Entity("AisMKIT.Models.ListOfEducations", b =>
@@ -644,20 +498,6 @@ namespace AisMKIT.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AisMKIT.Models.DictDistrict", b =>
-                {
-                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
-                        .WithMany()
-                        .HasForeignKey("StatusForDictId");
-                });
-
-            modelBuilder.Entity("AisMKIT.Models.DictLangMediaType", b =>
-                {
-                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
-                        .WithMany()
-                        .HasForeignKey("StatusForDictId");
-                });
-
             modelBuilder.Entity("AisMKIT.Models.DictLegalForm", b =>
                 {
                     b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
@@ -665,28 +505,7 @@ namespace AisMKIT.Migrations
                         .HasForeignKey("StatusForDictId");
                 });
 
-            modelBuilder.Entity("AisMKIT.Models.DictMediaFinSource", b =>
-                {
-                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
-                        .WithMany()
-                        .HasForeignKey("StatusForDictId");
-                });
-
-            modelBuilder.Entity("AisMKIT.Models.DictMediaFreqRelease", b =>
-                {
-                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
-                        .WithMany()
-                        .HasForeignKey("StatusForDictId");
-                });
-
             modelBuilder.Entity("AisMKIT.Models.DictMediaType", b =>
-                {
-                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
-                        .WithMany()
-                        .HasForeignKey("StatusForDictId");
-                });
-
-            modelBuilder.Entity("AisMKIT.Models.DictRegion", b =>
                 {
                     b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
                         .WithMany()
