@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
@@ -34,10 +35,8 @@
     <Folder Include="Areas\CityDistrictCulturalOffices\Views\" />
     <Folder Include="Areas\EducationalInstitutions\Controllers\" />
     <Folder Include="Areas\EducationalInstitutions\Views\" />
-    <Folder Include="Areas\Media\Controllers\" />
     <Folder Include="Areas\Media\Data\" />
     <Folder Include="Areas\Media\Models\" />
-    <Folder Include="Areas\Media\Views\" />
     <Folder Include="Areas\SubordinateInstitutions\Controllers\" />
     <Folder Include="Areas\SubordinateInstitutions\Views\" />
     <Folder Include="Areas\Tourism\Controllers\" />

@@ -10,111 +10,125 @@ namespace AisMKIT.Models
     // Типы СМИ
     public class DictMediaType
     {
-        public int Id;
+        public int Id { get; set; }
 
         [Display(Name = "Наименование вида СМИ (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Наименование вида СМИ (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId;
+    }
+    // статус
+    public class StatusForDict
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
     }
 
 
     // Организационно-правовая форма
     public class DictLegalForm
     {
-        public int Id;
+        public int Id { get; set; }
 
         [Display(Name = "Организационно-правовая форма (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Организационно-правовая форма (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId;
 
     }
 
     // Язык вещания СМИ
     public class DictLangMediaType
     {
-        public int Id;
+        public int Id { get; set; }
 
         [Display(Name = "Язык вещания СМИ (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Язык вещания СМИ (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId;
     }
 
     // Регионы (области)
     public class DictRegion
     {
-        public int Id;
+        public int Id { get; set; }
 
         [Display(Name = "Регион (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Регион (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId;
     }
 
     // Район
@@ -124,25 +138,28 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Район (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Район (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId { get; set; }
+        [Display(Name = "Город")]
         public string City { get; set; }
     }
 
@@ -153,25 +170,27 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Периодичность выпуска (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Периодичность выпуска (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId { get; set; }
     }
 
 
@@ -181,25 +200,27 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Источник финансирования (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Источник финансирования (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId { get; set; }
     }
 
     // Орган выдающий разрещения
@@ -208,25 +229,27 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Орган выдающий разрещения (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Орган выдающий разрещения (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId { get; set; }
     }
 
 
@@ -234,28 +257,30 @@ namespace AisMKIT.Models
     // Вид проверки СМИ
     public class DictControlType
     {
-        public int Id;
+        public int Id { get; set; }
 
         [Display(Name = "Вид проверки СМИ (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Вид проверки СМИ (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId;
 
     }
 
@@ -265,25 +290,27 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Результаты проверки СМИ (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Результаты проверки СМИ (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId { get; set; }
     }
 
     // Судебное решение
@@ -292,25 +319,27 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Судебное решение (Кырг)")]
-        public string NameKyrg;
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Судебное решение (Русск)")]
-        public string NameRus;
+        public string NameRus { get; set; }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
+
 
         [Display(Name = "Статус")]
-        public Enum Status;
+        public int? StatusForDictId { get; set; }
+        [Display(Name = "Статус")]
+        public StatusForDict StatusForDict { get; set; }
 
         [Display(Name = "Дата, с которой запись признана неактуальной")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate;
+        public DateTime DeactiveDate { get; set; }
 
-        public int UsersId { get; set; }
     }
 
 

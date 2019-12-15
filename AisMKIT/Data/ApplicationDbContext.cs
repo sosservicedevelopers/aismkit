@@ -26,6 +26,22 @@ namespace AisMKIT.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            // начальные данные для StatusForDict
+            builder.Entity<StatusForDict>().HasData
+                (
+                    new StatusForDict[]
+                    {
+                        new StatusForDict{Id=1, Name="включён" },
+                        new StatusForDict{Id=2, Name="отключён" }
+                    }
+                );
+        }
+        public DbSet<AisMKIT.Models.DictMediaType> DictMediaType { get; set; }
         //Для postgresql
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
