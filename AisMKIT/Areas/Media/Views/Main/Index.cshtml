@@ -4,10 +4,20 @@
 }
 
 <h1>СМИ</h1>
-
+<br />
 <div class="container">
 
-    <h4>Справочники</h4>
+    <h2>Реестр</h2>
+    <br />
+
+    <div>
+        <a asp-area="Media" asp-controller="ListOfMedias" asp-action="Index">Реестр СМИ</a>
+    </div>
+    <br />
+
+    <h2>Справочники</h2>
+    <br />
+
     <div>
         <a asp-area="Media" asp-controller="DictMediaTypes" asp-action="Index">Виды СМИ</a>
     </div>
@@ -30,7 +40,7 @@
         <a asp-area="Media" asp-controller="DictMediaFinSources" asp-action="Index">Источник финансирования </a>
     </div>
     <div>
-        <a asp-area="Media" asp-controller="" asp-action="Index"> </a>
+        <a asp-area="Media" asp-controller="DictAgencyPerms" asp-action="Index">Орган выдавший разрешение</a>
     </div>
 </div>
 

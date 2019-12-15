@@ -48,6 +48,8 @@ namespace AisMKIT.Data
         public DbSet<AisMKIT.Models.DictDistrict> DictDistrict { get; set; }
         public DbSet<AisMKIT.Models.DictMediaFreqRelease> DictMediaFreqRelease { get; set; }
         public DbSet<AisMKIT.Models.DictMediaFinSource> DictMediaFinSource { get; set; }
+        public DbSet<AisMKIT.Models.ListOfMedia> ListOfMedia { get; set; }
+        public DbSet<AisMKIT.Models.DictAgencyPerm> DictAgencyPerm { get; set; }
         //Для postgresql
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
