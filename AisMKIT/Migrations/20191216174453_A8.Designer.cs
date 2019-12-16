@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AisMKIT.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191215042638_A2")]
-    partial class A2
+    [Migration("20191216174453_A8")]
+    partial class A8
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,6 +234,70 @@ namespace AisMKIT.Migrations
                     b.ToTable("Departments");
                 });
 
+            modelBuilder.Entity("AisMKIT.Models.DictAgencyPerm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeactiveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StatusForDictId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StatusForDictId");
+
+                    b.ToTable("DictAgencyPerm");
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.DictControlType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeactiveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StatusForDictId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StatusForDictId");
+
+                    b.ToTable("DictControlType");
+                });
+
             modelBuilder.Entity("AisMKIT.Models.DictDistrict", b =>
                 {
                     b.Property<int>("Id")
@@ -250,6 +314,9 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -264,6 +331,26 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictDistrict");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Сокулук (Сокулук)",
+                            NameKyrg = "Сокулук",
+                            NameRus = "Сокулук"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Рыбалов (Балыкчы)",
+                            NameKyrg = "Балыкчы",
+                            NameRus = "Рыбалов"
+                        });
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictLangMediaType", b =>
@@ -279,6 +366,9 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -293,6 +383,26 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictLangMediaType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Русский (Орусча)",
+                            NameKyrg = "Орусча",
+                            NameRus = "Русский"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Кыргызский (Кыргызча)",
+                            NameKyrg = "Кыргызча",
+                            NameRus = "Кыргызский"
+                        });
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictLegalForm", b =>
@@ -308,6 +418,9 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -322,6 +435,58 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictLegalForm");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Закрытое акционерное общество (Жабык акционердик коому)",
+                            NameKyrg = "Жабык акционердик коому",
+                            NameRus = "Закрытое акционерное общество"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Общество с ограниченной ответсвенностью (Жоопкерчилиги чектелген коом)",
+                            NameKyrg = "Жоопкерчилиги чектелген коом",
+                            NameRus = "Общество с ограниченной ответсвенностью"
+                        });
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.DictMediaControlResult", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeactiveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StatusForDictId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StatusForDictId");
+
+                    b.ToTable("DictMediaControlResult");
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictMediaFinSource", b =>
@@ -337,6 +502,9 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -351,6 +519,26 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictMediaFinSource");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Государственный (Мамлекеттик)",
+                            NameKyrg = "Мамлекеттик",
+                            NameRus = "Государственный"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Частный (Жекече)",
+                            NameKyrg = "Жекече",
+                            NameRus = "Частный"
+                        });
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictMediaFreqRelease", b =>
@@ -366,6 +554,9 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -380,6 +571,58 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictMediaFreqRelease");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Ежемесячно (Ар бир айда)",
+                            NameKyrg = "Ар бир айда",
+                            NameRus = "Ежемесячно"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Еженедельно (Ар бир жумада)",
+                            NameKyrg = "Ар бир жумада",
+                            NameRus = "Еженедельно"
+                        });
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.DictMediaSuitPerm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeactiveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("StatusForDictId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StatusForDictId");
+
+                    b.ToTable("DictMediaSuitPerm");
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictMediaType", b =>
@@ -395,6 +638,9 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -409,6 +655,26 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictMediaType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Печатное периодическое издание (Басма уйу)",
+                            NameKyrg = "Басма уйу",
+                            NameRus = "Печатное периодическое издание"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Телеканал (Телеканал)",
+                            NameKyrg = "Телеканал",
+                            NameRus = "Телеканал"
+                        });
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictRegion", b =>
@@ -424,6 +690,9 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("NameAllLangs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -438,6 +707,124 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictRegion");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Чуй (Чуй)",
+                            NameKyrg = "Чуй",
+                            NameRus = "Чуй"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameAllLangs = "Баткен (Баткен)",
+                            NameKyrg = "Баткен",
+                            NameRus = "Баткен"
+                        });
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.ListOfControlMedia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ActDateControl")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("AnulmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfPenalty")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfPenaltyPay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfSuit")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfSuitPerm")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DictControlTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DictMediaControlResultId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DictMediaSuitPermId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DocNumPenalty")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndDatePeriod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ListOfMediaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NumberOfAct")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumberOfAnulment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumberOfSuit")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumberOfSuitPerm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumberOfWarning")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatronicName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PenaltySum")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDatePeriod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("WarningDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("WarningEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DictControlTypeId");
+
+                    b.HasIndex("DictMediaControlResultId");
+
+                    b.HasIndex("DictMediaSuitPermId");
+
+                    b.HasIndex("ListOfMediaId");
+
+                    b.ToTable("ListOfControlMedia");
                 });
 
             modelBuilder.Entity("AisMKIT.Models.ListOfEducations", b =>
@@ -473,6 +860,93 @@ namespace AisMKIT.Migrations
                     b.HasIndex("ClUchZavedCategoryId");
 
                     b.ToTable("ListOfEducations");
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.ListOfMedia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AddressKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AddressRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfPay")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DictAgencyPermId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DictDistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DictLangMediaTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DictMediaFinSourceId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DictMediaFreqReleaseId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DictMediaTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EliminationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("INN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumOfPermGas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NumberOfPermission")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PermElimGASDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PermGASDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("PermissionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("RegistrationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ReregistrationDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DictAgencyPermId");
+
+                    b.HasIndex("DictDistrictId");
+
+                    b.HasIndex("DictLangMediaTypeId");
+
+                    b.HasIndex("DictMediaFinSourceId");
+
+                    b.HasIndex("DictMediaFreqReleaseId");
+
+                    b.HasIndex("DictMediaTypeId");
+
+                    b.ToTable("ListOfMedia");
                 });
 
             modelBuilder.Entity("AisMKIT.Models.StatusForDict", b =>
@@ -646,6 +1120,20 @@ namespace AisMKIT.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("AisMKIT.Models.DictAgencyPerm", b =>
+                {
+                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
+                        .WithMany()
+                        .HasForeignKey("StatusForDictId");
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.DictControlType", b =>
+                {
+                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
+                        .WithMany()
+                        .HasForeignKey("StatusForDictId");
+                });
+
             modelBuilder.Entity("AisMKIT.Models.DictDistrict", b =>
                 {
                     b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
@@ -667,6 +1155,13 @@ namespace AisMKIT.Migrations
                         .HasForeignKey("StatusForDictId");
                 });
 
+            modelBuilder.Entity("AisMKIT.Models.DictMediaControlResult", b =>
+                {
+                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
+                        .WithMany()
+                        .HasForeignKey("StatusForDictId");
+                });
+
             modelBuilder.Entity("AisMKIT.Models.DictMediaFinSource", b =>
                 {
                     b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
@@ -675,6 +1170,13 @@ namespace AisMKIT.Migrations
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictMediaFreqRelease", b =>
+                {
+                    b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
+                        .WithMany()
+                        .HasForeignKey("StatusForDictId");
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.DictMediaSuitPerm", b =>
                 {
                     b.HasOne("AisMKIT.Models.StatusForDict", "StatusForDict")
                         .WithMany()
@@ -695,6 +1197,25 @@ namespace AisMKIT.Migrations
                         .HasForeignKey("StatusForDictId");
                 });
 
+            modelBuilder.Entity("AisMKIT.Models.ListOfControlMedia", b =>
+                {
+                    b.HasOne("AisMKIT.Models.DictControlType", "DictControlType")
+                        .WithMany()
+                        .HasForeignKey("DictControlTypeId");
+
+                    b.HasOne("AisMKIT.Models.DictMediaControlResult", "DictMediaControlResult")
+                        .WithMany()
+                        .HasForeignKey("DictMediaControlResultId");
+
+                    b.HasOne("AisMKIT.Models.DictMediaSuitPerm", "DictMediaSuitPerm")
+                        .WithMany()
+                        .HasForeignKey("DictMediaSuitPermId");
+
+                    b.HasOne("AisMKIT.Models.ListOfMedia", "ListOfMedia")
+                        .WithMany()
+                        .HasForeignKey("ListOfMediaId");
+                });
+
             modelBuilder.Entity("AisMKIT.Models.ListOfEducations", b =>
                 {
                     b.HasOne("AisMKIT.Models.ClUchZavedCategory", "ClUchZavedCategory")
@@ -702,6 +1223,33 @@ namespace AisMKIT.Migrations
                         .HasForeignKey("ClUchZavedCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.ListOfMedia", b =>
+                {
+                    b.HasOne("AisMKIT.Models.DictAgencyPerm", "DictAgencyPerm")
+                        .WithMany()
+                        .HasForeignKey("DictAgencyPermId");
+
+                    b.HasOne("AisMKIT.Models.DictDistrict", "DictDistrict")
+                        .WithMany()
+                        .HasForeignKey("DictDistrictId");
+
+                    b.HasOne("AisMKIT.Models.DictLangMediaType", "DictLangMediaType")
+                        .WithMany()
+                        .HasForeignKey("DictLangMediaTypeId");
+
+                    b.HasOne("AisMKIT.Models.DictMediaFinSource", "DictMediaFinSource")
+                        .WithMany()
+                        .HasForeignKey("DictMediaFinSourceId");
+
+                    b.HasOne("AisMKIT.Models.DictMediaFreqRelease", "DictMediaFreqRelease")
+                        .WithMany()
+                        .HasForeignKey("DictMediaFreqReleaseId");
+
+                    b.HasOne("AisMKIT.Models.DictMediaType", "DictMediaType")
+                        .WithMany()
+                        .HasForeignKey("DictMediaTypeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

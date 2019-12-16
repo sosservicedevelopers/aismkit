@@ -18,6 +18,19 @@ namespace AisMKIT.Models
         [Display(Name = "Наименование вида СМИ (Русск)")]
         public string NameRus { get; set; }
 
+        public string NameAllLangs 
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
+
+
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
@@ -53,6 +66,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Организационно-правовая форма (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -83,6 +107,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Язык вещания СМИ (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -112,6 +147,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Регион (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -142,6 +188,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Район (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -174,6 +231,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Периодичность выпуска (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -204,6 +272,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Источник финансирования (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -233,6 +312,18 @@ namespace AisMKIT.Models
 
         [Display(Name = "Орган выдающий разрещения (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
+
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -264,6 +355,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Вид проверки СМИ (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -294,6 +396,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Результаты проверки СМИ (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]
@@ -323,6 +436,17 @@ namespace AisMKIT.Models
 
         [Display(Name = "Судебное решение (Русск)")]
         public string NameRus { get; set; }
+        public string NameAllLangs
+        {
+            get
+            {
+                return NameRus + " (" + NameKyrg + ")";
+            }
+            set
+            {
+
+            }
+        }
 
         [Display(Name = "Дата ввода записи")]
         [DataType(DataType.Date)]

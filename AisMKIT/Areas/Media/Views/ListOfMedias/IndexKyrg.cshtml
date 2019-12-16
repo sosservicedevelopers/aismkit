@@ -1,0 +1,154 @@
+﻿@model IEnumerable<AisMKIT.Models.ListOfMedia>
+
+@{
+    ViewData["Title"] = "IndexKyrg";
+}
+
+<h1>Массалык маалымат каражаттар мекемелеринин тизмеси</h1>
+
+<p>
+    <a asp-action="Create">Жаны кошуу</a>
+</p>
+
+<div class="d-flex justify-content-end">
+    <a class="btn m-1 btn-outline-success" asp-action="IndexKyrg">Кырг.</a>
+    <a class="btn m-1 btn-outline-success" asp-action="IndexRus">Рус.</a>
+    <a class="btn m-1 btn-outline-success" asp-action="Index">Эки тил</a>
+</div>
+
+<div class="container overflow-auto">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NameKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.INN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegistrationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictLangMediaType.NameKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictMediaType.NameKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictDistrict.NameKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictMediaFreqRelease.NameKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictMediaFinSource.NameKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReregistrationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EliminationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberOfPermission)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PermissionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictAgencyPerm.NameKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfPay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumOfPermGas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PermGASDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PermElimGASDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegistrationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictLangMediaType.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaType.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictDistrict.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaFreqRelease.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaFinSource.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReregistrationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EliminationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfPermission)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PermissionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictAgencyPerm.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfPay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumOfPermGas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PermGASDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PermElimGASDate)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Ондоо</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Кененирээк</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Очуруу</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

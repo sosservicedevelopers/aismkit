@@ -12,10 +12,10 @@ namespace AisMKIT.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Наименование/ФИО органа СМИ(на русском)")]
+        [Display(Name = "Наименование органа СМИ")]
         public string NameRus { get; set; }
 
-        [Display(Name = "Наименование/ФИО органа СМИ(на кыргызском)")]
+        [Display(Name = "Наименование органа СМИ")]
         public string NameKyrg { get; set; }
 
         [Display(Name = "ИНН")]
@@ -39,10 +39,10 @@ namespace AisMKIT.Models
         [Display(Name = "Вид")]
         public DictMediaType DictMediaType { get; set; }
 
-        [Display(Name = "Адрес (на русском)")]
+        [Display(Name = "Адрес (Руск)")]
         public string AddressRus { get; set; }
 
-        [Display(Name = "Адрес (на кыргызском)")]
+        [Display(Name = "Адрес (Кырг)")]
         public string AddressKyrg { get; set; }
 
         [Display(Name = "Территория распространения продукции")]
@@ -112,7 +112,7 @@ namespace AisMKIT.Models
     // Проверки и вынесенные решения
     public class ListOfControlMedia
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Наименование СМИ")]
         public int? ListOfMediaId { get; set; }
