@@ -125,96 +125,96 @@ namespace AisMKIT.Models
         [Display(Name = "Дата начала проверки")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [Display(Name = "Дата конца проверки")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         [Display(Name = "Дата начала проверяемого периода")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime StartDatePeriod { get; set; }
+        public DateTime? StartDatePeriod { get; set; }
 
         [Display(Name = "Дата конца проверяемого периода")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime EndDatePeriod { get; set; }
+        public DateTime? EndDatePeriod { get; set; }
 
         [Display(Name = "Фамилия (проверяющего)")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [Display(Name = "Имя (проверяющего)")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [Display(Name = "Отчество (проверяющего)")]
-        public string PatronicName { get; set; }
+        public string? PatronicName { get; set; }
 
         [Display(Name = "Дата Акта проверки")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime ActDateControl { get; set; }
+        public DateTime? ActDateControl { get; set; }
 
         [Display(Name = "Номер Акта")]
-        public string NumberOfAct { get; set; }
+        public string? NumberOfAct { get; set; }
 
         [Display(Name = "Результаты проверки")]
         public int? DictMediaControlResultId { get; set; }
         public DictMediaControlResult DictMediaControlResult { get; set; }
 
         [Display(Name = "Номер предупреждения")]
-        public string NumberOfWarning { get; set; }
+        public string? NumberOfWarning { get; set; }
 
         [Display(Name = "Дата предупреждения")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime WarningDate { get; set; }
+        public DateTime? WarningDate { get; set; }
 
         [Display(Name = "Дата конца срока предупреждения")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime WarningEndDate { get; set; }
+        public DateTime? WarningEndDate { get; set; }
 
         [Display(Name = "Дата документа о наложении штрафа")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DateOfPenalty { get; set; }
+        public DateTime? DateOfPenalty { get; set; }
 
         [Display(Name = "Номер документа о наложении штрафа")]
-        public string DocNumPenalty { get; set; }
+        public string? DocNumPenalty { get; set; }
 
         [Display(Name = "Сумма штрафа")]
-        public string PenaltySum { get; set; }
+        public string? PenaltySum { get; set; }
 
         [Display(Name = "Дата оплаты штрафа")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DateOfPenaltyPay { get; set; }
+        public DateTime? DateOfPenaltyPay { get; set; }
 
         [Display(Name = "Дата решения на аннулирование разрешения")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime AnulmentDate { get; set; }
+        public DateTime? AnulmentDate { get; set; }
 
         [Display(Name = "Номер решения на аннулирование разрешения")]
-        public string NumberOfAnulment { get; set; }
+        public string? NumberOfAnulment { get; set; }
 
         [Display(Name = "Дата иска в суд")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DateOfSuit { get; set; }
+        public DateTime? DateOfSuit { get; set; }
 
         [Display(Name = "Номер иска в суд")]
-        public string NumberOfSuit { get; set; }
+        public string? NumberOfSuit { get; set; }
 
         [Display(Name = "Дата судебного решения")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DateOfSuitPerm { get; set; }
+        public DateTime? DateOfSuitPerm { get; set; }
 
         [Display(Name = "Номер судебного решения")]
-        public string NumberOfSuitPerm { get; set; }
+        public string? NumberOfSuitPerm { get; set; }
 
         [Display(Name = "Судебное решение")]
         public int? DictMediaSuitPermId { get; set; }

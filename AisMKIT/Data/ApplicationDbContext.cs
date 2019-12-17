@@ -71,6 +71,32 @@ namespace AisMKIT.Data
                         new DictMediaFinSource{Id=1, NameRus="Государственный", NameKyrg="Мамлекеттик"},
                         new DictMediaFinSource{Id=2, NameRus="Частный", NameKyrg="Жекече"}});
 
+            
+            // начальные данные для 
+            builder.Entity<DictAgencyPerm>().HasData(new DictAgencyPerm[]{
+                        new DictAgencyPerm{Id=1, NameRus="МВД", NameKyrg="ИИМ"},
+                        new DictAgencyPerm{Id=2, NameRus="ГКНБ", NameKyrg="МКНБ"}});
+
+            // начальные данные для 
+            builder.Entity<DictControlType>().HasData(new DictControlType[]{
+                        new DictControlType{Id=1, NameRus="Плановая", NameKyrg="Пландык"},
+                        new DictControlType{Id=2, NameRus="Неплановая", NameKyrg="Пландык эмес"}});
+
+            // начальные данные для 
+            builder.Entity<DictMediaControlResult>().HasData(new DictMediaControlResult[]{
+                        new DictMediaControlResult{Id=1, NameRus="Без нарушений", NameKyrg=""},
+                        new DictMediaControlResult{Id=2, NameRus="Вынесено предупреждение", NameKyrg=""},
+                        new DictMediaControlResult{Id=3, NameRus="Наложен штраф", NameKyrg=""},
+                        new DictMediaControlResult{Id=4, NameRus="Отзыв разрешения", NameKyrg=""}});
+
+
+            // начальные данные для 
+            builder.Entity<DictMediaSuitPerm>().HasData(new DictMediaSuitPerm[]{
+                        new DictMediaSuitPerm{Id=1, NameRus="В пользу лицензиата", NameKyrg=""},
+                        new DictMediaSuitPerm{Id=2, NameRus="В пользу лицензиара", NameKyrg=""}});
+
+
+
         }
         public DbSet<AisMKIT.Models.DictMediaType> DictMediaType { get; set; }
         public DbSet<AisMKIT.Models.DictLegalForm> DictLegalForm { get; set; }

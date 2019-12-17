@@ -67,12 +67,12 @@ namespace AisMKIT.Areas.Media.Controllers
         // GET: Media/ListOfMedias/Create
         public IActionResult Create()
         {
-            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameAllLangs");
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameAllLangs");
-            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameAllLangs");
-            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameAllLangs");
-            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameAllLangs");
-            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameAllLangs");
+            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus");
+            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
+            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus");
+            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
+            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
+            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
             return View();
         }
 
@@ -89,12 +89,12 @@ namespace AisMKIT.Areas.Media.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameAllLangs", listOfMedia.DictAgencyPermId);
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameAllLangs", listOfMedia.DictDistrictId);
-            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameAllLangs", listOfMedia.DictLangMediaTypeId);
-            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameAllLangs", listOfMedia.DictMediaFinSourceId);
-            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameAllLangs", listOfMedia.DictMediaFreqReleaseId);
-            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameAllLangs", listOfMedia.DictMediaTypeId);
+            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus", listOfMedia.DictAgencyPermId);
+            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMedia.DictDistrictId);
+            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus", listOfMedia.DictLangMediaTypeId);
+            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus", listOfMedia.DictMediaFinSourceId);
+            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus", listOfMedia.DictMediaFreqReleaseId);
+            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus", listOfMedia.DictMediaTypeId);
             return View(listOfMedia);
         }
 
@@ -111,12 +111,12 @@ namespace AisMKIT.Areas.Media.Controllers
             {
                 return NotFound();
             }
-            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameAllLangs", listOfMedia.DictAgencyPermId);
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameAllLangs", listOfMedia.DictDistrictId);
-            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameAllLangs", listOfMedia.DictLangMediaTypeId);
-            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameAllLangs", listOfMedia.DictMediaFinSourceId);
-            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameAllLangs", listOfMedia.DictMediaFreqReleaseId);
-            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameAllLangs", listOfMedia.DictMediaTypeId);
+            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus", listOfMedia.DictAgencyPermId);
+            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMedia.DictDistrictId);
+            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus", listOfMedia.DictLangMediaTypeId);
+            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus", listOfMedia.DictMediaFinSourceId);
+            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus", listOfMedia.DictMediaFreqReleaseId);
+            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus", listOfMedia.DictMediaTypeId);
             return View(listOfMedia);
         }
 
@@ -152,12 +152,12 @@ namespace AisMKIT.Areas.Media.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameAllLangs", listOfMedia.DictAgencyPermId);
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameAllLangs", listOfMedia.DictDistrictId);
-            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameAllLangs", listOfMedia.DictLangMediaTypeId);
-            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameAllLangs", listOfMedia.DictMediaFinSourceId);
-            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameAllLangs", listOfMedia.DictMediaFreqReleaseId);
-            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameAllLangs", listOfMedia.DictMediaTypeId);
+            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus", listOfMedia.DictAgencyPermId);
+            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMedia.DictDistrictId);
+            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus", listOfMedia.DictLangMediaTypeId);
+            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus", listOfMedia.DictMediaFinSourceId);
+            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus", listOfMedia.DictMediaFreqReleaseId);
+            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus", listOfMedia.DictMediaTypeId);
             return View(listOfMedia);
         }
 

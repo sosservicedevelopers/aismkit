@@ -245,9 +245,6 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -262,6 +259,24 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictAgencyPerm");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "ИИМ",
+                            NameRus = "МВД"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "МКНБ",
+                            NameRus = "ГКНБ"
+                        });
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictControlType", b =>
@@ -277,9 +292,6 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -294,6 +306,24 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictControlType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "Пландык",
+                            NameRus = "Плановая"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "Пландык эмес",
+                            NameRus = "Неплановая"
+                        });
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictDistrict", b =>
@@ -311,9 +341,6 @@ namespace AisMKIT.Migrations
 
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
@@ -336,7 +363,6 @@ namespace AisMKIT.Migrations
                             Id = 1,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Сокулук (Сокулук)",
                             NameKyrg = "Сокулук",
                             NameRus = "Сокулук"
                         },
@@ -345,7 +371,6 @@ namespace AisMKIT.Migrations
                             Id = 2,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Рыбалов (Балыкчы)",
                             NameKyrg = "Балыкчы",
                             NameRus = "Рыбалов"
                         });
@@ -363,9 +388,6 @@ namespace AisMKIT.Migrations
 
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
@@ -388,7 +410,6 @@ namespace AisMKIT.Migrations
                             Id = 1,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Русский (Орусча)",
                             NameKyrg = "Орусча",
                             NameRus = "Русский"
                         },
@@ -397,7 +418,6 @@ namespace AisMKIT.Migrations
                             Id = 2,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Кыргызский (Кыргызча)",
                             NameKyrg = "Кыргызча",
                             NameRus = "Кыргызский"
                         });
@@ -415,9 +435,6 @@ namespace AisMKIT.Migrations
 
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
@@ -440,7 +457,6 @@ namespace AisMKIT.Migrations
                             Id = 1,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Закрытое акционерное общество (Жабык акционердик коому)",
                             NameKyrg = "Жабык акционердик коому",
                             NameRus = "Закрытое акционерное общество"
                         },
@@ -449,7 +465,6 @@ namespace AisMKIT.Migrations
                             Id = 2,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Общество с ограниченной ответсвенностью (Жоопкерчилиги чектелген коом)",
                             NameKyrg = "Жоопкерчилиги чектелген коом",
                             NameRus = "Общество с ограниченной ответсвенностью"
                         });
@@ -468,9 +483,6 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -485,6 +497,40 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictMediaControlResult");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "",
+                            NameRus = "Без нарушений"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "",
+                            NameRus = "Вынесено предупреждение"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "",
+                            NameRus = "Наложен штраф"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "",
+                            NameRus = "Отзыв разрешения"
+                        });
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictMediaFinSource", b =>
@@ -499,9 +545,6 @@ namespace AisMKIT.Migrations
 
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
@@ -524,7 +567,6 @@ namespace AisMKIT.Migrations
                             Id = 1,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Государственный (Мамлекеттик)",
                             NameKyrg = "Мамлекеттик",
                             NameRus = "Государственный"
                         },
@@ -533,7 +575,6 @@ namespace AisMKIT.Migrations
                             Id = 2,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Частный (Жекече)",
                             NameKyrg = "Жекече",
                             NameRus = "Частный"
                         });
@@ -551,9 +592,6 @@ namespace AisMKIT.Migrations
 
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
@@ -576,7 +614,6 @@ namespace AisMKIT.Migrations
                             Id = 1,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Ежемесячно (Ар бир айда)",
                             NameKyrg = "Ар бир айда",
                             NameRus = "Ежемесячно"
                         },
@@ -585,7 +622,6 @@ namespace AisMKIT.Migrations
                             Id = 2,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Еженедельно (Ар бир жумада)",
                             NameKyrg = "Ар бир жумада",
                             NameRus = "Еженедельно"
                         });
@@ -604,9 +640,6 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
 
@@ -621,6 +654,24 @@ namespace AisMKIT.Migrations
                     b.HasIndex("StatusForDictId");
 
                     b.ToTable("DictMediaSuitPerm");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "",
+                            NameRus = "В пользу лицензиата"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameKyrg = "",
+                            NameRus = "В пользу лицензиара"
+                        });
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictMediaType", b =>
@@ -635,9 +686,6 @@ namespace AisMKIT.Migrations
 
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
@@ -660,7 +708,6 @@ namespace AisMKIT.Migrations
                             Id = 1,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Печатное периодическое издание (Басма уйу)",
                             NameKyrg = "Басма уйу",
                             NameRus = "Печатное периодическое издание"
                         },
@@ -669,7 +716,6 @@ namespace AisMKIT.Migrations
                             Id = 2,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Телеканал (Телеканал)",
                             NameKyrg = "Телеканал",
                             NameRus = "Телеканал"
                         });
@@ -687,9 +733,6 @@ namespace AisMKIT.Migrations
 
                     b.Property<DateTime>("DeactiveDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("NameAllLangs")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameKyrg")
                         .HasColumnType("nvarchar(max)");
@@ -712,7 +755,6 @@ namespace AisMKIT.Migrations
                             Id = 1,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Чуй (Чуй)",
                             NameKyrg = "Чуй",
                             NameRus = "Чуй"
                         },
@@ -721,7 +763,6 @@ namespace AisMKIT.Migrations
                             Id = 2,
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeactiveDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            NameAllLangs = "Баткен (Баткен)",
                             NameKyrg = "Баткен",
                             NameRus = "Баткен"
                         });
@@ -734,22 +775,22 @@ namespace AisMKIT.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("ActDateControl")
+                    b.Property<DateTime?>("ActDateControl")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("AnulmentDate")
+                    b.Property<DateTime?>("AnulmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfPenalty")
+                    b.Property<DateTime?>("DateOfPenalty")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfPenaltyPay")
+                    b.Property<DateTime?>("DateOfPenaltyPay")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfSuit")
+                    b.Property<DateTime?>("DateOfSuit")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfSuitPerm")
+                    b.Property<DateTime?>("DateOfSuitPerm")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("DictControlTypeId")
@@ -764,10 +805,10 @@ namespace AisMKIT.Migrations
                     b.Property<string>("DocNumPenalty")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("EndDatePeriod")
+                    b.Property<DateTime?>("EndDatePeriod")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
@@ -800,16 +841,16 @@ namespace AisMKIT.Migrations
                     b.Property<string>("PenaltySum")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("StartDatePeriod")
+                    b.Property<DateTime?>("StartDatePeriod")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("WarningDate")
+                    b.Property<DateTime?>("WarningDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("WarningEndDate")
+                    b.Property<DateTime?>("WarningEndDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
