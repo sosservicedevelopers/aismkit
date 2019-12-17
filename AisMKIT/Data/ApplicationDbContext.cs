@@ -11,16 +11,11 @@ namespace AisMKIT.Data
     
 
    
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<Departments> Departments { get; set; }
-        public DbSet<ClOKNTypes> ClOKNTypes { get; set; }
-        public DbSet<ClServices> ClServices { get; set; }
-        public DbSet<ClUchZavedCategory> ClUchZavedCategory { get; set; }
-        public DbSet<ClObjProizIskusCategory> ClObjProizIskusCategory { get; set; }
-        public DbSet<ClObjProizIskusTypes> ClObjProizIskusTypes { get; set; }
-        public DbSet<ClNagradTypes> ClNagradTypes { get; set; }
-        public DbSet<ListOfEducations> ListOfEducations { get; set; }        
+     
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
