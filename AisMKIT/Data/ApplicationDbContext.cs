@@ -111,6 +111,11 @@ namespace AisMKIT.Data
         public DbSet<AisMKIT.Models.DictMediaControlResult> DictMediaControlResult { get; set; }
         public DbSet<AisMKIT.Models.DictMediaSuitPerm> DictMediaSuitPerm { get; set; }
         public DbSet<AisMKIT.Models.ListOfControlMedia> ListOfControlMedia { get; set; }
+        public DbSet<AisMKIT.Models.DictTheatricalLegalForm> DictTheatricalLegalForm { get; set; }
+        public DbSet<AisMKIT.Models.DictTheatricalFinSource> DictTheatricalFinSource { get; set; }
+        public DbSet<AisMKIT.Models.ListOfTheatrical> ListOfTheatrical { get; set; }
+        public DbSet<AisMKIT.Models.ListOfCouncilTheatrical> ListOfCouncilTheatrical { get; set; }
+        public DbSet<AisMKIT.Models.ListOfEventsTheatrical> ListOfEventsTheatrical { get; set; }
         //Для postgresql
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

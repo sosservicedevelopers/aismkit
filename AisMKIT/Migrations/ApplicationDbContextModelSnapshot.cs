@@ -768,6 +768,42 @@ namespace AisMKIT.Migrations
                         });
                 });
 
+            modelBuilder.Entity("AisMKIT.Models.DictTheatricalFinSource", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NameKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DictTheatricalFinSource");
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.DictTheatricalLegalForm", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NameKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DictTheatricalLegalForm");
+                });
+
             modelBuilder.Entity("AisMKIT.Models.ListOfControlMedia", b =>
                 {
                     b.Property<int>("Id")
@@ -866,6 +902,33 @@ namespace AisMKIT.Migrations
                     b.ToTable("ListOfControlMedia");
                 });
 
+            modelBuilder.Entity("AisMKIT.Models.ListOfCouncilTheatrical", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateInArtCouncil")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOutArtCouncil")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstNameOfArts")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastNameOfArts")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatronicNameOfArts")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ListOfCouncilTheatrical");
+                });
+
             modelBuilder.Entity("AisMKIT.Models.ListOfEducations", b =>
                 {
                     b.Property<int>("Id")
@@ -899,6 +962,36 @@ namespace AisMKIT.Migrations
                     b.HasIndex("ClUchZavedCategoryId");
 
                     b.ToTable("ListOfEducations");
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.ListOfEventsTheatrical", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DayOfMonth")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Month")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameOfEvent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameOfHall")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Year")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ListOfEventsTheatrical");
                 });
 
             modelBuilder.Entity("AisMKIT.Models.ListOfMedia", b =>
@@ -986,6 +1079,64 @@ namespace AisMKIT.Migrations
                     b.HasIndex("DictMediaTypeId");
 
                     b.ToTable("ListOfMedia");
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.ListOfTheatrical", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DeactiveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DictTheatricalFinSourceId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DictTheatricalLegalFormId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstNameDirector")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstNameOfArtsDirector")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("INN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastNameDirector")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastNameOfArtsDirector")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameKyrg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NumEmployees")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PatronicNameDirector")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PatronicNameOfArtsDirector")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ReregistrationDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DictTheatricalFinSourceId");
+
+                    b.HasIndex("DictTheatricalLegalFormId");
+
+                    b.ToTable("ListOfTheatrical");
                 });
 
             modelBuilder.Entity("AisMKIT.Models.StatusForDict", b =>
@@ -1289,6 +1440,17 @@ namespace AisMKIT.Migrations
                     b.HasOne("AisMKIT.Models.DictMediaType", "DictMediaType")
                         .WithMany()
                         .HasForeignKey("DictMediaTypeId");
+                });
+
+            modelBuilder.Entity("AisMKIT.Models.ListOfTheatrical", b =>
+                {
+                    b.HasOne("AisMKIT.Models.DictTheatricalFinSource", "DictTheatricalFinSource")
+                        .WithMany()
+                        .HasForeignKey("DictTheatricalFinSourceId");
+
+                    b.HasOne("AisMKIT.Models.DictTheatricalLegalForm", "DictTheatricalLegalForm")
+                        .WithMany()
+                        .HasForeignKey("DictTheatricalLegalFormId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

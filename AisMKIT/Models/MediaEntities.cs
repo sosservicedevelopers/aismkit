@@ -12,10 +12,10 @@ namespace AisMKIT.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Наименование органа СМИ")]
+        [Display(Name = "Наименование органа СМИ (Рус.)")]
         public string NameRus { get; set; }
 
-        [Display(Name = "Наименование органа СМИ")]
+        [Display(Name = "Наименование органа СМИ (Кырг.)")]
         public string NameKyrg { get; set; }
 
         [Display(Name = "ИНН")]

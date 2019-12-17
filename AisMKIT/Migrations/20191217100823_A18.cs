@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AisMKIT.Migrations
 {
-    public partial class A13 : Migration
+    public partial class A18 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -123,6 +123,69 @@ namespace AisMKIT.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DictTheatricalFinSource",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    NameRus = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DictTheatricalFinSource", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DictTheatricalLegalForm",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    NameRus = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DictTheatricalLegalForm", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ListOfCouncilTheatrical",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LastNameOfArts = table.Column<string>(nullable: true),
+                    FirstNameOfArts = table.Column<string>(nullable: true),
+                    PatronicNameOfArts = table.Column<string>(nullable: true),
+                    DateInArtCouncil = table.Column<DateTime>(nullable: false),
+                    DateOutArtCouncil = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListOfCouncilTheatrical", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ListOfEventsTheatrical",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Year = table.Column<string>(nullable: true),
+                    Month = table.Column<string>(nullable: true),
+                    DayOfMonth = table.Column<string>(nullable: true),
+                    Time = table.Column<string>(nullable: true),
+                    NameOfEvent = table.Column<string>(nullable: true),
+                    NameOfHall = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListOfEventsTheatrical", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StatusForDict",
                 columns: table => new
                 {
@@ -210,6 +273,44 @@ namespace AisMKIT.Migrations
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ListOfTheatrical",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameRus = table.Column<string>(nullable: true),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    DictTheatricalLegalFormId = table.Column<int>(nullable: true),
+                    INN = table.Column<string>(nullable: true),
+                    LastNameDirector = table.Column<string>(nullable: true),
+                    FirstNameDirector = table.Column<string>(nullable: true),
+                    PatronicNameDirector = table.Column<string>(nullable: true),
+                    LastNameOfArtsDirector = table.Column<string>(nullable: true),
+                    FirstNameOfArtsDirector = table.Column<string>(nullable: true),
+                    PatronicNameOfArtsDirector = table.Column<string>(nullable: true),
+                    NumEmployees = table.Column<int>(nullable: false),
+                    DictTheatricalFinSourceId = table.Column<int>(nullable: true),
+                    ReregistrationDate = table.Column<DateTime>(nullable: false),
+                    DeactiveDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListOfTheatrical", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ListOfTheatrical_DictTheatricalFinSource_DictTheatricalFinSourceId",
+                        column: x => x.DictTheatricalFinSourceId,
+                        principalTable: "DictTheatricalFinSource",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ListOfTheatrical_DictTheatricalLegalForm_DictTheatricalLegalFormId",
+                        column: x => x.DictTheatricalLegalFormId,
+                        principalTable: "DictTheatricalLegalForm",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -945,6 +1046,16 @@ namespace AisMKIT.Migrations
                 name: "IX_ListOfMedia_DictMediaTypeId",
                 table: "ListOfMedia",
                 column: "DictMediaTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListOfTheatrical_DictTheatricalFinSourceId",
+                table: "ListOfTheatrical",
+                column: "DictTheatricalFinSourceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListOfTheatrical_DictTheatricalLegalFormId",
+                table: "ListOfTheatrical",
+                column: "DictTheatricalLegalFormId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -989,7 +1100,16 @@ namespace AisMKIT.Migrations
                 name: "ListOfControlMedia");
 
             migrationBuilder.DropTable(
+                name: "ListOfCouncilTheatrical");
+
+            migrationBuilder.DropTable(
                 name: "ListOfEducations");
+
+            migrationBuilder.DropTable(
+                name: "ListOfEventsTheatrical");
+
+            migrationBuilder.DropTable(
+                name: "ListOfTheatrical");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -1011,6 +1131,12 @@ namespace AisMKIT.Migrations
 
             migrationBuilder.DropTable(
                 name: "ClUchZavedCategory");
+
+            migrationBuilder.DropTable(
+                name: "DictTheatricalFinSource");
+
+            migrationBuilder.DropTable(
+                name: "DictTheatricalLegalForm");
 
             migrationBuilder.DropTable(
                 name: "Departments");

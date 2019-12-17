@@ -39,6 +39,8 @@
     <Folder Include="Areas\Media\Models\" />
     <Folder Include="Areas\SubordinateInstitutions\Controllers\" />
     <Folder Include="Areas\SubordinateInstitutions\Views\" />
+    <Folder Include="Areas\Theatrical\Data\" />
+    <Folder Include="Areas\Theatrical\Models\" />
     <Folder Include="Areas\Tourism\Controllers\" />
     <Folder Include="Areas\Tourism\Views\" />
   </ItemGroup>
