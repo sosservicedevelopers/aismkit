@@ -10,11 +10,14 @@ namespace AisMKIT.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Наименование памятника")]
-        public string Name { get; set; }
+        [Display(Name = "Наименование памятника (рус.)")]
+        public string NameRus { get; set; }
+
+        [Display(Name = "Наименование памятника (кырг.)")]
+        public string NameKyrg { get; set; }
 
         [Display(Name = "Типологическая принадлежность")]
-        public int DictTypeOfMonumentId { get; set; }
+        public int? DictTypeOfMonumentId { get; set; }
         [Display(Name = "Типологическая принадлежность")]
         public DictTypeOfMonument DictTypeOfMonument { get; set; }
 
@@ -22,12 +25,12 @@ namespace AisMKIT.Models
         public string DateOfMonument { get; set; }
 
         [Display(Name = "Регион")]
-        public int DictRegionId { get; set; }
+        public int? DictRegionId { get; set; }
         [Display(Name = "Регион")]
         public DictRegion DictRegion { get; set; }
 
         [Display(Name = "Район")]
-        public int DictDistrictId { get; set; }
+        public int? DictDistrictId { get; set; }
         [Display(Name = "Район")]
         public DictDistrict DictDistrict { get; set; }
 
@@ -40,10 +43,10 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
 
-        [Display(Name = "Наимование типа (кырг.)")]
+        [Display(Name = "Типологическая принадлежность (кырг.)")]
         public string NameKyrg { get; set; }
 
-        [Display(Name = "Наимование типа (рус.)")]
+        [Display(Name = "Типологическая принадлежность (рус.)")]
         public string NameRus { get; set; }
 
     }

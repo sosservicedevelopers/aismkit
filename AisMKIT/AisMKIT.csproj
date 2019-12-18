@@ -45,6 +45,8 @@
 
 
   <ItemGroup>
+    <Folder Include="Areas\GlobalDicts\Data\" />
+    <Folder Include="Areas\GlobalDicts\Models\" />
     <Folder Include="Areas\Media\Data\" />
     <Folder Include="Areas\Media\Models\" />
     <Folder Include="Areas\Monument\Data\" />

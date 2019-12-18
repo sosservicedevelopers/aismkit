@@ -319,67 +319,6 @@ namespace AisMKIT.Models
 
     }
 
-    // Регионы (области)
-    public class DictRegion
-    {
-        public int Id { get; set; }
-
-        [Display(Name = "Регион (Кырг)")]
-        public string NameKyrg { get; set; }
-
-        [Display(Name = "Регион (Русск)")]
-        public string NameRus { get; set; }
-
-        [Display(Name = "Дата ввода записи")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate { get; set; }
-
-
-        [Display(Name = "Статус")]
-        public int? StatusForDictId { get; set; }
-        [Display(Name = "Статус")]
-        public StatusForDict StatusForDict { get; set; }
-
-        [Display(Name = "Дата, с которой запись признана неактуальной")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate { get; set; }
-
-    }
-
-    // Район
-    public class DictDistrict
-    {
-
-        public int Id { get; set; }
-
-        [Display(Name = "Район (Кырг)")]
-        public string NameKyrg { get; set; }
-
-        [Display(Name = "Район (Русск)")]
-        public string NameRus { get; set; }
-
-        [Display(Name = "Дата ввода записи")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime CreateDate { get; set; }
-
-
-        [Display(Name = "Статус")]
-        public int? StatusForDictId { get; set; }
-        [Display(Name = "Статус")]
-        public StatusForDict StatusForDict { get; set; }
-
-        [Display(Name = "Дата, с которой запись признана неактуальной")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate { get; set; }
-
-        [Display(Name = "Город")]
-        public string City { get; set; }
-    }
-
 
     // Периодичность выпуска СМИ
     public class DictMediaFreqRelease

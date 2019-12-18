@@ -4,6 +4,43 @@
     ViewData["Title"] = "Create";
 }
 
+
+
+@*<p>cascade dropdown</p>
+
+
+
+@using (Html.BeginForm("GetDicts", "ListOfMonuments", FormMethod.Get))
+{
+    <table cellspacing="2" cellpadding="2">
+        <tr>
+            <td>
+                Category Type :
+            </td>
+            <td>
+                @Html.DropDownList("CategoryType")
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Sub Category:
+            </td>
+            <td>
+                @Html.DropDownList("SubCategory",
+                    new SelectList(string.Empty,
+                         "Value", "Text"),
+                    "Please select a Sub Category",
+                    new { style = "width:250px" })
+            </td>
+        </tr>
+    </table>
+}*@
+
+
+
+<br />
+
 <h1>Create</h1>
 
 <h4>ListOfMonument</h4>
@@ -13,13 +50,18 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="NameRus" class="control-label"></label>
+                <input asp-for="NameRus" class="form-control" />
+                <span asp-validation-for="NameRus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameKyrg" class="control-label"></label>
+                <input asp-for="NameKyrg" class="form-control" />
+                <span asp-validation-for="NameKyrg" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DictTypeOfMonumentId" class="control-label"></label>
-                <select asp-for="DictTypeOfMonumentId" class ="form-control" asp-items="ViewBag.DictTypeOfMonumentId"></select>
+                <select asp-for="DictTypeOfMonumentId" class="form-control" asp-items="ViewBag.DictTypeOfMonumentId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DateOfMonument" class="control-label"></label>
@@ -28,11 +70,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="DictRegionId" class="control-label"></label>
-                <select asp-for="DictRegionId" class ="form-control" asp-items="ViewBag.DictRegionId"></select>
+                <select asp-for="DictRegionId" class="form-control" asp-items="ViewBag.DictRegionId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DictDistrictId" class="control-label"></label>
-                <select asp-for="DictDistrictId" class ="form-control" asp-items="ViewBag.DictDistrictId"></select>
+                <select asp-for="DictDistrictId" class="form-control" asp-items="ViewBag.DictDistrictId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
@@ -50,3 +92,50 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#DictRegionId").change(function () {
+
+            $("#DictDistrictId").empty();
+
+            $.ajax({
+
+                type: 'POST',
+
+                url: '@Url.Action("GetDicts")',
+
+                dataType: 'json',
+
+                data: { id: $("#DictRegionId").val() },
+
+                success: function (subcategories) {
+
+                    //console.log(subcategories);
+
+                    $.each(subcategories, function (i, subcategory) {
+
+                        $("#DictDistrictId").append('<option value="' + subcategory.value + '">' + subcategory.text + '</option>');
+
+                        //console.log('<option value="' + subcategory.value + '">' + subcategory.text + '</option>');
+
+                    });
+
+                },
+
+                error: function (ex) {
+
+                    console.log('Failed to retrieve Sub Categories : ' + ex);
+
+                }
+
+            });
+
+            return false;
+
+        })
+
+    });
+</script>

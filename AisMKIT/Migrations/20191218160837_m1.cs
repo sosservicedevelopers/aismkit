@@ -3,108 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AisMKIT.Migrations
 {
-    public partial class A18 : Migration
+    public partial class m1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "AspNetRoles",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClNagradTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: false),
-                    Desciption = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClNagradTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClObjProizIskusCategory",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: false),
-                    Desciption = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClObjProizIskusCategory", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClObjProizIskusTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: false),
-                    Desciption = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClObjProizIskusTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClOKNTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: false),
-                    Desciption = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClOKNTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClServices",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: false),
-                    Desciption = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClServices", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ClUchZavedCategory",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: false),
-                    Desciption = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ClUchZavedCategory", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
@@ -120,6 +22,34 @@ namespace AisMKIT.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Departments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DictEduCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Desciption = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DictEduCategories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DictRegion",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    NameRus = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DictRegion", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,6 +78,81 @@ namespace AisMKIT.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DictTheatricalLegalForm", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DictTypeOfMonument",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    NameRus = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DictTypeOfMonument", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DictTypeOfSub",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    NameRus = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DictTypeOfSub", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EducationalUnits",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EducationalUnits", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(nullable: true),
+                    SecondName = table.Column<string>(nullable: true),
+                    FullName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "listISRCFilms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MovieTitle = table.Column<string>(nullable: false),
+                    Country = table.Column<string>(nullable: false),
+                    ReleaseYear = table.Column<string>(nullable: false),
+                    Director = table.Column<string>(nullable: false),
+                    Duration = table.Column<string>(nullable: false),
+                    AgeRestrictions = table.Column<string>(nullable: false),
+                    DateCertificated = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_listISRCFilms", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -186,6 +191,33 @@ namespace AisMKIT.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Positions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Positions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Specialties",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Specialties", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StatusForDict",
                 columns: table => new
                 {
@@ -199,28 +231,7 @@ namespace AisMKIT.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(nullable: false),
-                    ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ListOfEducations",
+                name: "EduInstitutions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -229,48 +240,41 @@ namespace AisMKIT.Migrations
                     Name = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: false),
                     DomenNames = table.Column<string>(nullable: true),
+                    Fax = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
                     DateOfCreated = table.Column<DateTime>(nullable: false),
-                    ClUchZavedCategoryId = table.Column<int>(nullable: false)
+                    BriefInfo = table.Column<string>(nullable: true),
+                    DictEduCategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ListOfEducations", x => x.Id);
+                    table.PrimaryKey("PK_EduInstitutions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ListOfEducations_ClUchZavedCategory_ClUchZavedCategoryId",
-                        column: x => x.ClUchZavedCategoryId,
-                        principalTable: "ClUchZavedCategory",
+                        name: "FK_EduInstitutions_DictEduCategories_DictEduCategoryId",
+                        column: x => x.DictEduCategoryId,
+                        principalTable: "DictEduCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
+                name: "DictDistrict",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    DepartmentsId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    NameRus = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    DictRegionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.PrimaryKey("PK_DictDistrict", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_Departments_DepartmentsId",
-                        column: x => x.DepartmentsId,
-                        principalTable: "Departments",
+                        name: "FK_DictDistrict_DictRegion_DictRegionId",
+                        column: x => x.DictRegionId,
+                        principalTable: "DictRegion",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -353,30 +357,6 @@ namespace AisMKIT.Migrations
                     table.PrimaryKey("PK_DictControlType", x => x.Id);
                     table.ForeignKey(
                         name: "FK_DictControlType_StatusForDict_StatusForDictId",
-                        column: x => x.StatusForDictId,
-                        principalTable: "StatusForDict",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DictDistrict",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NameKyrg = table.Column<string>(nullable: true),
-                    NameRus = table.Column<string>(nullable: true),
-                    CreateDate = table.Column<DateTime>(nullable: false),
-                    StatusForDictId = table.Column<int>(nullable: true),
-                    DeactiveDate = table.Column<DateTime>(nullable: false),
-                    City = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DictDistrict", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_DictDistrict_StatusForDict_StatusForDictId",
                         column: x => x.StatusForDictId,
                         principalTable: "StatusForDict",
                         principalColumn: "Id",
@@ -545,109 +525,101 @@ namespace AisMKIT.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DictRegion",
+                name: "Faculties",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NameKyrg = table.Column<string>(nullable: true),
-                    NameRus = table.Column<string>(nullable: true),
-                    CreateDate = table.Column<DateTime>(nullable: false),
-                    StatusForDictId = table.Column<int>(nullable: true),
-                    DeactiveDate = table.Column<DateTime>(nullable: false)
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    EduInstitutionId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DictRegion", x => x.Id);
+                    table.PrimaryKey("PK_Faculties", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DictRegion_StatusForDict_StatusForDictId",
-                        column: x => x.StatusForDictId,
-                        principalTable: "StatusForDict",
+                        name: "FK_Faculties_EduInstitutions_EduInstitutionId",
+                        column: x => x.EduInstitutionId,
+                        principalTable: "EduInstitutions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserClaims",
+                name: "ListOfMonument",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(nullable: false),
-                    ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    NameRus = table.Column<string>(nullable: true),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    DictTypeOfMonumentId = table.Column<int>(nullable: true),
+                    DateOfMonument = table.Column<string>(nullable: true),
+                    DictRegionId = table.Column<int>(nullable: true),
+                    DictDistrictId = table.Column<int>(nullable: true),
+                    Address = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.PrimaryKey("PK_ListOfMonument", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        name: "FK_ListOfMonument_DictDistrict_DictDistrictId",
+                        column: x => x.DictDistrictId,
+                        principalTable: "DictDistrict",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ListOfMonument_DictRegion_DictRegionId",
+                        column: x => x.DictRegionId,
+                        principalTable: "DictRegion",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ListOfMonument_DictTypeOfMonument_DictTypeOfMonumentId",
+                        column: x => x.DictTypeOfMonumentId,
+                        principalTable: "DictTypeOfMonument",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserLogins",
+                name: "ListOfSubInstitutions",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NameRus = table.Column<string>(nullable: true),
+                    NameKyrg = table.Column<string>(nullable: true),
+                    INN = table.Column<string>(nullable: true),
+                    DictTypeOfSubId = table.Column<int>(nullable: false),
+                    Fax = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    DateOfCreated = table.Column<DateTime>(nullable: false),
+                    BriefInfo = table.Column<string>(nullable: true),
+                    DictRegionId = table.Column<int>(nullable: true),
+                    DictDistrictId = table.Column<int>(nullable: true),
+                    AddressRus = table.Column<string>(nullable: true),
+                    AddressKyrg = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.PrimaryKey("PK_ListOfSubInstitutions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        name: "FK_ListOfSubInstitutions_DictDistrict_DictDistrictId",
+                        column: x => x.DictDistrictId,
+                        principalTable: "DictDistrict",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
+                        name: "FK_ListOfSubInstitutions_DictRegion_DictRegionId",
+                        column: x => x.DictRegionId,
+                        principalTable: "DictRegion",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserTokens",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
-                    Value = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        name: "FK_ListOfSubInstitutions_DictTypeOfSub_DictTypeOfSubId",
+                        column: x => x.DictTypeOfSubId,
+                        principalTable: "DictTypeOfSub",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -717,6 +689,102 @@ namespace AisMKIT.Migrations
                         name: "FK_ListOfMedia_DictMediaType_DictMediaTypeId",
                         column: x => x.DictMediaTypeId,
                         principalTable: "DictMediaType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmplEducationalUnits",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<int>(nullable: true),
+                    EducationalUnitId = table.Column<int>(nullable: true),
+                    WorkStartDate = table.Column<DateTime>(nullable: false),
+                    WorkEndDate = table.Column<DateTime>(nullable: false),
+                    FacultyId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmplEducationalUnits", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EmplEducationalUnits_EducationalUnits_EducationalUnitId",
+                        column: x => x.EducationalUnitId,
+                        principalTable: "EducationalUnits",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmplEducationalUnits_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmplEducationalUnits_Faculties_FacultyId",
+                        column: x => x.FacultyId,
+                        principalTable: "Faculties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmplPosHistories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<int>(nullable: true),
+                    PositionId = table.Column<int>(nullable: true),
+                    WorkStartDate = table.Column<DateTime>(nullable: false),
+                    WorkEndDate = table.Column<DateTime>(nullable: false),
+                    FacultyId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmplPosHistories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EmplPosHistories_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmplPosHistories_Faculties_FacultyId",
+                        column: x => x.FacultyId,
+                        principalTable: "Faculties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmplPosHistories_Positions_PositionId",
+                        column: x => x.PositionId,
+                        principalTable: "Positions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FacultySpecialties",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SpecialtyId = table.Column<int>(nullable: true),
+                    FacultyId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FacultySpecialties", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FacultySpecialties_Faculties_FacultyId",
+                        column: x => x.FacultyId,
+                        principalTable: "Faculties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_FacultySpecialties_Specialties_SpecialtyId",
+                        column: x => x.SpecialtyId,
+                        principalTable: "Specialties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -802,15 +870,6 @@ namespace AisMKIT.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "DictDistrict",
-                columns: new[] { "Id", "City", "CreateDate", "DeactiveDate", "NameKyrg", "NameRus", "StatusForDictId" },
-                values: new object[,]
-                {
-                    { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Сокулук", "Сокулук", null },
-                    { 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Балыкчы", "Рыбалов", null }
-                });
-
-            migrationBuilder.InsertData(
                 table: "DictLangMediaType",
                 columns: new[] { "Id", "CreateDate", "DeactiveDate", "NameKyrg", "NameRus", "StatusForDictId" },
                 values: new object[,]
@@ -876,15 +935,6 @@ namespace AisMKIT.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "DictRegion",
-                columns: new[] { "Id", "CreateDate", "DeactiveDate", "NameKyrg", "NameRus", "StatusForDictId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Чуй", "Чуй", null },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Баткен", "Баткен", null }
-                });
-
-            migrationBuilder.InsertData(
                 table: "StatusForDict",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
@@ -892,50 +942,6 @@ namespace AisMKIT.Migrations
                     { 1, "включён" },
                     { 2, "отключён" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoleClaims_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles",
-                column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserClaims_UserId",
-                table: "AspNetUserClaims",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserLogins_UserId",
-                table: "AspNetUserLogins",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_RoleId",
-                table: "AspNetUserRoles",
-                column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_DepartmentsId",
-                table: "AspNetUsers",
-                column: "DepartmentsId");
-
-            migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "AspNetUsers",
-                column: "NormalizedEmail");
-
-            migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DictAgencyPerm_StatusForDictId",
@@ -948,9 +954,9 @@ namespace AisMKIT.Migrations
                 column: "StatusForDictId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DictDistrict_StatusForDictId",
+                name: "IX_DictDistrict_DictRegionId",
                 table: "DictDistrict",
-                column: "StatusForDictId");
+                column: "DictRegionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DictLangMediaType_StatusForDictId",
@@ -988,9 +994,54 @@ namespace AisMKIT.Migrations
                 column: "StatusForDictId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DictRegion_StatusForDictId",
-                table: "DictRegion",
-                column: "StatusForDictId");
+                name: "IX_EduInstitutions_DictEduCategoryId",
+                table: "EduInstitutions",
+                column: "DictEduCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmplEducationalUnits_EducationalUnitId",
+                table: "EmplEducationalUnits",
+                column: "EducationalUnitId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmplEducationalUnits_EmployeeId",
+                table: "EmplEducationalUnits",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmplEducationalUnits_FacultyId",
+                table: "EmplEducationalUnits",
+                column: "FacultyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmplPosHistories_EmployeeId",
+                table: "EmplPosHistories",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmplPosHistories_FacultyId",
+                table: "EmplPosHistories",
+                column: "FacultyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmplPosHistories_PositionId",
+                table: "EmplPosHistories",
+                column: "PositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Faculties_EduInstitutionId",
+                table: "Faculties",
+                column: "EduInstitutionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FacultySpecialties_FacultyId",
+                table: "FacultySpecialties",
+                column: "FacultyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FacultySpecialties_SpecialtyId",
+                table: "FacultySpecialties",
+                column: "SpecialtyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ListOfControlMedia_DictControlTypeId",
@@ -1011,11 +1062,6 @@ namespace AisMKIT.Migrations
                 name: "IX_ListOfControlMedia_ListOfMediaId",
                 table: "ListOfControlMedia",
                 column: "ListOfMediaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ListOfEducations_ClUchZavedCategoryId",
-                table: "ListOfEducations",
-                column: "ClUchZavedCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ListOfMedia_DictAgencyPermId",
@@ -1048,6 +1094,36 @@ namespace AisMKIT.Migrations
                 column: "DictMediaTypeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ListOfMonument_DictDistrictId",
+                table: "ListOfMonument",
+                column: "DictDistrictId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListOfMonument_DictRegionId",
+                table: "ListOfMonument",
+                column: "DictRegionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListOfMonument_DictTypeOfMonumentId",
+                table: "ListOfMonument",
+                column: "DictTypeOfMonumentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListOfSubInstitutions_DictDistrictId",
+                table: "ListOfSubInstitutions",
+                column: "DictDistrictId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListOfSubInstitutions_DictRegionId",
+                table: "ListOfSubInstitutions",
+                column: "DictRegionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListOfSubInstitutions_DictTypeOfSubId",
+                table: "ListOfSubInstitutions",
+                column: "DictTypeOfSubId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ListOfTheatrical_DictTheatricalFinSourceId",
                 table: "ListOfTheatrical",
                 column: "DictTheatricalFinSourceId");
@@ -1061,40 +1137,22 @@ namespace AisMKIT.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "ClNagradTypes");
-
-            migrationBuilder.DropTable(
-                name: "ClObjProizIskusCategory");
-
-            migrationBuilder.DropTable(
-                name: "ClObjProizIskusTypes");
-
-            migrationBuilder.DropTable(
-                name: "ClOKNTypes");
-
-            migrationBuilder.DropTable(
-                name: "ClServices");
+                name: "Departments");
 
             migrationBuilder.DropTable(
                 name: "DictLegalForm");
 
             migrationBuilder.DropTable(
-                name: "DictRegion");
+                name: "EmplEducationalUnits");
+
+            migrationBuilder.DropTable(
+                name: "EmplPosHistories");
+
+            migrationBuilder.DropTable(
+                name: "FacultySpecialties");
+
+            migrationBuilder.DropTable(
+                name: "listISRCFilms");
 
             migrationBuilder.DropTable(
                 name: "ListOfControlMedia");
@@ -1103,19 +1161,31 @@ namespace AisMKIT.Migrations
                 name: "ListOfCouncilTheatrical");
 
             migrationBuilder.DropTable(
-                name: "ListOfEducations");
+                name: "ListOfEventsTheatrical");
 
             migrationBuilder.DropTable(
-                name: "ListOfEventsTheatrical");
+                name: "ListOfMonument");
+
+            migrationBuilder.DropTable(
+                name: "ListOfSubInstitutions");
 
             migrationBuilder.DropTable(
                 name: "ListOfTheatrical");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "EducationalUnits");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Employees");
+
+            migrationBuilder.DropTable(
+                name: "Positions");
+
+            migrationBuilder.DropTable(
+                name: "Faculties");
+
+            migrationBuilder.DropTable(
+                name: "Specialties");
 
             migrationBuilder.DropTable(
                 name: "DictControlType");
@@ -1130,7 +1200,10 @@ namespace AisMKIT.Migrations
                 name: "ListOfMedia");
 
             migrationBuilder.DropTable(
-                name: "ClUchZavedCategory");
+                name: "DictTypeOfMonument");
+
+            migrationBuilder.DropTable(
+                name: "DictTypeOfSub");
 
             migrationBuilder.DropTable(
                 name: "DictTheatricalFinSource");
@@ -1139,7 +1212,7 @@ namespace AisMKIT.Migrations
                 name: "DictTheatricalLegalForm");
 
             migrationBuilder.DropTable(
-                name: "Departments");
+                name: "EduInstitutions");
 
             migrationBuilder.DropTable(
                 name: "DictAgencyPerm");
@@ -1158,6 +1231,12 @@ namespace AisMKIT.Migrations
 
             migrationBuilder.DropTable(
                 name: "DictMediaType");
+
+            migrationBuilder.DropTable(
+                name: "DictEduCategories");
+
+            migrationBuilder.DropTable(
+                name: "DictRegion");
 
             migrationBuilder.DropTable(
                 name: "StatusForDict");

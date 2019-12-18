@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using AisMKIT.Data;
 using AisMKIT.Models;
 
-namespace AisMKIT.Areas.Media.Controllers
+namespace AisMKIT.Areas.GlobalDicts.Controllers
 {
-    [Area("Media")]
+    [Area("GlobalDicts")]
     public class DictDistrictsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,14 +20,14 @@ namespace AisMKIT.Areas.Media.Controllers
             _context = context;
         }
 
-        // GET: Media/DictDistricts
+        // GET: GlobalDicts/DictDistricts
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.DictDistrict.Include(d => d.StatusForDict);
+            var applicationDbContext = _context.DictDistrict.Include(d => d.DictRegion);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Media/DictDistricts/Details/5
+        // GET: GlobalDicts/DictDistricts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace AisMKIT.Areas.Media.Controllers
             }
 
             var dictDistrict = await _context.DictDistrict
-                .Include(d => d.StatusForDict)
+                .Include(d => d.DictRegion)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (dictDistrict == null)
             {
@@ -46,19 +46,19 @@ namespace AisMKIT.Areas.Media.Controllers
             return View(dictDistrict);
         }
 
-        // GET: Media/DictDistricts/Create
+        // GET: GlobalDicts/DictDistricts/Create
         public IActionResult Create()
         {
-            ViewData["StatusForDictId"] = new SelectList(_context.Set<StatusForDict>(), "Id", "Name");
+            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
             return View();
         }
 
-        // POST: Media/DictDistricts/Create
+        // POST: GlobalDicts/DictDistricts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameKyrg,NameRus,CreateDate,StatusForDictId,DeactiveDate,City")] DictDistrict dictDistrict)
+        public async Task<IActionResult> Create([Bind("Id,NameKyrg,NameRus,City,DictRegionId")] DictDistrict dictDistrict)
         {
             if (ModelState.IsValid)
             {
@@ -66,11 +66,11 @@ namespace AisMKIT.Areas.Media.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StatusForDictId"] = new SelectList(_context.Set<StatusForDict>(), "Id", "Name", dictDistrict.StatusForDictId);
+            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", dictDistrict.DictRegionId);
             return View(dictDistrict);
         }
 
-        // GET: Media/DictDistricts/Edit/5
+        // GET: GlobalDicts/DictDistricts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -83,16 +83,16 @@ namespace AisMKIT.Areas.Media.Controllers
             {
                 return NotFound();
             }
-            ViewData["StatusForDictId"] = new SelectList(_context.Set<StatusForDict>(), "Id", "Name", dictDistrict.StatusForDictId);
+            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", dictDistrict.DictRegionId);
             return View(dictDistrict);
         }
 
-        // POST: Media/DictDistricts/Edit/5
+        // POST: GlobalDicts/DictDistricts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameKyrg,NameRus,CreateDate,StatusForDictId,DeactiveDate,City")] DictDistrict dictDistrict)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameKyrg,NameRus,City,DictRegionId")] DictDistrict dictDistrict)
         {
             if (id != dictDistrict.Id)
             {
@@ -119,11 +119,11 @@ namespace AisMKIT.Areas.Media.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StatusForDictId"] = new SelectList(_context.Set<StatusForDict>(), "Id", "Name", dictDistrict.StatusForDictId);
+            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", dictDistrict.DictRegionId);
             return View(dictDistrict);
         }
 
-        // GET: Media/DictDistricts/Delete/5
+        // GET: GlobalDicts/DictDistricts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,7 +132,7 @@ namespace AisMKIT.Areas.Media.Controllers
             }
 
             var dictDistrict = await _context.DictDistrict
-                .Include(d => d.StatusForDict)
+                .Include(d => d.DictRegion)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (dictDistrict == null)
             {
@@ -142,7 +142,7 @@ namespace AisMKIT.Areas.Media.Controllers
             return View(dictDistrict);
         }
 
-        // POST: Media/DictDistricts/Delete/5
+        // POST: GlobalDicts/DictDistricts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

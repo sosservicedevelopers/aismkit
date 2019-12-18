@@ -11,16 +11,22 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.NameRus)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.NameRus)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DictTypeOfMonument.NameRus)
+            @Html.DisplayNameFor(model => model.NameKyrg)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DictTypeOfMonument.NameRus)
+            @Html.DisplayFor(model => model.NameKyrg)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DictTypeOfMonument)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DictTypeOfMonument.Id)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DateOfMonument)
@@ -29,16 +35,16 @@
             @Html.DisplayFor(model => model.DateOfMonument)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DictRegion.NameRus)
+            @Html.DisplayNameFor(model => model.DictRegion)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DictRegion.NameRus)
+            @Html.DisplayFor(model => model.DictRegion.Id)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DictDistrict)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DictDistrict.NameRus)
+            @Html.DisplayFor(model => model.DictDistrict.Id)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Address)

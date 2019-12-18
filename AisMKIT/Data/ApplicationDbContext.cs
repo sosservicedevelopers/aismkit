@@ -14,7 +14,8 @@ namespace AisMKIT.Data
     //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     //public class ApplicationDbContext : DbContext
 
-    public class ApplicationDbContext : IdentityDbContext<User>
+    //public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : DbContext
     {
         public DbSet<Departments> Departments { get; set; }
      
@@ -49,16 +50,6 @@ namespace AisMKIT.Data
                         new DictLangMediaType{Id=2, NameRus="Кыргызский", NameKyrg="Кыргызча"}});
 
             // начальные данные для 
-            builder.Entity<DictRegion>().HasData(new DictRegion[]{
-                        new DictRegion{Id=1, NameRus="Чуй", NameKyrg="Чуй"},
-                        new DictRegion{Id=2, NameRus="Баткен", NameKyrg="Баткен"}});
-
-            // начальные данные для 
-            builder.Entity<DictDistrict>().HasData(new DictDistrict[]{
-                        new DictDistrict{Id=1, NameRus="Сокулук", NameKyrg="Сокулук"},
-                        new DictDistrict{Id=2, NameRus="Рыбалов", NameKyrg="Балыкчы"}});
-
-            // начальные данные для 
             builder.Entity<DictMediaFreqRelease>().HasData(new DictMediaFreqRelease[]{
                         new DictMediaFreqRelease{Id=1, NameRus="Ежемесячно", NameKyrg="Ар бир айда"},
                         new DictMediaFreqRelease{Id=2, NameRus="Еженедельно", NameKyrg="Ар бир жумада"}});
@@ -68,7 +59,7 @@ namespace AisMKIT.Data
                         new DictMediaFinSource{Id=1, NameRus="Государственный", NameKyrg="Мамлекеттик"},
                         new DictMediaFinSource{Id=2, NameRus="Частный", NameKyrg="Жекече"}});
 
-            
+
             // начальные данные для 
             builder.Entity<DictAgencyPerm>().HasData(new DictAgencyPerm[]{
                         new DictAgencyPerm{Id=1, NameRus="МВД", NameKyrg="ИИМ"},

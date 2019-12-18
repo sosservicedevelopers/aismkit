@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using AisMKIT.Data;
 using AisMKIT.Models;
 
-namespace AisMKIT.Areas.Media.Controllers
+namespace AisMKIT.Areas.GlobalDicts.Controllers
 {
-    [Area("Media")]
+    [Area("GlobalDicts")]
     public class DictRegionsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,14 +20,13 @@ namespace AisMKIT.Areas.Media.Controllers
             _context = context;
         }
 
-        // GET: Media/DictRegions
+        // GET: GlobalDicts/DictRegions
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.DictRegion.Include(d => d.StatusForDict);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _context.DictRegion.ToListAsync());
         }
 
-        // GET: Media/DictRegions/Details/5
+        // GET: GlobalDicts/DictRegions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,7 +35,6 @@ namespace AisMKIT.Areas.Media.Controllers
             }
 
             var dictRegion = await _context.DictRegion
-                .Include(d => d.StatusForDict)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (dictRegion == null)
             {
@@ -46,19 +44,18 @@ namespace AisMKIT.Areas.Media.Controllers
             return View(dictRegion);
         }
 
-        // GET: Media/DictRegions/Create
+        // GET: GlobalDicts/DictRegions/Create
         public IActionResult Create()
         {
-            ViewData["StatusForDictId"] = new SelectList(_context.Set<StatusForDict>(), "Id", "Name");
             return View();
         }
 
-        // POST: Media/DictRegions/Create
+        // POST: GlobalDicts/DictRegions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameKyrg,NameRus,CreateDate,StatusForDictId,DeactiveDate")] DictRegion dictRegion)
+        public async Task<IActionResult> Create([Bind("Id,NameKyrg,NameRus")] DictRegion dictRegion)
         {
             if (ModelState.IsValid)
             {
@@ -66,11 +63,10 @@ namespace AisMKIT.Areas.Media.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StatusForDictId"] = new SelectList(_context.Set<StatusForDict>(), "Id", "Name", dictRegion.StatusForDictId);
             return View(dictRegion);
         }
 
-        // GET: Media/DictRegions/Edit/5
+        // GET: GlobalDicts/DictRegions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -83,16 +79,15 @@ namespace AisMKIT.Areas.Media.Controllers
             {
                 return NotFound();
             }
-            ViewData["StatusForDictId"] = new SelectList(_context.Set<StatusForDict>(), "Id", "Name", dictRegion.StatusForDictId);
             return View(dictRegion);
         }
 
-        // POST: Media/DictRegions/Edit/5
+        // POST: GlobalDicts/DictRegions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameKyrg,NameRus,CreateDate,StatusForDictId,DeactiveDate")] DictRegion dictRegion)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameKyrg,NameRus")] DictRegion dictRegion)
         {
             if (id != dictRegion.Id)
             {
@@ -119,11 +114,10 @@ namespace AisMKIT.Areas.Media.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["StatusForDictId"] = new SelectList(_context.Set<StatusForDict>(), "Id", "Name", dictRegion.StatusForDictId);
             return View(dictRegion);
         }
 
-        // GET: Media/DictRegions/Delete/5
+        // GET: GlobalDicts/DictRegions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -132,7 +126,6 @@ namespace AisMKIT.Areas.Media.Controllers
             }
 
             var dictRegion = await _context.DictRegion
-                .Include(d => d.StatusForDict)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (dictRegion == null)
             {
@@ -142,7 +135,7 @@ namespace AisMKIT.Areas.Media.Controllers
             return View(dictRegion);
         }
 
-        // POST: Media/DictRegions/Delete/5
+        // POST: GlobalDicts/DictRegions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -20,9 +20,28 @@ namespace AisMKIT.Areas.Monument.Controllers
             _context = context;
         }
 
+        public JsonResult GetDicts(int id)
+        {
+            List<DictDistrict> dicts = _context.DictDistrict
+                .Include(d => d.DictRegion)
+                .Where(d => d.DictRegionId == id)
+                .ToList();
+
+            List<SelectListItem> data = new List<SelectListItem>();
+
+            foreach (var item in dicts)
+            {
+                data.Add(new SelectListItem { Text = item.NameRus, Value = item.Id + "" });
+            }
+
+            return Json(new SelectList(data, "Value", "Text"));
+        }
+
         // GET: Monument/ListOfMonuments
         public async Task<IActionResult> Index()
         {
+            
+
             var applicationDbContext = _context.ListOfMonument.Include(l => l.DictDistrict).Include(l => l.DictRegion).Include(l => l.DictTypeOfMonument);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -51,9 +70,18 @@ namespace AisMKIT.Areas.Monument.Controllers
         // GET: Monument/ListOfMonuments/Create
         public IActionResult Create()
         {
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
+            DictRegion region = _context.DictRegion.FirstOrDefault();
+
+            // чтобы по умолчанию не передавать все районы, здесь 
+            // передаётся только районы к-е входят в первый регион в БД
+            List<DictDistrict> dicts = _context.DictDistrict
+                .Include(d => d.DictRegion)
+                .Where(d => d.DictRegionId == region.Id)
+                .ToList();
+
+            ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
             ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
-            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.Set<DictTypeOfMonument>(), "Id", "NameRus");
+            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus");
             return View();
         }
 
@@ -62,7 +90,7 @@ namespace AisMKIT.Areas.Monument.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DictTypeOfMonumentId,DateOfMonument,DictRegionId,DictDistrictId,Address")] ListOfMonument listOfMonument)
+        public async Task<IActionResult> Create([Bind("Id,NameRus,NameKyrg,DictTypeOfMonumentId,DateOfMonument,DictRegionId,DictDistrictId,Address")] ListOfMonument listOfMonument)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +100,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             }
             ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
             ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
-            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.Set<DictTypeOfMonument>(), "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
+            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
             return View(listOfMonument);
         }
 
@@ -91,7 +119,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             }
             ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
             ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
-            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.Set<DictTypeOfMonument>(), "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
+            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
             return View(listOfMonument);
         }
 
@@ -100,7 +128,7 @@ namespace AisMKIT.Areas.Monument.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DictTypeOfMonumentId,DateOfMonument,DictRegionId,DictDistrictId,Address")] ListOfMonument listOfMonument)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameRus,NameKyrg,DictTypeOfMonumentId,DateOfMonument,DictRegionId,DictDistrictId,Address")] ListOfMonument listOfMonument)
         {
             if (id != listOfMonument.Id)
             {
@@ -129,7 +157,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             }
             ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
             ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
-            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.Set<DictTypeOfMonument>(), "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
+            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
             return View(listOfMonument);
         }
 

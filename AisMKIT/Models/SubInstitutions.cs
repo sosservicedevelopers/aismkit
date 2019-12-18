@@ -41,12 +41,12 @@ namespace AisMKIT.Models
         public string BriefInfo { get; set; }
 
         [Display(Name = "Регион")]
-        public int DictRegionId { get; set; }
+        public int? DictRegionId { get; set; }
         [Display(Name = "Регион")]
         public DictRegion DictRegion { get; set; }
 
         [Display(Name = "Район")]
-        public int DictDistrictId { get; set; }
+        public int? DictDistrictId { get; set; }
         [Display(Name = "Район")]
         public DictDistrict DictDistrict { get; set; }
 
