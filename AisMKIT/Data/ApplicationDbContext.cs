@@ -111,10 +111,31 @@ namespace AisMKIT.Data
         public DbSet<AisMKIT.Models.ListOfTheatrical> ListOfTheatrical { get; set; }
         public DbSet<AisMKIT.Models.ListOfCouncilTheatrical> ListOfCouncilTheatrical { get; set; }
         public DbSet<AisMKIT.Models.ListOfEventsTheatrical> ListOfEventsTheatrical { get; set; }
-        //Для postgresql
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=AisMKIT;Username=postgres;Password=admin");
-        //}
+
+
+        // Реестр Учебных заведений
+        public DbSet<AisMKIT.Models.EduInstitution> EduInstitutions { get; set; }
+
+        // дополнительные модели для реестра Учебные заведения
+        // список факультетов
+        public DbSet<AisMKIT.Models.Faculty> Faculties { get; set; }
+        // список сотрудников
+        public DbSet<AisMKIT.Models.Employee> Employees { get; set; }
+
+        public DbSet<AisMKIT.Models.EmplPosHistory> EmplPosHistories { get; set; }
+
+        public DbSet<AisMKIT.Models.Position> Positions { get; set; }
+
+        public DbSet<AisMKIT.Models.Specialty> Specialties { get; set; }
+
+        public DbSet<AisMKIT.Models.FacultySpecialty> FacultySpecialties { get; set; }
+
+        public DbSet<AisMKIT.Models.EducationalUnit> EducationalUnits { get; set; }
+
+        public DbSet<AisMKIT.Models.EmplEducationalUnit> EmplEducationalUnits { get; set; }
+
+        public DbSet<AisMKIT.Models.DictEduCategory> DictEduCategories { get; set; }
+
+
     }
 }

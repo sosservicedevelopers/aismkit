@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AisMKIT.Models.EmplEducationalUnit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>Сотрудники в подразделениях</h1>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EducationalUnit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Faculty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkEndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EducationalUnit.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faculty.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkEndDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
