@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AisMKIT.Data
 {
-    
 
-   
+
+
     //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    public class ApplicationDbContext : DbContext
+    //public class ApplicationDbContext : DbContext
+
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public DbSet<Departments> Departments { get; set; }
      
@@ -137,6 +139,6 @@ namespace AisMKIT.Data
         public DbSet<AisMKIT.Models.DictEduCategory> DictEduCategories { get; set; }
 
         // Список выданных гос. сертификатов к фильмам за 2019 
-        public DbSet<ListISRCFilms> listISRCFilms { get; set; }
+        public DbSet<AisMKIT.Models.ListISRCFilms> listISRCFilms { get; set; }
     }
 }

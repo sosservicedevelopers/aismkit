@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AisMKIT.Models.User>
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<h1>Управление ролями пользователей</h1>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Пользователь
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

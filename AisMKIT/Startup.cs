@@ -54,8 +54,8 @@ namespace AisMKIT
             //services.AddTransient<IRepository, PhoneRepository>();
 
 
-            //services.AddIdentity<User, IdentityRole>()
-            //    .AddEntityFrameworkStores<ApplicationContext>();
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc();
             

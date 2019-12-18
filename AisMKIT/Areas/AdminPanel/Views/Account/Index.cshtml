@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="container">
+
+        <h1>Панель администратора АИС "Тунгуч"</h1>
+        <br />
+        <p>
+            Добро пожаловать администратор АИС "Тунгуч"!<br />
+            Перед добавлением, редактированием и удалением пользователей, не забудь, что:
+            <br />
+            <ul>
+                <li>Откат изменений невозможен</li>
+                <li>Все твои действия записываются</li>
+            </ul>
+
+        </p>
+        <br />
+        <hr />
+        <div>
+            <a class="btn btn-success" asp-controller="Users">Управление пользователями</a>
+        </div>
+        <div>
+            <a class="btn btn-success" asp-controller="Roles" asp-action="UserList">Управление ролями пользователей</a>
+        </div>
+    </div>        
