@@ -136,6 +136,7 @@ namespace AisMKIT.Data
 
         public DbSet<AisMKIT.Models.DictEduCategory> DictEduCategories { get; set; }
 
-
+        // Список выданных гос. сертификатов к фильмам за 2019 
+        public DbSet<ListISRCFilms> listISRCFilms { get; set; }
     }
 }

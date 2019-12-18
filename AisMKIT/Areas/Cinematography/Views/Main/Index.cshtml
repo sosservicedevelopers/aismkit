@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Киномотография";
+}
+
+<h1>Киномотография</h1>
+<br />
+
+<div class="container">
+
+
+    <h2>Реестр</h2>
+    <br />
+
+    <div>
+        <a asp-controller="listISRCFilms" asp-action="Index">Сертифицированные фильмы</a>
+    </div>
+
+    <br />
+    <h2>Справочники</h2>
+    <br />
+
+    <div>
+        <a asp-controller="Main" asp-action="InfoISRC">Информация по выдаче прокатных удостоверений художественным фильмам</a>
+    </div>
+
+    <div>
+        <a asp-controller="Main" asp-action="InfoUchastieKonkurs">Информации для участия в конкурсах</a>
+    </div>
+</div>
+
