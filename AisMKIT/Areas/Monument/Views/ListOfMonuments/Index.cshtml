@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AisMKIT.Models.ListOfMonument>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>
+        Государственный список памятников истории и культуры Кыргызской Республики республиканского значения
+    </h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="container overflow-auto">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictTypeOfMonument.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfMonument)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictRegion.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictDistrict.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictTypeOfMonument.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfMonument)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictRegion.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictDistrict.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -47,6 +47,10 @@
   <ItemGroup>
     <Folder Include="Areas\Media\Data\" />
     <Folder Include="Areas\Media\Models\" />
+    <Folder Include="Areas\Monument\Data\" />
+    <Folder Include="Areas\Monument\Models\" />
+    <Folder Include="Areas\SubInstitutions\Data\" />
+    <Folder Include="Areas\SubInstitutions\Models\" />
     <Folder Include="Areas\Theatrical\Data\" />
     <Folder Include="Areas\Theatrical\Models\" />
     <Folder Include="Data\" />

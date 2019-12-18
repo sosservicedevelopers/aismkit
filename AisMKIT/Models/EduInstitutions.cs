@@ -41,7 +41,6 @@ namespace AisMKIT.Models
         [Display(Name = "Краткая информация")]
         public string BriefInfo { get; set; }
 
-
         [Display(Name = "Категория")]
         public int DictEduCategoryId { get; set; }
         [Display(Name = "Категория")]

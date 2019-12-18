@@ -1,0 +1,56 @@
+﻿@model AisMKIT.Models.ListOfMonument
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ListOfMonument</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DictTypeOfMonumentId" class="control-label"></label>
+                <select asp-for="DictTypeOfMonumentId" class="form-control" asp-items="ViewBag.DictTypeOfMonumentId"></select>
+                <span asp-validation-for="DictTypeOfMonumentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfMonument" class="control-label"></label>
+                <input asp-for="DateOfMonument" class="form-control" />
+                <span asp-validation-for="DateOfMonument" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DictRegionId" class="control-label"></label>
+                <select asp-for="DictRegionId" class="form-control" asp-items="ViewBag.DictRegionId"></select>
+                <span asp-validation-for="DictRegionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DictDistrictId" class="control-label"></label>
+                <select asp-for="DictDistrictId" class="form-control" asp-items="ViewBag.DictDistrictId"></select>
+                <span asp-validation-for="DictDistrictId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

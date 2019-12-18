@@ -140,5 +140,17 @@ namespace AisMKIT.Data
 
         // Список выданных гос. сертификатов к фильмам за 2019 
         public DbSet<AisMKIT.Models.ListISRCFilms> listISRCFilms { get; set; }
+
+        // Список выданных гос. сертификатов к фильмам за 2019 
+        public DbSet<AisMKIT.Models.ListOfMonument> ListOfMonument { get; set; }
+
+        // Список выданных гос. сертификатов к фильмам за 2019 
+        public DbSet<AisMKIT.Models.DictTypeOfMonument> DictTypeOfMonument { get; set; }
+
+        // Список выданных гос. сертификатов к фильмам за 2019 
+        public DbSet<AisMKIT.Models.DictTypeOfSub> DictTypeOfSub { get; set; }
+
+        // Список выданных гос. сертификатов к фильмам за 2019 
+        public DbSet<AisMKIT.Models.ListOfSubInstitutions> ListOfSubInstitutions { get; set; }
     }
 }

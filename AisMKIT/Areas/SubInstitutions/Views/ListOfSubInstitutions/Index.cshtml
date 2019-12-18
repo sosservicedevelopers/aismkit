@@ -1,0 +1,105 @@
+﻿@model IEnumerable<AisMKIT.Models.ListOfSubInstitutions>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="container overflow-auto">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NameKyrg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.INN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictTypeOfSub.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfCreated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BriefInfo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictRegion.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DictDistrict.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressKyrg)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictTypeOfSub.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfCreated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BriefInfo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictRegion.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictDistrict.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressKyrg)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
