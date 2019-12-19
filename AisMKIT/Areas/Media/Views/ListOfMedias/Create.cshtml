@@ -39,11 +39,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="DictLangMediaTypeId" class="control-label"></label>
-                <select asp-for="DictLangMediaTypeId" class ="form-control" asp-items="ViewBag.DictLangMediaTypeId"></select>
+                <select asp-for="DictLangMediaTypeId" class="form-control" asp-items="ViewBag.DictLangMediaTypeId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DictMediaTypeId" class="control-label"></label>
-                <select asp-for="DictMediaTypeId" class ="form-control" asp-items="ViewBag.DictMediaTypeId"></select>
+                <select asp-for="DictMediaTypeId" class="form-control" asp-items="ViewBag.DictMediaTypeId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="AddressRus" class="control-label"></label>
@@ -57,15 +57,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="DictDistrictId" class="control-label"></label>
-                <select asp-for="DictDistrictId" class ="form-control" asp-items="ViewBag.DictDistrictId"></select>
+                <select asp-for="DictDistrictId" class="form-control" asp-items="ViewBag.DictDistrictId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DictMediaFreqReleaseId" class="control-label"></label>
-                <select asp-for="DictMediaFreqReleaseId" class ="form-control" asp-items="ViewBag.DictMediaFreqReleaseId"></select>
+                <select asp-for="DictMediaFreqReleaseId" class="form-control" asp-items="ViewBag.DictMediaFreqReleaseId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DictMediaFinSourceId" class="control-label"></label>
-                <select asp-for="DictMediaFinSourceId" class ="form-control" asp-items="ViewBag.DictMediaFinSourceId"></select>
+                <select asp-for="DictMediaFinSourceId" class="form-control" asp-items="ViewBag.DictMediaFinSourceId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ReregistrationDate" class="control-label"></label>
@@ -89,7 +89,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="DictAgencyPermId" class="control-label"></label>
-                <select asp-for="DictAgencyPermId" class ="form-control" asp-items="ViewBag.DictAgencyPermId"></select>
+                <select asp-for="DictAgencyPermId" class="form-control" asp-items="ViewBag.DictAgencyPermId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DateOfPay" class="control-label"></label>
@@ -122,3 +122,51 @@
     <a asp-action="Index">Назад</a>
 </div>
 
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#DictRegionId").change(function () {
+
+            $("#DictDistrictId").empty();
+
+            $.ajax({
+
+                type: 'POST',
+
+                url: '@Url.Action("GetDicts")',
+
+                dataType: 'json',
+
+                data: { id: $("#DictRegionId").val() },
+
+                success: function (subcategories) {
+
+                    //console.log(subcategories);
+
+                    $.each(subcategories, function (i, subcategory) {
+
+                        $("#DictDistrictId").append('<option value="' + subcategory.value + '">' + subcategory.text + '</option>');
+
+                        //console.log('<option value="' + subcategory.value + '">' + subcategory.text + '</option>');
+
+                    });
+
+                },
+
+                error: function (ex) {
+
+                    console.log('Failed to retrieve Sub Categories : ' + ex);
+
+                }
+
+            });
+
+            return false;
+
+        })
+
+    });
+</script>

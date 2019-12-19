@@ -10,6 +10,24 @@
     <a asp-action="Create">Добавить</a>
 </p>
 
+
+<div class="d-flex justify-content-end">
+
+    <div>
+        <a class="btn btn-success" asp-action="GetPdf">PDF</a>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="GetExcel">Excel</a>
+    </div>
+
+    <div>
+        <a class="btn btn-danger" asp-action="GetPdf">Word</a>
+    </div>
+
+</div>
+
+
 <div class="container overflow-auto">
     <table class="table">
         <thead>
@@ -101,94 +119,94 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.INN)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RegistrationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictLangMediaType.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictLangMediaType.NameKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictMediaType.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictMediaType.NameKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AddressRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AddressKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictDistrict.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictDistrict.NameKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictMediaFreqRelease.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictMediaFreqRelease.NameKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictMediaFinSource.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictMediaFinSource.NameKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReregistrationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EliminationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumberOfPermission)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PermissionDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictAgencyPerm.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictAgencyPerm.NameKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfPay)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumOfPermGas)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PermGASDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PermElimGASDate)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegistrationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictLangMediaType.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictLangMediaType.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaType.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaType.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictDistrict.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictDistrict.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaFreqRelease.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaFreqRelease.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaFinSource.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictMediaFinSource.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReregistrationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EliminationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfPermission)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PermissionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictAgencyPerm.NameRus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DictAgencyPerm.NameKyrg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfPay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumOfPermGas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PermGASDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PermElimGASDate)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

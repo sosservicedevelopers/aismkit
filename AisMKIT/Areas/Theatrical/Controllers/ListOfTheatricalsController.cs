@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AisMKIT.Data;
 using AisMKIT.Models;
+using Microsoft.AspNetCore.Hosting;
+using AisMKIT.ExtraClasses;
 
 namespace AisMKIT.Areas.Theatrical.Controllers
 {
@@ -15,9 +17,16 @@ namespace AisMKIT.Areas.Theatrical.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ListOfTheatricalsController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _appEnvironment;
+
+        private readonly string _titleOfFile = "Реестр_театрально_зрелищных_учреждений";
+
+
+        public ListOfTheatricalsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+
+            _appEnvironment = webHostEnvironment;
         }
 
         // GET: Theatrical/ListOfTheatricals
@@ -163,5 +172,63 @@ namespace AisMKIT.Areas.Theatrical.Controllers
         {
             return _context.ListOfTheatrical.Any(e => e.Id == id);
         }
+
+
+        public FileResult GetPdf()
+        {
+            string html = GetHtml();
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreatePdf(_titleOfFile, html, _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public FileResult GetExcel()
+        {
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreateExcel<ListOfTheatrical>(_titleOfFile, _context.ListOfTheatrical.ToList(), _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public string GetHtml()
+        {
+            var model = _context.ListOfMonument.FirstOrDefault();
+
+            if (model == null)
+            {
+                return "<h1>нет данных в таблице</h1>";
+            }
+
+            string thead = @"
+        <tr>
+            <td>
+                Наименование ТЗУ (рус.) 
+            </td>
+            <td>
+                ИНН
+            </td>
+            <td>
+               Количество штатных единиц 
+            </td>
+        </tr>";
+
+            string tbody = "";
+            foreach (var item in _context.ListOfTheatrical.ToList())
+            {
+                tbody += "<tr><td>" + item.NameRus + "</td>";
+                tbody += "<td>" + item.INN + "</td>";
+                tbody += "<td>" + item.NumEmployees + "</td></tr>";
+            }
+
+            string result = "<table><thead>" + thead + "</thead><tbody> " + tbody + " </tbody></table>";
+
+            return result;
+        }
+
     }
 }

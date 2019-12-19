@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using AisMKIT.Data;
 using AisMKIT.Models;
 
+using Microsoft.AspNetCore.Hosting;
+using AisMKIT.ExtraClasses;
+
 namespace AisMKIT.Areas.Media.Controllers
 {
     [Area("Media")]
@@ -15,9 +18,35 @@ namespace AisMKIT.Areas.Media.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ListOfMediasController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _appEnvironment;
+
+        private readonly string _titleOfFile = "Реестр_СМИ";
+
+
+        public ListOfMediasController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+
+            _appEnvironment = webHostEnvironment;
+        }
+
+
+        // GET: Media/GetDicts/5
+        public JsonResult GetDicts(int id)
+        {
+            List<DictDistrict> dicts = _context.DictDistrict
+                .Include(d => d.DictRegion)
+                .Where(d => d.DictRegionId == id)
+                .ToList();
+
+            List<SelectListItem> data = new List<SelectListItem>();
+
+            foreach (var item in dicts)
+            {
+                data.Add(new SelectListItem { Text = item.NameRus, Value = item.Id + "" });
+            }
+
+            return Json(new SelectList(data, "Value", "Text"));
         }
 
         // GET: Media/ListOfMedias
@@ -26,19 +55,6 @@ namespace AisMKIT.Areas.Media.Controllers
             var applicationDbContext = _context.ListOfMedia.Include(l => l.DictAgencyPerm).Include(l => l.DictDistrict).Include(l => l.DictLangMediaType).Include(l => l.DictMediaFinSource).Include(l => l.DictMediaFreqRelease).Include(l => l.DictMediaType);
             return View(await applicationDbContext.ToListAsync());
         }
-
-        public async Task<IActionResult> IndexKyrg()
-        {
-            var applicationDbContext = _context.ListOfMedia.Include(l => l.DictAgencyPerm).Include(l => l.DictDistrict).Include(l => l.DictLangMediaType).Include(l => l.DictMediaFinSource).Include(l => l.DictMediaFreqRelease).Include(l => l.DictMediaType);
-            return View(await applicationDbContext.ToListAsync());
-        }
-
-        public async Task<IActionResult> IndexRus()
-        {
-            var applicationDbContext = _context.ListOfMedia.Include(l => l.DictAgencyPerm).Include(l => l.DictDistrict).Include(l => l.DictLangMediaType).Include(l => l.DictMediaFinSource).Include(l => l.DictMediaFreqRelease).Include(l => l.DictMediaType);
-            return View(await applicationDbContext.ToListAsync());
-        }
-
 
         // GET: Media/ListOfMedias/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -200,5 +216,102 @@ namespace AisMKIT.Areas.Media.Controllers
         {
             return _context.ListOfMedia.Any(e => e.Id == id);
         }
+
+
+        public FileResult GetPdf()
+        {
+            string html = GetHtml();
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreatePdf(_titleOfFile, html, _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public FileResult GetExcel()
+        {
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreateExcel<ListOfMedia>(_titleOfFile, _context.ListOfMedia.ToList(), _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public string GetHtml()
+        {
+            var model = _context.ListOfMonument.FirstOrDefault();
+
+            if (model == null)
+            {
+                return "<h1>нет данных в таблице</h1>";
+            }
+
+            string thead = @"
+        <tr>
+            <td>
+                Наименование органа СМИ (Рус.) 
+            </td>
+            <td>
+                ИНН 
+            </td>
+            <td>
+               Дата регистрации
+            </td>
+            <td>
+                Язык вещания СМИ (Русск)
+            </td>
+            <td>
+                Наименование вида СМИ (Русск) 
+            </td>
+            <td>
+               Адрес (Руск) 
+            </td>
+            <td>
+                Район (кырг.) 
+            </td>
+            <td>
+               Источник финансирования (Русск) 
+            </td>
+            <td>
+               Дата перерегистрации
+            </td>
+            <td>
+                Дата ликвидации
+            </td>
+            <td>
+               Номер разрешения
+            </td>
+        </tr>";
+
+            string tbody = "";
+
+            var list = _context.ListOfMedia
+                .Include(c => c.DictLangMediaType)
+                .Include(c => c.DictDistrict)
+                .Include(c => c.DictMediaFinSource)
+                .ToList();
+
+            foreach (var item in list)
+            {
+                tbody += "<tr><td>" + item.NameRus + "</td>";
+                tbody += "<td>" + item.INN + "</td>";
+                tbody += "<td>" + item.RegistrationDate + "</td>";
+                tbody += "<td>" + item.DictLangMediaType.NameRus + "</td>";
+                tbody += "<td>" + item.Name + "</td>";
+                tbody += "<td>" + item.AddressRus + "</td>";
+                tbody += "<td>" + item.DictDistrict.NameRus + "</td>";
+                tbody += "<td>" + item.DictMediaFinSource.NameRus + "</td>";
+                tbody += "<td>" + item.ReregistrationDate + "</td>";
+                tbody += "<td>" + item.EliminationDate + "</td>";
+                tbody += "<td>" + item.NumberOfPermission + "</td></tr>";
+            }
+
+            string result = "<table><thead>" + thead + "</thead><tbody> " + tbody + " </tbody></table>";
+
+            return result;
+        }
+
     }
 }

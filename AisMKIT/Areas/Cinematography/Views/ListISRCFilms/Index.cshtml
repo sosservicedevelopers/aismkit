@@ -4,15 +4,34 @@
     ViewData["Title"] = "Index";
 }
 
-    <h1>
-        СПИСОК
-        выданных государственных регистрационных удостоверений
-        фильмам за 2019 год.
-    </h1>
+<h1>
+    СПИСОК
+    выданных государственных регистрационных удостоверений
+    фильмам за 2019 год.
+</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+
+<div class="d-flex justify-content-end">
+
+    <div>
+        <a class="btn btn-success" asp-action="GetPdf">PDF</a>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="GetExcel">Excel</a>
+    </div>
+
+    <div>
+        <a class="btn btn-danger" asp-action="GetPdf">Word</a>
+    </div>
+
+</div>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -41,35 +60,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MovieTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Director)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgeRestrictions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCertificated)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovieTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Director)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgeRestrictions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCertificated)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
