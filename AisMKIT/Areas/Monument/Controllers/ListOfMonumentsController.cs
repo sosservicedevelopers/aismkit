@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AisMKIT.Data;
 using AisMKIT.Models;
+using Microsoft.AspNetCore.Hosting;
+using AisMKIT.ExtraClasses;
 
 namespace AisMKIT.Areas.Monument.Controllers
 {
@@ -15,11 +17,21 @@ namespace AisMKIT.Areas.Monument.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ListOfMonumentsController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _appEnvironment;
+
+        private readonly string _titleOfFile = "Список_памятников";
+
+
+        public ListOfMonumentsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+
+            _appEnvironment = webHostEnvironment;
         }
 
+
+
+        // GET: Monument/GetDicts/5
         public JsonResult GetDicts(int id)
         {
             List<DictDistrict> dicts = _context.DictDistrict
@@ -40,7 +52,7 @@ namespace AisMKIT.Areas.Monument.Controllers
         // GET: Monument/ListOfMonuments
         public async Task<IActionResult> Index()
         {
-            
+
 
             var applicationDbContext = _context.ListOfMonument.Include(l => l.DictDistrict).Include(l => l.DictRegion).Include(l => l.DictTypeOfMonument);
             return View(await applicationDbContext.ToListAsync());
@@ -197,5 +209,74 @@ namespace AisMKIT.Areas.Monument.Controllers
         {
             return _context.ListOfMonument.Any(e => e.Id == id);
         }
+
+        public FileResult GetPdf()
+        {
+            string html = GetHtml();
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreatePdf(_titleOfFile, html, _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public FileResult GetExcel()
+        {
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreateExcel<ListOfMonument>(_titleOfFile, _context.ListOfMonument.ToList(), _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public string GetHtml()
+        {
+            var model = _context.ListOfMonument.FirstOrDefault();
+
+            if (model == null)
+            {
+                return "<h1>нет данных в таблице</h1>";
+            }
+
+            string thead = @"
+        <tr>
+            <td>
+                Наименование памятника (рус.)
+            </td>
+            <td>
+                Типологическая принадлежность
+            </td>
+            <td>
+               Датировка
+            </td>
+            <td>
+                Регион
+            </td>
+            <td>
+                Район
+            </td>
+            <td>
+               Адрес
+            </td>
+        </tr>";
+
+            string tbody = "";
+            foreach (var item in _context.ListOfMonument.ToList())
+            {
+                tbody += "<tr><td>" + item.NameRus + "</td>";
+                tbody += "<td>" + item.DictTypeOfMonument + "</td>";
+                tbody += "<td>" + item.DateOfMonument + "</td>";
+                tbody += "<td>" + item.DictRegion + "</td>";
+                tbody += "<td>" + item.DictDistrict + "</td>";
+                tbody += "<td>" + item.Address + "</td></tr>";
+            }
+
+            string result = "<table><thead>" + thead + "</thead><tbody> " + tbody +" </tbody></table>";
+    
+            return result;
+        }
+
     }
 }

@@ -4,15 +4,35 @@
     ViewData["Title"] = "Index";
 }
 
-    <h1>
-        Государственный список
-        памятников истории и культуры Кыргызской Республики
-        республиканского значения
-    </h1>
+<h1>
+    Государственный список
+    памятников истории и культуры Кыргызской Республики
+    республиканского значения
+</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+
+<div class="d-flex justify-content-end">
+
+    <div>
+        <a class="btn btn-outline-success" asp-action="GetPdf">PDF</a>
+    </div>
+
+    <div>
+        <a class="btn btn-outline-success" asp-action="GetExcel">Excel</a>
+    </div>
+
+    <div>
+        <a class="btn btn-outline-success">Word</a>
+    </div>
+
+</div>
+
+
+
 <table class="table">
     <thead>
         <tr>
@@ -41,35 +61,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameRus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NameKyrg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DictTypeOfMonument.NameRus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfMonument)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DictRegion.NameRus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DictDistrict.NameRus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameRus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameKyrg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DictTypeOfMonument.NameRus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfMonument)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DictRegion.NameRus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DictDistrict.NameRus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
