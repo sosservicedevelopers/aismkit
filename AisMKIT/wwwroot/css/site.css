@@ -70,3 +70,26 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.bg-argentum1 {
+    background-color: #E95420; /*#E95420 -orange, #333333 - dark, #AEA79F - argentum1, #77216F - aubergine*/
+    color: #fff;
+}
+
+.bg-argentum2 {
+    background-color: #333333; /*C6C1BB, DEDBD8*/
+    color: #fff;
+}
+
+.bg-argentum3 {
+    background-color: #DAD7D3;
+}
+
+.bg-argentum4 {
+    background-color: #E6E4E2;
+}
