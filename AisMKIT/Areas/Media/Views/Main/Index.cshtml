@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>СМИ</h1>
+<br />
+<div class="container">
+
+    <h2>Реестр</h2>
+    <br />
+
+    <div>
+        <a asp-area="Media" asp-controller="ListOfMedias" asp-action="Index">Реестр средств массовой информации</a>
+    </div>
+
+    <div>
+        <a asp-area="Media" asp-controller="ListOfControlMedias" asp-action="Index">Проверки СМИ и вынесенные решения</a>
+    </div>
+    <br />
+
+    <h2>Справочники</h2>
+    <br />
+
+    <div>
+        <a asp-area="Media" asp-controller="DictMediaTypes" asp-action="Index">Виды СМИ</a>
+    </div>
+    <div>
+        <a asp-area="Media" asp-controller="DictLegalForms" asp-action="Index">Организационно-правовая форма </a>
+    </div>
+    <div>
+        <a asp-area="Media" asp-controller="DictLangMediaTypes" asp-action="Index">Язык вещания </a>
+    </div>
+    <div>
+        <a asp-area="Media" asp-controller="DictMediaFreqReleases" asp-action="Index">Периодичность выпуска </a>
+    </div>
+    <div>
+        <a asp-area="Media" asp-controller="DictMediaFinSources" asp-action="Index">Источники финансирования </a>
+    </div>
+    <div>
+        <a asp-area="Media" asp-controller="DictAgencyPerms" asp-action="Index">Орган выдавший разрешение</a>
+    </div>
+    <div>
+        <a asp-area="Media" asp-controller="DictControlTypes" asp-action="Index">Виды проверки</a>
+    </div>
+    <div>
+        <a asp-area="Media" asp-controller="DictMediaControlResults" asp-action="Index">Результаты проверки</a>
+    </div>
+    <div>
+        <a asp-area="Media" asp-controller="DictMediaSuitPerms" asp-action="Index">Судебное решение</a>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AisMKIT.Models.User>
+@{
+    ViewBag.Title = "";
+}
+
+<h1>Список пользователей</h1>
+<br />
+<p>
+    <a asp-action="Create">Добавить пользователя</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редакт.</a> |
+                    <a asp-action="ChangePassword" asp-route-id="@item.Id">Сменить пароль</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

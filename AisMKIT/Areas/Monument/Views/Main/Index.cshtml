@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>Охраняемые объекты культурного наследия</h1>
+
+<br />
+<div class="container">
+
+    <h2>Реестр</h2>
+    <br />
+
+    <div>
+        <a asp-area="Monument" asp-controller="ListOfMonuments" asp-action="Index">Реестр памятников республиканского значения</a>
+    </div>
+
+    <br />
+
+    <h2>Справочники</h2>
+    <br />
+
+    <div>
+        <a asp-area="Monument" asp-controller="DictTypeOfMonuments" asp-action="Index">Типологические принадлежности</a>
+    </div>
+    
+</div>
+
+

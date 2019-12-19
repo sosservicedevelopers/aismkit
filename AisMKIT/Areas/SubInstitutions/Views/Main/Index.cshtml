@@ -1,0 +1,30 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Подведомственные учреждения</h1>
+
+<br />
+<div class="container">
+
+    <h2>Реестр</h2>
+    <br />
+
+    <div>
+        <a asp-area="SubInstitutions" asp-controller="ListOfSubInstitutions" asp-action="Index">Реестр подведомственных учреждений</a>
+    </div>
+
+    <br />
+
+    <h2>Справочники</h2>
+    <br />
+
+    <div>
+        <a asp-area="SubInstitutions" asp-controller="DictTypeOfSubs" asp-action="Index">Виды подведомственных учреждений</a>
+    </div>
+
+</div>
+
+

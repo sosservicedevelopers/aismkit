@@ -33,9 +33,9 @@ namespace AisMKIT
             //    .AddRoles<IdentityRole>() // <--------                
             //       .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddDefaultIdentity<ApplicationUser>()
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDefaultIdentity<ApplicationUser>()
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
             //services.AddIdentity<ApplicationUser, IdentityRole>(config => config.SignIn.RequireConfirmedAccount = false)
@@ -51,11 +51,11 @@ namespace AisMKIT
 
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddTransient<IRepository, PhoneRepository>();
+            //services.AddTransient<IRepository, PhoneRepository>();
 
 
-            //services.AddIdentity<User, IdentityRole>()
-            //    .AddEntityFrameworkStores<ApplicationContext>();
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc();
             

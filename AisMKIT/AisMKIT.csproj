@@ -5,11 +5,35 @@
     <UserSecretsId>aspnet-AisMKIT-EC9171DB-F1E9-4695-9486-217CB70A8137</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Areas\CityDistrictCulturalOffices\**" />
+    <Compile Remove="Areas\EducationalInstitutions\**" />
+    <Compile Remove="Areas\InformationMassCommunications\**" />
+    <Compile Remove="Areas\SubordinateInstitutions\**" />
+    <Compile Remove="Areas\Tourism\**" />
+    <Content Remove="Areas\CityDistrictCulturalOffices\**" />
+    <Content Remove="Areas\EducationalInstitutions\**" />
+    <Content Remove="Areas\InformationMassCommunications\**" />
+    <Content Remove="Areas\SubordinateInstitutions\**" />
+    <Content Remove="Areas\Tourism\**" />
+    <EmbeddedResource Remove="Areas\CityDistrictCulturalOffices\**" />
+    <EmbeddedResource Remove="Areas\EducationalInstitutions\**" />
+    <EmbeddedResource Remove="Areas\InformationMassCommunications\**" />
+    <EmbeddedResource Remove="Areas\SubordinateInstitutions\**" />
+    <EmbeddedResource Remove="Areas\Tourism\**" />
+    <None Remove="Areas\CityDistrictCulturalOffices\**" />
+    <None Remove="Areas\EducationalInstitutions\**" />
+    <None Remove="Areas\InformationMassCommunications\**" />
+    <None Remove="Areas\SubordinateInstitutions\**" />
+    <None Remove="Areas\Tourism\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
@@ -21,18 +45,17 @@
 
 
   <ItemGroup>
-    <Folder Include="Areas\Account\Data\" />
-    <Folder Include="Areas\Account\Models\" />
-    <Folder Include="Areas\CityDistrictCulturalOffices\Controllers\" />
-    <Folder Include="Areas\CityDistrictCulturalOffices\Views\" />
-    <Folder Include="Areas\EducationalInstitutions\Controllers\" />
-    <Folder Include="Areas\EducationalInstitutions\Views\" />
-    <Folder Include="Areas\InformationMassCommunications\Controllers\" />
-    <Folder Include="Areas\InformationMassCommunications\Views\" />
-    <Folder Include="Areas\SubordinateInstitutions\Controllers\" />
-    <Folder Include="Areas\SubordinateInstitutions\Views\" />
-    <Folder Include="Areas\Tourism\Controllers\" />
-    <Folder Include="Areas\Tourism\Views\" />
+    <Folder Include="Areas\GlobalDicts\Data\" />
+    <Folder Include="Areas\GlobalDicts\Models\" />
+    <Folder Include="Areas\Media\Data\" />
+    <Folder Include="Areas\Media\Models\" />
+    <Folder Include="Areas\Monument\Data\" />
+    <Folder Include="Areas\Monument\Models\" />
+    <Folder Include="Areas\SubInstitutions\Data\" />
+    <Folder Include="Areas\SubInstitutions\Models\" />
+    <Folder Include="Areas\Theatrical\Data\" />
+    <Folder Include="Areas\Theatrical\Models\" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>

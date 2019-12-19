@@ -1,0 +1,51 @@
+﻿@model AisMKIT.Models.EmplEducationalUnit
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+    <h1>Редактирование</h1>
+
+    <h4>Сотрудник в подразделении</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EducationalUnitId" class="control-label"></label>
+                <select asp-for="EducationalUnitId" class="form-control" asp-items="ViewBag.EducationalUnitId"></select>
+                <span asp-validation-for="EducationalUnitId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkStartDate" class="control-label"></label>
+                <input asp-for="WorkStartDate" class="form-control" />
+                <span asp-validation-for="WorkStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkEndDate" class="control-label"></label>
+                <input asp-for="WorkEndDate" class="form-control" />
+                <span asp-validation-for="WorkEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FacultyId" class="control-label"></label>
+                <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.FacultyId"></select>
+                <span asp-validation-for="FacultyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сотрудник и занимаемя должность" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+

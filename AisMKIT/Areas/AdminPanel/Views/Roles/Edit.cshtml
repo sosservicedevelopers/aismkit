@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model AisMKIT.ViewModels.ChangeRoleViewModel
+@{
+    ViewData["Title"] = "";
+}
+
+<h1>Редактирование ролей</h1>
+<br />
+<h4>Пользователь @Model.UserEmail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" name="userId" value="@Model.UserId" />
+            <div class="form-group">
+                @foreach (IdentityRole role in Model.AllRoles)
+                {
+                    <input type="checkbox" name="roles" value="@role.Name"
+                           @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
+                }
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

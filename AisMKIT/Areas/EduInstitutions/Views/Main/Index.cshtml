@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>СМИ</h1>
+<br />
+<div class="container">
+
+    <h2>Реестр</h2>
+    <br />
+
+    <div>
+        <a asp-area="EduInstitutions" asp-controller="Main" asp-action="List">Реестр учебных заведений</a>
+    </div>
+
+    <br />
+
+    <h2>Справочники</h2>
+    <br />
+
+    <div>
+        <a asp-area="EduInstitutions" asp-controller="Positions" asp-action="Index">Должности для сотрудников учебных заведений</a>
+    </div>
+    <div>
+        <a asp-area="EduInstitutions" asp-controller="Specialties" asp-action="Index">Специальности которых готовят учебные заведения</a>
+    </div>
+    <div>
+        <a asp-area="EduInstitutions" asp-controller="DictEduCategories" asp-action="Index">Категории учебных заведений</a>
+    </div>
+    <div>
+        <a asp-area="EduInstitutions" asp-controller="EducationalUnits" asp-action="Index">Отделы учебных заведений</a>
+    </div>
+    
+</div>
+
