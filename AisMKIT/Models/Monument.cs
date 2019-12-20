@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,6 +20,13 @@ namespace AisMKIT.Models
         public int? DictTypeOfMonumentId { get; set; }
         [Display(Name = "Типологическая принадлежность")]
         public DictTypeOfMonument DictTypeOfMonument { get; set; }
+
+
+        [Display(Name = "Признак утраты")]
+        public int? DictAffiliationOfMonumentId { get; set; }
+        [Display(Name = "Признак утраты")]
+        public DictAffiliationOfMonument DictAffiliationOfMonument { get; set; }
+
 
         [Display(Name = "Датировка памятника")]
         public string DateOfMonument { get; set; }
@@ -51,4 +58,16 @@ namespace AisMKIT.Models
 
     }
 
+
+    public class DictAffiliationOfMonument
+    {
+        public int Id { get; set; }
+
+        [Display(Name = "Признак утраты (кырг.)")]
+        public string NameKyrg { get; set; }
+
+        [Display(Name = "Признак утраты (рус.)")]
+        public string NameRus { get; set; }
+
+    }
 }

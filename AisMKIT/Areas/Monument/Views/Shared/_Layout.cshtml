@@ -68,13 +68,16 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-success" asp-area="Monument" asp-controller="Main" asp-action="Index">Охраняемые объекты культурного наследия</a>
+                            <a class="nav-link text-success" asp-area="Monument" asp-controller="Main" asp-action="Index">Управление сохранения и развития культурного наследия</a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link text-light dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Справочники</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" asp-area="Monument" asp-controller="DictTypeOfMonuments" asp-action="Index">Типологические принадлежности</a>
+                                 
+                                <a class="dropdown-item" asp-area="Monument" asp-controller="DictAffiliationOfMonuments" asp-action="Index">Признаки утраты</a>
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#"></a>
                             </div>

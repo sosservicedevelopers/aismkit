@@ -54,7 +54,12 @@ namespace AisMKIT.Areas.Monument.Controllers
         {
 
 
-            var applicationDbContext = _context.ListOfMonument.Include(l => l.DictDistrict).Include(l => l.DictRegion).Include(l => l.DictTypeOfMonument);
+            var applicationDbContext = _context.ListOfMonument
+                .Include(l => l.DictDistrict)
+                .Include(l => l.DictRegion)
+                .Include(l => l.DictAffiliationOfMonument)
+                .Include(l => l.DictTypeOfMonument);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -69,8 +74,10 @@ namespace AisMKIT.Areas.Monument.Controllers
             var listOfMonument = await _context.ListOfMonument
                 .Include(l => l.DictDistrict)
                 .Include(l => l.DictRegion)
+                .Include(l => l.DictAffiliationOfMonument)
                 .Include(l => l.DictTypeOfMonument)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (listOfMonument == null)
             {
                 return NotFound();
@@ -94,6 +101,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
             ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
             ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus");
+            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus");
             return View();
         }
 
@@ -113,6 +121,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
             ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
             ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
+            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus");
             return View(listOfMonument);
         }
 
@@ -132,6 +141,8 @@ namespace AisMKIT.Areas.Monument.Controllers
             ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
             ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
             ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
+            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus");
+
             return View(listOfMonument);
         }
 
@@ -170,6 +181,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
             ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
             ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
+            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus");
             return View(listOfMonument);
         }
 
@@ -184,6 +196,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             var listOfMonument = await _context.ListOfMonument
                 .Include(l => l.DictDistrict)
                 .Include(l => l.DictRegion)
+                .Include(l => l.DictAffiliationOfMonument)
                 .Include(l => l.DictTypeOfMonument)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (listOfMonument == null)

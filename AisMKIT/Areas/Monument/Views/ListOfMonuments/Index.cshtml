@@ -46,6 +46,9 @@
                 @Html.DisplayNameFor(model => model.DictTypeOfMonument.NameRus)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.DictAffiliationOfMonument.NameRus)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DateOfMonument)
             </th>
             <th>
@@ -63,34 +66,37 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameKyrg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictTypeOfMonument.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfMonument)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictRegion.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DictDistrict.NameRus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameRus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameKyrg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DictTypeOfMonument.NameRus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DictAffiliationOfMonument.NameRus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfMonument)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DictRegion.NameRus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DictDistrict.NameRus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
