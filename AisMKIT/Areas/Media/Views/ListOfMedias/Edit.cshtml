@@ -39,6 +39,10 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="DictDistribTerritoryMediaId" class="control-label"></label>
+                <select asp-for="DictDistribTerritoryMediaId" class="form-control" asp-items="ViewBag.DictDistribTerritoryMediaId"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="DictLangMediaTypeId" class="control-label"></label>
                 <select asp-for="DictLangMediaTypeId" class="form-control" asp-items="ViewBag.DictLangMediaTypeId"></select>
                 <span asp-validation-for="DictLangMediaTypeId" class="text-danger"></span>

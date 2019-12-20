@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace AisMKIT.Models
 {
     // 
-    public class ListOfMassMedia
+    public class ListOfMassMediaTest
     {
         public int Id { get; set; }
 
@@ -340,11 +340,15 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Наименование СМИ")]
-        public int? ListOfMediaId { get; set; }
+        [Required(ErrorMessage = "Обязательно заполните")]
+        public int ListOfMediaId { get; set; }
+        [Display(Name = "Наименование СМИ")]
         public ListOfMedia ListOfMedia { get; set; }
 
         [Display(Name = "Вид проверки")]
-        public int? DictControlTypeId { get; set; }
+        [Required(ErrorMessage = "Обязательно заполните")]
+        public int DictControlTypeId { get; set; }
+        [Display(Name = "Вид проверки")]
         public DictControlType DictControlType { get; set; }
 
         [Display(Name = "Дата начала проверки")]
@@ -368,13 +372,15 @@ namespace AisMKIT.Models
         public DateTime? EndDatePeriod { get; set; }
 
         [Display(Name = "Фамилия (проверяющего)")]
-        public string? LastName { get; set; }
+        [Required(ErrorMessage = "Обязательно заполните")]
+        public string LastName { get; set; }
 
         [Display(Name = "Имя (проверяющего)")]
-        public string? FirstName { get; set; }
+        [Required(ErrorMessage = "Обязательно заполните")]
+        public string FirstName { get; set; }
 
         [Display(Name = "Отчество (проверяющего)")]
-        public string? PatronicName { get; set; }
+        public string PatronicName { get; set; }
 
         [Display(Name = "Дата Акта проверки")]
         [DataType(DataType.Date)]
@@ -382,14 +388,14 @@ namespace AisMKIT.Models
         public DateTime? ActDateControl { get; set; }
 
         [Display(Name = "Номер Акта")]
-        public string? NumberOfAct { get; set; }
+        public string NumberOfAct { get; set; }
 
         [Display(Name = "Результаты проверки")]
         public int? DictMediaControlResultId { get; set; }
         public DictMediaControlResult DictMediaControlResult { get; set; }
 
         [Display(Name = "Номер предупреждения")]
-        public string? NumberOfWarning { get; set; }
+        public string NumberOfWarning { get; set; }
 
         [Display(Name = "Дата предупреждения")]
         [DataType(DataType.Date)]
@@ -401,16 +407,22 @@ namespace AisMKIT.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? WarningEndDate { get; set; }
 
+        //n
+        [Display(Name = "Дата снятия предупреждения")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? WarningRemovalDate { get; set; }
+
         [Display(Name = "Дата документа о наложении штрафа")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DateOfPenalty { get; set; }
 
         [Display(Name = "Номер документа о наложении штрафа")]
-        public string? DocNumPenalty { get; set; }
+        public string DocNumPenalty { get; set; }
 
         [Display(Name = "Сумма штрафа")]
-        public string? PenaltySum { get; set; }
+        public string PenaltySum { get; set; }
 
         [Display(Name = "Дата оплаты штрафа")]
         [DataType(DataType.Date)]
@@ -423,7 +435,7 @@ namespace AisMKIT.Models
         public DateTime? AnulmentDate { get; set; }
 
         [Display(Name = "Номер решения на аннулирование разрешения")]
-        public string? NumberOfAnulment { get; set; }
+        public string NumberOfAnulment { get; set; }
 
         [Display(Name = "Дата иска в суд")]
         [DataType(DataType.Date)]
@@ -431,7 +443,7 @@ namespace AisMKIT.Models
         public DateTime? DateOfSuit { get; set; }
 
         [Display(Name = "Номер иска в суд")]
-        public string? NumberOfSuit { get; set; }
+        public string NumberOfSuit { get; set; }
 
         [Display(Name = "Дата судебного решения")]
         [DataType(DataType.Date)]
@@ -439,7 +451,7 @@ namespace AisMKIT.Models
         public DateTime? DateOfSuitPerm { get; set; }
 
         [Display(Name = "Номер судебного решения")]
-        public string? NumberOfSuitPerm { get; set; }
+        public string NumberOfSuitPerm { get; set; }
 
         [Display(Name = "Судебное решение")]
         public int? DictMediaSuitPermId { get; set; }

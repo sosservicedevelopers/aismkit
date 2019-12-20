@@ -273,7 +273,7 @@ namespace AisMKIT.Areas.Media.Controllers
 
         public string GetHtml()
         {
-            var model = _context.ListOfMonument.FirstOrDefault();
+            var model = _context.ListOfMedia.FirstOrDefault();
 
             if (model == null)
             {

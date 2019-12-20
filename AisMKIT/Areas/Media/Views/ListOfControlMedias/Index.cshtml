@@ -4,15 +4,32 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Проверки СМИ и вынесенные решения</h1>
-
+<h3>Проверки СМИ и вынесенные решения</h3>
+<hr />
 <p>
     <a asp-action="Create">Добавить</a>
 </p>
 
+<div class="d-flex justify-content-end">
+
+    <div>
+        <a class="btn btn-outline-success" asp-action="GetPdf">PDF</a>
+    </div>
+
+    <div>
+        <a class="btn btn-success" asp-action="GetExcel">Excel</a>
+    </div>
+
+    <div>
+        <a class="btn btn-outline-success" asp-action="GetPdf">Word</a>
+    </div>
+
+</div>
+<br />
+
 <div class="container overflow-auto">
-    <table class="table">
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-light">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.ListOfMedia.NameRus)
