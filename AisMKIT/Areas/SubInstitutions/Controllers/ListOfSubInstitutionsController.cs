@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AisMKIT.Data;
 using AisMKIT.Models;
+using Microsoft.AspNetCore.Hosting;
+using AisMKIT.ExtraClasses;
 
 namespace AisMKIT.Areas.SubInstitutions.Controllers
 {
@@ -15,9 +17,34 @@ namespace AisMKIT.Areas.SubInstitutions.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ListOfSubInstitutionsController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _appEnvironment;
+
+        private readonly string _titleOfFile = "Реестр_подведомстенных_учреждений";
+
+
+        public ListOfSubInstitutionsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+
+            _appEnvironment = webHostEnvironment;
+        }
+
+        // GET: SubInstitutions/GetDicts/5
+        public JsonResult GetDicts(int id)
+        {
+            List<DictDistrict> dicts = _context.DictDistrict
+                .Include(d => d.DictRegion)
+                .Where(d => d.DictRegionId == id)
+                .ToList();
+
+            List<SelectListItem> data = new List<SelectListItem>();
+
+            foreach (var item in dicts)
+            {
+                data.Add(new SelectListItem { Text = item.NameRus, Value = item.Id + "" });
+            }
+
+            return Json(new SelectList(data, "Value", "Text"));
         }
 
         // GET: SubInstitutions/ListOfSubInstitutions
@@ -169,5 +196,80 @@ namespace AisMKIT.Areas.SubInstitutions.Controllers
         {
             return _context.ListOfSubInstitutions.Any(e => e.Id == id);
         }
+
+
+        public FileResult GetPdf()
+        {
+            string html = GetHtml();
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreatePdf(_titleOfFile, html, _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public FileResult GetExcel()
+        {
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreateExcel<ListOfSubInstitutions>(_titleOfFile, _context.ListOfSubInstitutions.ToList(), _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public string GetHtml()
+        {
+            var model = _context.ListOfMonument.FirstOrDefault();
+
+            if (model == null)
+            {
+                return "<h1>нет данных в таблице</h1>";
+            }
+
+            string thead = @"
+        <tr>
+            <td>
+                Наименование органа СМИ (Рус.) 
+            </td>
+            <td>
+                ИНН 
+            </td>
+            <td>
+                Электронная почта 
+            </td>
+            <td>
+               Адрес (Руск) 
+            </td>
+            <td>
+                Регион (Руск.) 
+            </td> 
+            <td>
+                Район (Руск.) 
+            </td>
+        </tr>";
+
+            string tbody = "";
+            var list = _context.ListOfSubInstitutions
+                .Include(c => c.DictDistrict)
+                .Include(c => c.DictRegion)
+                .ToList();
+
+            foreach (var item in list)
+            {
+                tbody += "<tr><td>" + item.NameRus + "</td>";
+                tbody += "<td>" + item.INN + "</td>";
+                tbody += "<td>" + item.Email + "</td>";
+                tbody += "<td>" + item.AddressRus + "</td>";
+                tbody += "<td>" + item.DictRegion.NameRus + "</td>";
+                tbody += "<td>" + item.DictDistrict.NameRus + "</td></tr>";
+            }
+
+            string result = "<table><thead>" + thead + "</thead><tbody> " + tbody + " </tbody></table>";
+
+            return result;
+        }
+
     }
 }

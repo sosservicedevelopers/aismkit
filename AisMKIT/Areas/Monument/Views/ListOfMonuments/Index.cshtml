@@ -4,15 +4,35 @@
     ViewData["Title"] = "Index";
 }
 
-    <h1>
-        Государственный список
-        памятников истории и культуры Кыргызской Республики
-        республиканского значения
-    </h1>
+<h1>
+    Государственный список
+    памятников истории и культуры Кыргызской Республики
+    республиканского значения
+</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+
+<div class="d-flex justify-content-end">
+
+    <div>
+        <a class="btn btn-success" asp-action="GetPdf">PDF</a>
+    </div>
+
+    <div>
+        <a class="btn btn-warning" asp-action="GetExcel">Excel</a>
+    </div>
+
+    <div>
+        <a class="btn btn-danger" asp-action="GetPdf">Word</a>
+    </div>
+
+</div>
+
+
+
 <table class="table">
     <thead>
         <tr>
@@ -24,6 +44,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DictTypeOfMonument.NameRus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DictAffiliationOfMonument.NameRus)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfMonument)
@@ -41,7 +64,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NameRus)
@@ -51,6 +75,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DictTypeOfMonument.NameRus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DictAffiliationOfMonument.NameRus)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfMonument)
@@ -70,6 +97,6 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

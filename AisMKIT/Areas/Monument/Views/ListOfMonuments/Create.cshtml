@@ -64,6 +64,10 @@
                 <select asp-for="DictTypeOfMonumentId" class="form-control" asp-items="ViewBag.DictTypeOfMonumentId"></select>
             </div>
             <div class="form-group">
+                <label asp-for="DictAffiliationOfMonumentId" class="control-label"></label>
+                <select asp-for="DictAffiliationOfMonumentId" class="form-control" asp-items="ViewBag.DictAffiliationOfMonumentId"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="DateOfMonument" class="control-label"></label>
                 <input asp-for="DateOfMonument" class="form-control" />
                 <span asp-validation-for="DateOfMonument" class="text-danger"></span>
@@ -92,7 +96,7 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function () {

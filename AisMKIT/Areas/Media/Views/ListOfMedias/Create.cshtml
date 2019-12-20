@@ -8,8 +8,163 @@
 
 <h4>СМИ</h4>
 <hr />
-<div class="row">
-    <div class="col-md-8">
+
+    <form asp-action="Create">
+
+        <div class="form-row p-3 bg-argentum1">
+            <div class="form-group col-md-7">
+                <label asp-for="NameRus" class="control-label"></label>
+                <input asp-for="NameRus" class="form-control" />
+                <span asp-validation-for="NameRus" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row p-3 bg-argentum1">
+
+            <div class="form-group col-md-2">
+                <label asp-for="INN" class="control-label"></label>
+                <input asp-for="INN" class="form-control" />
+                <span asp-validation-for="INN" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="DictLegalFormId" class="control-label"></label>
+                <select asp-for="DictLegalFormId" class="form-control" asp-items="ViewBag.DictLegalFormId"></select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="DictMediaTypeId" class="control-label"></label>
+                <select asp-for="DictMediaTypeId" class="form-control" asp-items="ViewBag.DictMediaTypeId"></select>
+            </div>
+        </div>
+        <div class="form-row p-3 bg-argentum2">
+
+            <div class="form-group col-md-3">
+                <label asp-for="DictMediaFinSourceId" class="control-label"></label>
+                <select asp-for="DictMediaFinSourceId" class="form-control" asp-items="ViewBag.DictMediaFinSourceId"></select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="DictDistribTerritoryMediaId" class="control-label"></label>
+                <select asp-for="DictDistribTerritoryMediaId" class="form-control" asp-items="ViewBag.DictDistribTerritoryMediaId"></select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="DictMediaFreqReleaseId" class="control-label"></label>
+                <select asp-for="DictMediaFreqReleaseId" class="form-control" asp-items="ViewBag.DictMediaFreqReleaseId"></select>
+            </div>
+
+        </div>
+
+        <div class="form-row p-3 bg-argentum2 ">
+
+            <div class="form-group col-md-2">
+                <label asp-for="RegistrationDate" class="control-label"></label>
+                <input asp-for="RegistrationDate" class="form-control" />
+                <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="ReregistrationDate" class="control-label"></label>
+                <input asp-for="ReregistrationDate" class="form-control" />
+                <span asp-validation-for="ReregistrationDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="EliminationDate" class="control-label"></label>
+                <input asp-for="EliminationDate" class="form-control" />
+                <span asp-validation-for="EliminationDate" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-row p-3 bg-argentum1">
+
+            <div class="form-group col-md-2">
+                <label asp-for="NumberOfPermission" class="control-label"></label>
+                <input asp-for="NumberOfPermission" class="form-control" />
+                <span asp-validation-for="NumberOfPermission" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="PermissionDate" class="control-label"></label>
+                <input asp-for="PermissionDate" class="form-control" />
+                <span asp-validation-for="PermissionDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="DictAgencyPermId" class="control-label"></label>
+                <select asp-for="DictAgencyPermId" class="form-control" asp-items="ViewBag.DictAgencyPermId"></select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="DateOfPay" class="control-label"></label>
+                <input asp-for="DateOfPay" class="form-control" />
+                <span asp-validation-for="DateOfPay" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-row p-3 bg-argentum1">
+
+            <div class="form-group col-md-3">
+                <label asp-for="NumOfPermGas" class="control-label"></label>
+                <input asp-for="NumOfPermGas" class="form-control" />
+                <span asp-validation-for="NumOfPermGas" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="PermGASDate" class="control-label"></label>
+                <input asp-for="PermGASDate" class="form-control" />
+                <span asp-validation-for="PermGASDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="PermElimGASDate" class="control-label"></label>
+                <input asp-for="PermElimGASDate" class="form-control" />
+                <span asp-validation-for="PermElimGASDate" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-row  p-3 bg-argentum2">
+            <h5>Адрес</h5>
+        </div>
+        <div class="form-row p-3 bg-argentum2">
+
+            <div class="form-group col-md-2">
+                <label asp-for="DictRegionId" class="control-label">Район</label>
+                <select asp-for="DictRegionId" class="form-control" asp-items="ViewBag.DictRegionId"></select>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="DictDistrictId" class="control-label">Район</label>
+                <select asp-for="DictDistrictId" class="form-control" asp-items="ViewBag.DictDistrictId"></select>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="AddressRus" class="control-label">Улица, здание</label>
+                <input asp-for="AddressRus" class="form-control" />
+                <span asp-validation-for="AddressRus" class="text-danger"></span>
+            </div>
+
+            
+        </div>
+
+        <div class="form-row p-3 bg-argentum2 justify-content-center">
+            <input type="submit" value="Добавить" class="btn btn-success" />
+            <a asp-action="Index" class="btn btn-outline-light">Назад</a>
+        </div>
+
+    </form>
+
+
+
+
+    @*<div class="col-md-8">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -39,11 +194,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="DictLangMediaTypeId" class="control-label"></label>
-                <select asp-for="DictLangMediaTypeId" class ="form-control" asp-items="ViewBag.DictLangMediaTypeId"></select>
+                <select asp-for="DictLangMediaTypeId" class="form-control" asp-items="ViewBag.DictLangMediaTypeId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DictMediaTypeId" class="control-label"></label>
-                <select asp-for="DictMediaTypeId" class ="form-control" asp-items="ViewBag.DictMediaTypeId"></select>
+                <select asp-for="DictMediaTypeId" class="form-control" asp-items="ViewBag.DictMediaTypeId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="AddressRus" class="control-label"></label>
@@ -57,15 +212,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="DictDistrictId" class="control-label"></label>
-                <select asp-for="DictDistrictId" class ="form-control" asp-items="ViewBag.DictDistrictId"></select>
+                <select asp-for="DictDistrictId" class="form-control" asp-items="ViewBag.DictDistrictId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DictMediaFreqReleaseId" class="control-label"></label>
-                <select asp-for="DictMediaFreqReleaseId" class ="form-control" asp-items="ViewBag.DictMediaFreqReleaseId"></select>
+                <select asp-for="DictMediaFreqReleaseId" class="form-control" asp-items="ViewBag.DictMediaFreqReleaseId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DictMediaFinSourceId" class="control-label"></label>
-                <select asp-for="DictMediaFinSourceId" class ="form-control" asp-items="ViewBag.DictMediaFinSourceId"></select>
+                <select asp-for="DictMediaFinSourceId" class="form-control" asp-items="ViewBag.DictMediaFinSourceId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ReregistrationDate" class="control-label"></label>
@@ -89,7 +244,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="DictAgencyPermId" class="control-label"></label>
-                <select asp-for="DictAgencyPermId" class ="form-control" asp-items="ViewBag.DictAgencyPermId"></select>
+                <select asp-for="DictAgencyPermId" class="form-control" asp-items="ViewBag.DictAgencyPermId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="DateOfPay" class="control-label"></label>
@@ -115,10 +270,54 @@
                 <input type="submit" value="Добавить" class="btn btn-primary" />
             </div>
         </form>
-    </div>
-</div>
+    </div>*@
+<br /><br />
 
-<div>
-    <a asp-action="Index">Назад</a>
-</div>
 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#DictRegionId").change(function () {
+
+            $("#DictDistrictId").empty();
+
+            $.ajax({
+
+                type: 'POST',
+
+                url: '@Url.Action("GetDicts")',
+
+                dataType: 'json',
+
+                data: { id: $("#DictRegionId").val() },
+
+                success: function (subcategories) {
+
+                    //console.log(subcategories);
+
+                    $.each(subcategories, function (i, subcategory) {
+
+                        $("#DictDistrictId").append('<option value="' + subcategory.value + '">' + subcategory.text + '</option>');
+
+                        //console.log('<option value="' + subcategory.value + '">' + subcategory.text + '</option>');
+
+                    });
+
+                },
+
+                error: function (ex) {
+
+                    console.log('Failed to retrieve Sub Categories : ' + ex);
+
+                }
+
+            });
+
+            return false;
+
+        })
+
+    });
+</script>

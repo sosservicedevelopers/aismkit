@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AisMKIT.Data;
 using AisMKIT.Models;
+using Microsoft.AspNetCore.Hosting;
+using AisMKIT.ExtraClasses;
 
 namespace AisMKIT.Areas.EduInstitutions.Controllers
 {
@@ -15,10 +17,18 @@ namespace AisMKIT.Areas.EduInstitutions.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public MainController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _appEnvironment;
+
+        private readonly string _titleOfFile = "Реестр_учебных_заведений";
+
+
+        public MainController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+
+            _appEnvironment = webHostEnvironment;
         }
+
 
         // GET: EduInstitutions/Main
         public IActionResult Index()
@@ -216,5 +226,71 @@ namespace AisMKIT.Areas.EduInstitutions.Controllers
         {
             return _context.EduInstitutions.Any(e => e.Id == id);
         }
+
+
+        public FileResult GetPdf()
+        {
+            string html = GetHtml();
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreatePdf(_titleOfFile, html, _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public FileResult GetExcel()
+        {
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreateExcel(_titleOfFile, _context.EduInstitutions.Include(c=>c.DictEduCategory).ToList(), _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public string GetHtml()
+        {
+            var model = _context.ListOfMonument.FirstOrDefault();
+
+            if (model == null)
+            {
+                return "<h1>нет данных в таблице</h1>";
+            }
+
+            string thead = @"
+        <tr>
+            <td>
+                Наименование 
+            </td>
+            <td>
+                Адрес 
+            </td>
+            <td>
+                Факс
+            </td>
+            <td>
+                Электронная почта 
+            </td>
+            <td>
+                Категория 
+            </td>
+        </tr>";
+
+            string tbody = "";
+            foreach (var item in _context.EduInstitutions.Include(c => c.DictEduCategory).ToList())
+            {
+                tbody += "<tr><td>" + item.Name + "</td>";
+                tbody += "<td>" + item.Address + "</td>";
+                tbody += "<td>" + item.Fax + "</td>";
+                tbody += "<td>" + item.Email + "</td>";
+                tbody += "<td>" + item.DictEduCategory.Name + "</td></tr>";
+            }
+
+            string result = "<table><thead>" + thead + "</thead><tbody> " + tbody + " </tbody></table>";
+
+            return result;
+        }
+
     }
 }

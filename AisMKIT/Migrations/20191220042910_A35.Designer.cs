@@ -4,14 +4,16 @@ using AisMKIT.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AisMKIT.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191220042910_A35")]
+    partial class A35
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,24 +48,6 @@ namespace AisMKIT.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Departments");
-                });
-
-            modelBuilder.Entity("AisMKIT.Models.DictAffiliationOfMonument", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("NameKyrg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameRus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DictAffiliationOfMonument");
                 });
 
             modelBuilder.Entity("AisMKIT.Models.DictAgencyPerm", b =>
@@ -1158,9 +1142,6 @@ namespace AisMKIT.Migrations
                     b.Property<string>("DateOfMonument")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DictAffiliationOfMonumentId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("DictDistrictId")
                         .HasColumnType("int");
 
@@ -1177,8 +1158,6 @@ namespace AisMKIT.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DictAffiliationOfMonumentId");
 
                     b.HasIndex("DictDistrictId");
 
@@ -1550,10 +1529,6 @@ namespace AisMKIT.Migrations
 
             modelBuilder.Entity("AisMKIT.Models.ListOfMonument", b =>
                 {
-                    b.HasOne("AisMKIT.Models.DictAffiliationOfMonument", "DictAffiliationOfMonument")
-                        .WithMany()
-                        .HasForeignKey("DictAffiliationOfMonumentId");
-
                     b.HasOne("AisMKIT.Models.DictDistrict", "DictDistrict")
                         .WithMany()
                         .HasForeignKey("DictDistrictId");
