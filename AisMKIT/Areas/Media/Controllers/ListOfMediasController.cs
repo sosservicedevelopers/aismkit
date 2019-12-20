@@ -52,7 +52,19 @@ namespace AisMKIT.Areas.Media.Controllers
         // GET: Media/ListOfMedias
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.ListOfMedia.Include(l => l.DictAgencyPerm).Include(l => l.DictDistrict).Include(l => l.DictLangMediaType).Include(l => l.DictMediaFinSource).Include(l => l.DictMediaFreqRelease).Include(l => l.DictMediaType);
+            var applicationDbContext = _context.ListOfMedia
+                .Include(l => l.DictAgencyPerm)
+                .Include(l => l.DictDistrict)
+                .Include(l => l.DictLangMediaType)
+                .Include(l => l.DictMediaFinSource)
+                .Include(l => l.DictMediaFreqRelease)
+                .Include(l => l.DictLegalForm)
+                .Include(l => l.DictDistribTerritoryMedia)
+                .Include(l => l.DictRegion)
+                .Include(l => l.DictMediaType); 
+
+
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -70,8 +82,12 @@ namespace AisMKIT.Areas.Media.Controllers
                 .Include(l => l.DictLangMediaType)
                 .Include(l => l.DictMediaFinSource)
                 .Include(l => l.DictMediaFreqRelease)
+                .Include(l => l.DictLegalForm)
+                .Include(l => l.DictDistribTerritoryMedia)
+                .Include(l => l.DictRegion)
                 .Include(l => l.DictMediaType)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (listOfMedia == null)
             {
                 return NotFound();
@@ -89,6 +105,9 @@ namespace AisMKIT.Areas.Media.Controllers
             ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
             ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
             ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
+            ViewData["DictDistribTerritoryMediaId"] = new SelectList(_context.DictDistribTerritoryMedia, "Id", "NameRus");
+            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+            ViewData["DictLegalFormId"] = new SelectList(_context.DictLegalForm, "Id", "NameRus");
             return View();
         }
 
@@ -105,12 +124,15 @@ namespace AisMKIT.Areas.Media.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus", listOfMedia.DictAgencyPermId);
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMedia.DictDistrictId);
-            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus", listOfMedia.DictLangMediaTypeId);
-            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus", listOfMedia.DictMediaFinSourceId);
-            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus", listOfMedia.DictMediaFreqReleaseId);
-            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus", listOfMedia.DictMediaTypeId);
+            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus");
+            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
+            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus");
+            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
+            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
+            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
+            ViewData["DictDistribTerritoryMediaId"] = new SelectList(_context.DictDistribTerritoryMedia, "Id", "NameRus");
+            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+            ViewData["DictLegalFormId"] = new SelectList(_context.DictLegalForm, "Id", "NameRus");
             return View(listOfMedia);
         }
 
@@ -127,12 +149,15 @@ namespace AisMKIT.Areas.Media.Controllers
             {
                 return NotFound();
             }
-            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus", listOfMedia.DictAgencyPermId);
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMedia.DictDistrictId);
-            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus", listOfMedia.DictLangMediaTypeId);
-            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus", listOfMedia.DictMediaFinSourceId);
-            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus", listOfMedia.DictMediaFreqReleaseId);
-            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus", listOfMedia.DictMediaTypeId);
+            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus");
+            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
+            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus");
+            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
+            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
+            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
+            ViewData["DictDistribTerritoryMediaId"] = new SelectList(_context.DictDistribTerritoryMedia, "Id", "NameRus");
+            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+            ViewData["DictLegalFormId"] = new SelectList(_context.DictLegalForm, "Id", "NameRus");
             return View(listOfMedia);
         }
 
@@ -168,12 +193,15 @@ namespace AisMKIT.Areas.Media.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus", listOfMedia.DictAgencyPermId);
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMedia.DictDistrictId);
-            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus", listOfMedia.DictLangMediaTypeId);
-            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus", listOfMedia.DictMediaFinSourceId);
-            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus", listOfMedia.DictMediaFreqReleaseId);
-            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus", listOfMedia.DictMediaTypeId);
+            ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus");
+            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
+            ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus");
+            ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
+            ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
+            ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
+            ViewData["DictDistribTerritoryMediaId"] = new SelectList(_context.DictDistribTerritoryMedia, "Id", "NameRus");
+            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+            ViewData["DictLegalFormId"] = new SelectList(_context.DictLegalForm, "Id", "NameRus");
             return View(listOfMedia);
         }
 
@@ -191,8 +219,12 @@ namespace AisMKIT.Areas.Media.Controllers
                 .Include(l => l.DictLangMediaType)
                 .Include(l => l.DictMediaFinSource)
                 .Include(l => l.DictMediaFreqRelease)
+                .Include(l => l.DictLegalForm)
+                .Include(l => l.DictDistribTerritoryMedia)
+                .Include(l => l.DictRegion)
                 .Include(l => l.DictMediaType)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (listOfMedia == null)
             {
                 return NotFound();

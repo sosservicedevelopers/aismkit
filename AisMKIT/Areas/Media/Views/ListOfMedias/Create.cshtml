@@ -27,17 +27,13 @@
         <div class="form-row p-3 bg-argentum1">
 
             <div class="form-group col-md-2">
-                <label for="inputCity">ИНН</label>
-                <input type="text" class="form-control" id="inputCity">
+                <label asp-for="INN" class="control-label"></label>
+                <input asp-for="INN" class="form-control" />
+                <span asp-validation-for="INN" class="text-danger"></span>
             </div>
-
             <div class="form-group col-md-4">
-                <label for="DictLegalForm">Организационно-правовая форма</label>
-                <select id="DictLegalForm" class="form-control">
-                    <option selected></option>
-                    <option>ОсОО</option>
-                    <option>ЗАО</option>
-                </select>
+                <label asp-for="DictLegalFormId" class="control-label"></label>
+                <select asp-for="DictLegalFormId" class="form-control" asp-items="ViewBag.DictLegalFormId"></select>
             </div>
 
             <div class="form-group col-md-4">
@@ -53,15 +49,8 @@
             </div>
 
             <div class="form-group col-md-4">
-                <label for="inputState">Территория распространения продукции</label>
-                <select id="inputState" class="form-control">
-                    <option selected></option>
-                    <option>Чуй</option>
-                    <option>Талас</option>
-                    <option>Ысык-Куль</option>
-                    <option>Ош</option>
-                    <option>Баткен</option>
-                </select>
+                <label asp-for="DictDistribTerritoryMediaId" class="control-label"></label>
+                <select asp-for="DictDistribTerritoryMediaId" class="form-control" asp-items="ViewBag.DictDistribTerritoryMediaId"></select>
             </div>
 
             <div class="form-group col-md-3">
@@ -148,12 +137,8 @@
         <div class="form-row p-3 bg-argentum2">
 
             <div class="form-group col-md-2">
-
-                <label for="inputState">Регион</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Чуй</option>
-                    <option>Баткен</option>
-                </select>
+                <label asp-for="DictRegionId" class="control-label">Район</label>
+                <select asp-for="DictRegionId" class="form-control" asp-items="ViewBag.DictRegionId"></select>
             </div>
 
             <div class="form-group col-md-2">

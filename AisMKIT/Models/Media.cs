@@ -6,10 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AisMKIT.Models
 {
-
-
-    // Реестр СМИ
-    public class ListOfMedia
+    // 
+    public class ListOfMassMedia
     {
         public int Id { get; set; }
 
@@ -19,16 +17,25 @@ namespace AisMKIT.Models
         [Display(Name = "Наименование органа СМИ (Кырг.)")]
         public string NameKyrg { get; set; }
 
+        [Display(Name = "Организационно-правовая форма")]
+        public int? DictLegalFormId { get; set; }
+        [Display(Name = "Организационно-правовая форма")]
+        public DictLegalForm DictLegalForm { get; set; }
+
         [Display(Name = "ИНН")]
         public string INN { get; set; }
 
         [Display(Name = "Дата регистрации")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime RegistrationDate { get; set; }
+        public DateTime? RegistrationDate { get; set; }
 
         [Display(Name = "Наименование СМИ")]
         public string Name { get; set; }
+
+        [Display(Name = "Территория распространения продукции")]
+        public int? DictDistribTerritoryMediaId { get; set; }
+        public DictDistribTerritoryMedia DictDistribTerritoryMedia { get; set; }
 
         [Display(Name = "Язык вещания")]
         public int? DictLangMediaTypeId { get; set; }
@@ -46,9 +53,14 @@ namespace AisMKIT.Models
         [Display(Name = "Адрес (Кырг)")]
         public string AddressKyrg { get; set; }
 
-        [Display(Name = "Территория распространения продукции")]
+        [Display(Name = "Регион")]
+        public int? DictRegionId { get; set; }
+        [Display(Name = "Регион")]
+        public DictRegion DictRegion { get; set; }
+
+        [Display(Name = "Район")]
         public int? DictDistrictId { get; set; }
-        [Display(Name = "Территория распространения продукции")]
+        [Display(Name = "Район")]
         public DictDistrict DictDistrict { get; set; }
 
         [Display(Name = "Периодичность выпуска")]
@@ -64,20 +76,20 @@ namespace AisMKIT.Models
         [Display(Name = "Дата перерегистрации")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime ReregistrationDate { get; set; }
+        public DateTime? ReregistrationDate { get; set; }
 
         [Display(Name = "Дата ликвидации")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime EliminationDate { get; set; }
+        public DateTime? EliminationDate { get; set; }
 
         [Display(Name = "Номер разрешения")]
-        public int NumberOfPermission { get; set; }
+        public int? NumberOfPermission { get; set; }
 
         [Display(Name = "Дата разрешения")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime PermissionDate { get; set; }
+        public DateTime? PermissionDate { get; set; }
 
         [Display(Name = "Орган выдавший разрешение")]
         public int? DictAgencyPermId { get; set; }
@@ -87,7 +99,7 @@ namespace AisMKIT.Models
         [Display(Name = "Дата квитанции по оплате")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DateOfPay { get; set; }
+        public DateTime? DateOfPay { get; set; }
 
         [Display(Name = "Номер разрешения ГАС")]
         public string NumOfPermGas { get; set; }
@@ -95,12 +107,224 @@ namespace AisMKIT.Models
         [Display(Name = "Дата разрешения ГАС")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime PermGASDate { get; set; }
+        public DateTime? PermGASDate { get; set; }
 
         [Display(Name = "Дата прекращения разрешения ГАС")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime PermElimGASDate { get; set; }
+        public DateTime? PermElimGASDate { get; set; }
+
+    }
+
+    public class DictDistribTerritoryMedia 
+    {
+        public int Id { get; set; }
+        
+        [Display(Name = "Административная территория (руск.)")]
+        public string NameRus { get; set; }
+
+        [Display(Name = "Административная территория (кырг.)")]
+        public string NameKyrg { get; set; }
+    }
+
+    // Реестр СМИ
+    public class ListOfMedia
+    {
+        public int Id { get; set; }
+
+        [Display(Name = "Наименование органа СМИ (Рус.)")]
+        public string NameRus { get; set; }
+
+        [Display(Name = "Наименование органа СМИ (Кырг.)")]
+        public string NameKyrg { get; set; }
+
+        [Display(Name = "Организационно-правовая форма")]
+        public int? DictLegalFormId { get; set; }
+        [Display(Name = "Организационно-правовая форма")]
+        public DictLegalForm DictLegalForm { get; set; }
+
+        [Display(Name = "ИНН")]
+        public string INN { get; set; }
+
+        [Display(Name = "Дата регистрации")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? RegistrationDate { get; set; }
+
+        [Display(Name = "Наименование СМИ")]
+        public string Name { get; set; }
+
+        [Display(Name = "Территория распространения продукции")]
+        public int? DictDistribTerritoryMediaId { get; set; }
+        public DictDistribTerritoryMedia DictDistribTerritoryMedia { get; set; }
+
+        [Display(Name = "Язык вещания")]
+        public int? DictLangMediaTypeId { get; set; }
+        [Display(Name = "Язык вещания")]
+        public DictLangMediaType DictLangMediaType { get; set; }
+
+        [Display(Name = "Вид")]
+        public int? DictMediaTypeId { get; set; }
+        [Display(Name = "Вид")]
+        public DictMediaType DictMediaType { get; set; }
+
+        [Display(Name = "Адрес (Руск)")]
+        public string AddressRus { get; set; }
+
+        [Display(Name = "Адрес (Кырг)")]
+        public string AddressKyrg { get; set; }
+
+        [Display(Name = "Регион")]
+        public int? DictRegionId { get; set; }
+        [Display(Name = "Регион")]
+        public DictRegion DictRegion { get; set; }
+
+        [Display(Name = "Район")]
+        public int? DictDistrictId { get; set; }
+        [Display(Name = "Район")]
+        public DictDistrict DictDistrict { get; set; }
+
+        [Display(Name = "Периодичность выпуска")]
+        public int? DictMediaFreqReleaseId { get; set; }
+        [Display(Name = "Периодичность выпуска")]
+        public DictMediaFreqRelease DictMediaFreqRelease { get; set; }
+
+        [Display(Name = "Источник финансирования")]
+        public int? DictMediaFinSourceId { get; set; }
+        [Display(Name = "Источник финансирования")]
+        public DictMediaFinSource DictMediaFinSource { get; set; }
+
+        [Display(Name = "Дата перерегистрации")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? ReregistrationDate { get; set; }
+
+        [Display(Name = "Дата ликвидации")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? EliminationDate { get; set; }
+
+        [Display(Name = "Номер разрешения")]
+        public int? NumberOfPermission { get; set; }
+
+        [Display(Name = "Дата разрешения")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? PermissionDate { get; set; }
+
+        [Display(Name = "Орган выдавший разрешение")]
+        public int? DictAgencyPermId { get; set; }
+        [Display(Name = "Орган выдавший разрешение")]
+        public DictAgencyPerm DictAgencyPerm { get; set; }
+
+        [Display(Name = "Дата квитанции по оплате")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? DateOfPay { get; set; }
+
+        [Display(Name = "Номер разрешения ГАС")]
+        public string NumOfPermGas { get; set; }
+
+        [Display(Name = "Дата разрешения ГАС")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? PermGASDate { get; set; }
+
+        [Display(Name = "Дата прекращения разрешения ГАС")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime? PermElimGASDate { get; set; }
+
+        //public int Id { get; set; }
+
+        //[Display(Name = "Наименование органа СМИ (Рус.)")]
+        //public string NameRus { get; set; }
+
+        //[Display(Name = "Наименование органа СМИ (Кырг.)")]
+        //public string NameKyrg { get; set; }
+
+        //[Display(Name = "ИНН")]
+        //public string INN { get; set; }
+
+        //[Display(Name = "Дата регистрации")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //public DateTime RegistrationDate { get; set; }
+
+        //[Display(Name = "Наименование СМИ")]
+        //public string Name { get; set; }
+
+        //[Display(Name = "Язык вещания")]
+        //public int? DictLangMediaTypeId { get; set; }
+        //[Display(Name = "Язык вещания")]
+        //public DictLangMediaType DictLangMediaType { get; set; }
+
+        //[Display(Name = "Вид")]
+        //public int? DictMediaTypeId { get; set; }
+        //[Display(Name = "Вид")]
+        //public DictMediaType DictMediaType { get; set; }
+
+        //[Display(Name = "Адрес (Руск)")]
+        //public string AddressRus { get; set; }
+
+        //[Display(Name = "Адрес (Кырг)")]
+        //public string AddressKyrg { get; set; }
+
+        //[Display(Name = "Территория распространения продукции")]
+        //public int? DictDistrictId { get; set; }
+        //[Display(Name = "Территория распространения продукции")]
+        //public DictDistrict DictDistrict { get; set; }
+
+        //[Display(Name = "Периодичность выпуска")]
+        //public int? DictMediaFreqReleaseId { get; set; }
+        //[Display(Name = "Периодичность выпуска")]
+        //public DictMediaFreqRelease DictMediaFreqRelease { get; set; }
+
+        //[Display(Name = "Источник финансирования")]
+        //public int? DictMediaFinSourceId { get; set; }
+        //[Display(Name = "Источник финансирования")]
+        //public DictMediaFinSource DictMediaFinSource { get; set; }
+
+        //[Display(Name = "Дата перерегистрации")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //public DateTime ReregistrationDate { get; set; }
+
+        //[Display(Name = "Дата ликвидации")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //public DateTime EliminationDate { get; set; }
+
+        //[Display(Name = "Номер разрешения")]
+        //public int NumberOfPermission { get; set; }
+
+        //[Display(Name = "Дата разрешения")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //public DateTime PermissionDate { get; set; }
+
+        //[Display(Name = "Орган выдавший разрешение")]
+        //public int? DictAgencyPermId { get; set; }
+        //[Display(Name = "Орган выдавший разрешение")]
+        //public DictAgencyPerm DictAgencyPerm { get; set; }
+
+        //[Display(Name = "Дата квитанции по оплате")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //public DateTime DateOfPay { get; set; }
+
+        //[Display(Name = "Номер разрешения ГАС")]
+        //public string NumOfPermGas { get; set; }
+
+        //[Display(Name = "Дата разрешения ГАС")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //public DateTime PermGASDate { get; set; }
+
+        //[Display(Name = "Дата прекращения разрешения ГАС")]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //public DateTime PermElimGASDate { get; set; }
 
     }
 
