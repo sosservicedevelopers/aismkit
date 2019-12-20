@@ -29,6 +29,16 @@ namespace AisMKIT.Controllers
             return View(countries);
         }
 
+        public IActionResult DepDCAE()
+        {
+            return View();
+        }
+
+        public IActionResult DepSI()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             logger.Debug("Hello from Privacy Controller...");
