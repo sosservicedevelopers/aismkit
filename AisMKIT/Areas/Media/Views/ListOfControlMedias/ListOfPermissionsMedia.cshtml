@@ -1,0 +1,110 @@
+﻿@model IEnumerable<AisMKIT.Models.ListOfControlMedia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h3>Перечень выданных разрешений на телерадиоканалы</h3>
+<hr />
+
+<div class="d-flex justify-content-end">
+
+    <div>
+        <a class="btn btn-outline-success" asp-action="GetPdf">PDF</a>
+    </div>
+
+    <div>
+        <a class="btn btn-success" asp-action="GetExcel">Excel</a>
+    </div>
+
+    <div>
+        <a class="btn btn-outline-success" asp-action="GetPdf">Word</a>
+    </div>
+
+</div>
+<br />
+
+<div class="container overflow-auto">
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListOfMedia.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListOfMedia.DictLegalForm.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListOfMedia.INN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListOfMedia.RegistrationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListOfMedia.DictMediaType.NameRus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListOfMedia.NumberOfPermission)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListOfMedia.PermissionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListOfMedia.DictAgencyPerm.NameRus)
+                </th>
+                <th>
+                    Приостановлено с
+                    @*@Html.DisplayNameFor(model => model.ListOfControlMedia.WarningDate)*@
+                </th>
+                <th>
+                    Приостановлено по
+                    @*@Html.DisplayNameFor(model => model.ListOfControlMedia.WarningEndDate)*@
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListOfMedia.NameRus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListOfMedia.DictLegalForm.NameRus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListOfMedia.INN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListOfMedia.RegistrationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListOfMedia.DictMediaType.NameRus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListOfMedia.NumberOfPermission)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListOfMedia.PermissionDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListOfMedia.DictAgencyPerm.NameRus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WarningDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WarningEndDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

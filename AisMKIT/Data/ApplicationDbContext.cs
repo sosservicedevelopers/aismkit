@@ -27,8 +27,7 @@ namespace AisMKIT.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
-
+            
             // начальные данные для StatusForDict
             builder.Entity<StatusForDict>().HasData(new StatusForDict[]{
                         new StatusForDict{Id=1, Name="включён" },

@@ -33,9 +33,31 @@ namespace AisMKIT.Areas.Media.Controllers
         // GET: Media/ListOfControlMedias
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.ListOfControlMedia.Include(l => l.DictControlType).Include(l => l.DictMediaControlResult).Include(l => l.DictMediaSuitPerm).Include(l => l.ListOfMedia);
+            var applicationDbContext = _context.ListOfControlMedia
+                .Include(l => l.DictControlType)
+                .Include(l => l.DictMediaControlResult)
+                .Include(l => l.DictMediaSuitPerm)
+                .Include(l => l.ListOfMedia);
+            
             return View(await applicationDbContext.ToListAsync());
         }
+
+
+        // GET: Media/ListOfMedias
+        public async Task<IActionResult> ListOfPermissionsMedia()
+        {
+            var applicationDbContext = _context.ListOfControlMedia
+                .Include(l => l.DictControlType)
+                .Include(l => l.DictMediaControlResult)
+                .Include(l => l.DictMediaSuitPerm)
+                .Include(l => l.ListOfMedia)
+                .Include(l => l.ListOfMedia.DictMediaType)
+                .Include(l => l.ListOfMedia.DictAgencyPerm)
+                .Include(l => l.ListOfMedia.DictLegalForm);
+
+            return View(await applicationDbContext.ToListAsync());
+        }
+
 
         // GET: Media/ListOfControlMedias/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -78,8 +100,10 @@ namespace AisMKIT.Areas.Media.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(listOfControlMedia);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DictControlTypeId"] = new SelectList(_context.DictControlType, "Id", "NameRus", listOfControlMedia.DictControlTypeId);

@@ -63,10 +63,9 @@ namespace AisMKIT.Areas.Media.Controllers
                 .Include(l => l.DictRegion)
                 .Include(l => l.DictMediaType); 
 
-
-
             return View(await applicationDbContext.ToListAsync());
         }
+
 
         // GET: Media/ListOfMedias/Details/5
         public async Task<IActionResult> Details(int? id)
