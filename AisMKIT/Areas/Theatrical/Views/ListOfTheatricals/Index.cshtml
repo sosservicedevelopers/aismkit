@@ -4,38 +4,35 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h3>Реестр театрольно-зрелищных учреждений</h3>
+<hr />
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Добавить</a>
 </p>
 
 <div class="d-flex justify-content-end">
 
     <div>
-        <a class="btn btn-success" asp-action="GetPdf">PDF</a>
+        <a class="btn btn-outline-success" asp-action="GetPdf">PDF</a>
     </div>
 
     <div>
-        <a class="btn btn-warning" asp-action="GetExcel">Excel</a>
+        <a class="btn btn-success" asp-action="GetExcel">Excel</a>
     </div>
 
     <div>
-        <a class="btn btn-danger" asp-action="GetPdf">Word</a>
+        <a class="btn btn-outline-success" asp-action="GetPdf">Word</a>
     </div>
 
 </div>
+<br />
 
 <div class="container overflow-auto">
-
-    <table class="table">
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-light">
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.NameRus)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NameKyrg)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DictTheatricalLegalForm)
@@ -44,34 +41,16 @@
                     @Html.DisplayNameFor(model => model.INN)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.LastNameDirector)
+                    ФИО директора
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.FirstNameDirector)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PatronicNameDirector)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LastNameOfArtsDirector)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstNameOfArtsDirector)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PatronicNameOfArtsDirector)
+                    ФИО художественного руководителя
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.NumEmployees)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DictTheatricalFinSource)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ReregistrationDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DeactiveDate)
                 </th>
                 <th></th>
             </tr>
@@ -84,43 +63,22 @@
                         @Html.DisplayFor(modelItem => item.NameRus)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NameKyrg)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.DictTheatricalLegalForm.NameRus)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.INN)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LastNameDirector)
+                        @item.LastNameDirector @item.FirstNameDirector @item.PatronicNameDirector
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.FirstNameDirector)
+                        @item.LastNameOfArtsDirector @item.FirstNameOfArtsDirector @item.PatronicNameOfArtsDirector
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PatronicNameDirector)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastNameOfArtsDirector)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstNameOfArtsDirector)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PatronicNameOfArtsDirector)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NumEmployees)
+                        @item.NumEmployees
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DictTheatricalFinSource.NameRus)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReregistrationDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DeactiveDate)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

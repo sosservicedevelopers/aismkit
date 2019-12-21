@@ -23,7 +23,10 @@ namespace AisMKIT.Areas.Theatrical.Controllers
         // GET: Theatrical/ListOfEventsTheatricals
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ListOfEventsTheatrical.ToListAsync());
+            var applicationDbContext = _context.ListOfEventsTheatrical
+                .Include(l => l.ListOfTheatrical);
+
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Theatrical/ListOfEventsTheatricals/Details/5
@@ -35,6 +38,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
             }
 
             var listOfEventsTheatrical = await _context.ListOfEventsTheatrical
+                .Include(l => l.ListOfTheatrical)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (listOfEventsTheatrical == null)
             {
@@ -47,6 +51,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
         // GET: Theatrical/ListOfEventsTheatricals/Create
         public IActionResult Create()
         {
+            ViewData["ListOfTheatricalId"] = new SelectList(_context.ListOfTheatrical, "Id", "NameRus");
             return View();
         }
 
@@ -55,7 +60,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Year,Month,DayOfMonth,Time,NameOfEvent,NameOfHall")] ListOfEventsTheatrical listOfEventsTheatrical)
+        public async Task<IActionResult> Create([Bind("Id,Year,Month,DayOfMonth,Time,NameOfEvent,NameOfHall,ListOfTheatricalId")] ListOfEventsTheatrical listOfEventsTheatrical)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +68,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ListOfTheatricalId"] = new SelectList(_context.ListOfTheatrical, "Id", "NameRus");
             return View(listOfEventsTheatrical);
         }
 
@@ -79,6 +85,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
             {
                 return NotFound();
             }
+            ViewData["ListOfTheatricalId"] = new SelectList(_context.ListOfTheatrical, "Id", "NameRus");
             return View(listOfEventsTheatrical);
         }
 
@@ -87,7 +94,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Year,Month,DayOfMonth,Time,NameOfEvent,NameOfHall")] ListOfEventsTheatrical listOfEventsTheatrical)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Year,Month,DayOfMonth,Time,NameOfEvent,NameOfHall,ListOfTheatricalId")] ListOfEventsTheatrical listOfEventsTheatrical)
         {
             if (id != listOfEventsTheatrical.Id)
             {
@@ -114,6 +121,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ListOfTheatricalId"] = new SelectList(_context.ListOfTheatrical, "Id", "NameRus");
             return View(listOfEventsTheatrical);
         }
 
@@ -126,6 +134,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
             }
 
             var listOfEventsTheatrical = await _context.ListOfEventsTheatrical
+                .Include(m => m.ListOfTheatrical)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (listOfEventsTheatrical == null)
             {

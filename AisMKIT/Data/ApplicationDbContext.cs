@@ -148,5 +148,8 @@ namespace AisMKIT.Data
 
         // Список выданных гос. сертификатов к фильмам за 2019 
         public DbSet<AisMKIT.Models.DictAffiliationOfMonument> DictAffiliationOfMonument { get; set; }
+
+        // Список выданных гос. сертификатов к фильмам за 2019 
+        public DbSet<AisMKIT.Models.DictTypeOfOjbectMonument> DictTypeOfOjbectMonument { get; set; }
     }
 }

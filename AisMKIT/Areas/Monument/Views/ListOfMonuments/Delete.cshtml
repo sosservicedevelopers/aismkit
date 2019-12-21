@@ -11,46 +11,52 @@
     <h4>ListOfMonument</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-10">
             @Html.DisplayNameFor(model => model.NameRus)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NameRus)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-10">
             @Html.DisplayNameFor(model => model.NameKyrg)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NameKyrg)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.DictTypeOfOjbectMonument)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DictTypeOfOjbectMonument.NameRus)
+        </dd>
+        <dt class="col-sm-10">
             @Html.DisplayNameFor(model => model.DictTypeOfMonument)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DictTypeOfMonument.Id)
-        </dd class>
-        <dt class = "col-sm-2">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DictTypeOfMonument.NameRus)
+        </dd>
+        <dt class="col-sm-10">
             @Html.DisplayNameFor(model => model.DateOfMonument)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateOfMonument)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-10">
             @Html.DisplayNameFor(model => model.DictRegion)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DictRegion.Id)
-        </dd class>
-        <dt class = "col-sm-2">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DictRegion.NameRus)
+        </dd>
+        <dt class="col-sm-10">
             @Html.DisplayNameFor(model => model.DictDistrict)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DictDistrict.Id)
-        </dd class>
-        <dt class = "col-sm-2">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DictDistrict.NameRus)
+        </dd>
+        <dt class="col-sm-10">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Address)
         </dd>
     </dl>

@@ -98,14 +98,32 @@ namespace AisMKIT.Areas.Media.Controllers
         // GET: Media/ListOfMedias/Create
         public IActionResult Create()
         {
+            DictRegion region = _context.DictRegion.FirstOrDefault();
+
+            try
+            {
+                // чтобы по умолчанию не передавать все районы, здесь 
+                // передаётся только районы к-е входят в первый регион в БД
+                List<DictDistrict> dicts = _context.DictDistrict
+                    .Include(d => d.DictRegion)
+                    .Where(d => d.DictRegionId == region.Id)
+                    .ToList();
+
+                ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
+                ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+
+            }
+            catch
+            {
+
+            }
+
             ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus");
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
             ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus");
             ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
             ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
             ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
             ViewData["DictDistribTerritoryMediaId"] = new SelectList(_context.DictDistribTerritoryMedia, "Id", "NameRus");
-            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
             ViewData["DictLegalFormId"] = new SelectList(_context.DictLegalForm, "Id", "NameRus");
             return View();
         }
@@ -115,7 +133,7 @@ namespace AisMKIT.Areas.Media.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameRus,NameKyrg,INN,RegistrationDate,Name,DictLangMediaTypeId,DictMediaTypeId,AddressRus,AddressKyrg,DictDistrictId,DictMediaFreqReleaseId,DictMediaFinSourceId,ReregistrationDate,EliminationDate,NumberOfPermission,PermissionDate,DictAgencyPermId,DateOfPay,NumOfPermGas,PermGASDate,PermElimGASDate")] ListOfMedia listOfMedia)
+        public async Task<IActionResult> Create([Bind("Id,NameRus,NameKyrg,INN,RegistrationDate,Name,DictLangMediaTypeId,DictMediaTypeId,AddressRus,AddressKyrg,DictDistrictId,DictMediaFreqReleaseId,DictMediaFinSourceId,ReregistrationDate,EliminationDate,NumberOfPermission,PermissionDate,DictAgencyPermId,DateOfPay,NumOfPermGas,PermGASDate,PermElimGASDate,DictLegalFormId")] ListOfMedia listOfMedia)
         {
             if (ModelState.IsValid)
             {
@@ -123,14 +141,32 @@ namespace AisMKIT.Areas.Media.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            DictRegion region = _context.DictRegion.FirstOrDefault();
+
+            try
+            {
+                // чтобы по умолчанию не передавать все районы, здесь 
+                // передаётся только районы к-е входят в первый регион в БД
+                List<DictDistrict> dicts = _context.DictDistrict
+                    .Include(d => d.DictRegion)
+                    .Where(d => d.DictRegionId == region.Id)
+                    .ToList();
+
+                ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
+                ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+
+            }
+            catch
+            {
+
+            }
             ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus");
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
             ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus");
             ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
             ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
             ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
             ViewData["DictDistribTerritoryMediaId"] = new SelectList(_context.DictDistribTerritoryMedia, "Id", "NameRus");
-            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
             ViewData["DictLegalFormId"] = new SelectList(_context.DictLegalForm, "Id", "NameRus");
             return View(listOfMedia);
         }
@@ -148,14 +184,31 @@ namespace AisMKIT.Areas.Media.Controllers
             {
                 return NotFound();
             }
+            DictRegion region = _context.DictRegion.FirstOrDefault();
+
+            try
+            {
+                // чтобы по умолчанию не передавать все районы, здесь 
+                // передаётся только районы к-е входят в первый регион в БД
+                List<DictDistrict> dicts = _context.DictDistrict
+                    .Include(d => d.DictRegion)
+                    .Where(d => d.DictRegionId == region.Id)
+                    .ToList();
+
+                ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
+                ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+
+            }
+            catch
+            {
+
+            }
             ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus");
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
             ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus");
             ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
             ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
             ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
             ViewData["DictDistribTerritoryMediaId"] = new SelectList(_context.DictDistribTerritoryMedia, "Id", "NameRus");
-            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
             ViewData["DictLegalFormId"] = new SelectList(_context.DictLegalForm, "Id", "NameRus");
             return View(listOfMedia);
         }
@@ -165,7 +218,7 @@ namespace AisMKIT.Areas.Media.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameRus,NameKyrg,INN,RegistrationDate,Name,DictLangMediaTypeId,DictMediaTypeId,AddressRus,AddressKyrg,DictDistrictId,DictMediaFreqReleaseId,DictMediaFinSourceId,ReregistrationDate,EliminationDate,NumberOfPermission,PermissionDate,DictAgencyPermId,DateOfPay,NumOfPermGas,PermGASDate,PermElimGASDate")] ListOfMedia listOfMedia)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameRus,NameKyrg,INN,RegistrationDate,Name,DictLangMediaTypeId,DictMediaTypeId,AddressRus,AddressKyrg,DictDistrictId,DictMediaFreqReleaseId,DictMediaFinSourceId,ReregistrationDate,EliminationDate,NumberOfPermission,PermissionDate,DictAgencyPermId,DateOfPay,NumOfPermGas,PermGASDate,PermElimGASDate,DictLegalFormId")] ListOfMedia listOfMedia)
         {
             if (id != listOfMedia.Id)
             {
@@ -192,14 +245,31 @@ namespace AisMKIT.Areas.Media.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            DictRegion region = _context.DictRegion.FirstOrDefault();
+
+            try
+            {
+                // чтобы по умолчанию не передавать все районы, здесь 
+                // передаётся только районы к-е входят в первый регион в БД
+                List<DictDistrict> dicts = _context.DictDistrict
+                    .Include(d => d.DictRegion)
+                    .Where(d => d.DictRegionId == region.Id)
+                    .ToList();
+
+                ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
+                ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+
+            }
+            catch
+            {
+
+            }
             ViewData["DictAgencyPermId"] = new SelectList(_context.Set<DictAgencyPerm>(), "Id", "NameRus");
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus");
             ViewData["DictLangMediaTypeId"] = new SelectList(_context.DictLangMediaType, "Id", "NameRus");
             ViewData["DictMediaFinSourceId"] = new SelectList(_context.DictMediaFinSource, "Id", "NameRus");
             ViewData["DictMediaFreqReleaseId"] = new SelectList(_context.DictMediaFreqRelease, "Id", "NameRus");
             ViewData["DictMediaTypeId"] = new SelectList(_context.DictMediaType, "Id", "NameRus");
             ViewData["DictDistribTerritoryMediaId"] = new SelectList(_context.DictDistribTerritoryMedia, "Id", "NameRus");
-            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
             ViewData["DictLegalFormId"] = new SelectList(_context.DictLegalForm, "Id", "NameRus");
             return View(listOfMedia);
         }

@@ -11,16 +11,21 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Наименование памятника (рус.)")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string NameRus { get; set; }
 
         [Display(Name = "Наименование памятника (кырг.)")]
         public string NameKyrg { get; set; }
 
+        [Display(Name = "Тип объекта")]
+        public int? DictTypeOfOjbectMonumentId { get; set; }
+        [Display(Name = "Тип объекта")]
+        public DictTypeOfOjbectMonument DictTypeOfOjbectMonument { get; set; }
+
         [Display(Name = "Типологическая принадлежность")]
         public int? DictTypeOfMonumentId { get; set; }
         [Display(Name = "Типологическая принадлежность")]
         public DictTypeOfMonument DictTypeOfMonument { get; set; }
-
 
         [Display(Name = "Признак утраты")]
         public int? DictAffiliationOfMonumentId { get; set; }
@@ -67,6 +72,18 @@ namespace AisMKIT.Models
         public string NameKyrg { get; set; }
 
         [Display(Name = "Признак утраты (рус.)")]
+        public string NameRus { get; set; }
+
+    }
+
+    public class DictTypeOfOjbectMonument
+    {
+        public int Id { get; set; }
+
+        [Display(Name = "Тип объекта (кырг.)")]
+        public string NameKyrg { get; set; }
+
+        [Display(Name = "Тип объекта (рус.)")]
         public string NameRus { get; set; }
 
     }

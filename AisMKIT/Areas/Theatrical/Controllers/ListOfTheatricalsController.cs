@@ -197,7 +197,7 @@ namespace AisMKIT.Areas.Theatrical.Controllers
 
         public string GetHtml()
         {
-            var model = _context.ListOfMonument.FirstOrDefault();
+            var model = _context.ListOfTheatrical.FirstOrDefault();
 
             if (model == null)
             {

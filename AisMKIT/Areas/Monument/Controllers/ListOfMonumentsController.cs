@@ -58,6 +58,7 @@ namespace AisMKIT.Areas.Monument.Controllers
                 .Include(l => l.DictDistrict)
                 .Include(l => l.DictRegion)
                 .Include(l => l.DictAffiliationOfMonument)
+                .Include(l => l.DictTypeOfOjbectMonument)
                 .Include(l => l.DictTypeOfMonument);
 
             return View(await applicationDbContext.ToListAsync());
@@ -74,6 +75,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             var listOfMonument = await _context.ListOfMonument
                 .Include(l => l.DictDistrict)
                 .Include(l => l.DictRegion)
+                .Include(l => l.DictTypeOfOjbectMonument)
                 .Include(l => l.DictAffiliationOfMonument)
                 .Include(l => l.DictTypeOfMonument)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -91,15 +93,24 @@ namespace AisMKIT.Areas.Monument.Controllers
         {
             DictRegion region = _context.DictRegion.FirstOrDefault();
 
-            // чтобы по умолчанию не передавать все районы, здесь 
-            // передаётся только районы к-е входят в первый регион в БД
-            List<DictDistrict> dicts = _context.DictDistrict
-                .Include(d => d.DictRegion)
-                .Where(d => d.DictRegionId == region.Id)
-                .ToList();
+            try
+            {
+                // чтобы по умолчанию не передавать все районы, здесь 
+                // передаётся только районы к-е входят в первый регион в БД
+                List<DictDistrict> dicts = _context.DictDistrict
+                    .Include(d => d.DictRegion)
+                    .Where(d => d.DictRegionId == region.Id)
+                    .ToList();
 
-            ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
-            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+                ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
+                ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+
+            }
+            catch
+            {
+
+            }
+            ViewData["DictTypeOfOjbectMonumentId"] = new SelectList(_context.DictTypeOfOjbectMonument, "Id", "NameRus");
             ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus");
             ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus");
             return View();
@@ -110,7 +121,7 @@ namespace AisMKIT.Areas.Monument.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameRus,NameKyrg,DictTypeOfMonumentId,DateOfMonument,DictRegionId,DictDistrictId,Address")] ListOfMonument listOfMonument)
+        public async Task<IActionResult> Create([Bind("Id,NameRus,NameKyrg,DictTypeOfMonumentId,DateOfMonument,DictRegionId,DictDistrictId,DictAffiliationOfMonumentId,Address, DictTypeOfOjbectMonumentId")] ListOfMonument listOfMonument)
         {
             if (ModelState.IsValid)
             {
@@ -118,10 +129,29 @@ namespace AisMKIT.Areas.Monument.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
-            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
+            DictRegion region = _context.DictRegion.FirstOrDefault();
+
+            try
+            {
+                // чтобы по умолчанию не передавать все районы, здесь 
+                // передаётся только районы к-е входят в первый регион в БД
+                List<DictDistrict> dicts = _context.DictDistrict
+                    .Include(d => d.DictRegion)
+                    .Where(d => d.DictRegionId == region.Id)
+                    .ToList();
+
+                ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
+                ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+
+            }
+            catch
+            {
+
+            }
+            ViewData["DictTypeOfOjbectMonumentId"] = new SelectList(_context.DictTypeOfOjbectMonument, "Id", "NameRus");
+
             ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
-            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus");
+            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus", listOfMonument.DictAffiliationOfMonumentId);
             return View(listOfMonument);
         }
 
@@ -138,11 +168,29 @@ namespace AisMKIT.Areas.Monument.Controllers
             {
                 return NotFound();
             }
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
-            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
-            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
-            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus");
+            DictRegion region = _context.DictRegion.FirstOrDefault();
 
+            try
+            {
+                // чтобы по умолчанию не передавать все районы, здесь 
+                // передаётся только районы к-е входят в первый регион в БД
+                List<DictDistrict> dicts = _context.DictDistrict
+                    .Include(d => d.DictRegion)
+                    .Where(d => d.DictRegionId == region.Id)
+                    .ToList();
+
+                ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
+                ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+
+            }
+            catch
+            {
+
+            }
+            ViewData["DictTypeOfOjbectMonumentId"] = new SelectList(_context.DictTypeOfOjbectMonument, "Id", "NameRus");
+
+            ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
+            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus", listOfMonument.DictAffiliationOfMonumentId);
             return View(listOfMonument);
         }
 
@@ -151,7 +199,7 @@ namespace AisMKIT.Areas.Monument.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameRus,NameKyrg,DictTypeOfMonumentId,DateOfMonument,DictRegionId,DictDistrictId,Address")] ListOfMonument listOfMonument)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameRus,NameKyrg,DictTypeOfMonumentId,DateOfMonument,DictRegionId,DictDistrictId,DictAffiliationOfMonumentId,Address, DictTypeOfOjbectMonumentId")] ListOfMonument listOfMonument)
         {
             if (id != listOfMonument.Id)
             {
@@ -178,10 +226,29 @@ namespace AisMKIT.Areas.Monument.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DictDistrictId"] = new SelectList(_context.DictDistrict, "Id", "NameRus", listOfMonument.DictDistrictId);
-            ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus", listOfMonument.DictRegionId);
+            DictRegion region = _context.DictRegion.FirstOrDefault();
+
+            try
+            {
+                // чтобы по умолчанию не передавать все районы, здесь 
+                // передаётся только районы к-е входят в первый регион в БД
+                List<DictDistrict> dicts = _context.DictDistrict
+                    .Include(d => d.DictRegion)
+                    .Where(d => d.DictRegionId == region.Id)
+                    .ToList();
+
+                ViewData["DictDistrictId"] = new SelectList(dicts, "Id", "NameRus");
+                ViewData["DictRegionId"] = new SelectList(_context.DictRegion, "Id", "NameRus");
+
+            }
+            catch
+            {
+
+            }
+            ViewData["DictTypeOfOjbectMonumentId"] = new SelectList(_context.DictTypeOfOjbectMonument, "Id", "NameRus");
+
             ViewData["DictTypeOfMonumentId"] = new SelectList(_context.DictTypeOfMonument, "Id", "NameRus", listOfMonument.DictTypeOfMonumentId);
-            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus");
+            ViewData["DictAffiliationOfMonumentId"] = new SelectList(_context.DictAffiliationOfMonument, "Id", "NameRus", listOfMonument.DictAffiliationOfMonumentId);
             return View(listOfMonument);
         }
 
@@ -196,6 +263,7 @@ namespace AisMKIT.Areas.Monument.Controllers
             var listOfMonument = await _context.ListOfMonument
                 .Include(l => l.DictDistrict)
                 .Include(l => l.DictRegion)
+                .Include(l => l.DictTypeOfOjbectMonument)
                 .Include(l => l.DictAffiliationOfMonument)
                 .Include(l => l.DictTypeOfMonument)
                 .FirstOrDefaultAsync(m => m.Id == id);

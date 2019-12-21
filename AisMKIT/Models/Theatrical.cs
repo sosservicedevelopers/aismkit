@@ -13,6 +13,7 @@ namespace AisMKIT.Models
         public int Id { get; set; }
 
         [Display(Name = "Наименование ТЗУ (рус.)")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string NameRus { get; set; }
 
         [Display(Name = "Наименование ТЗУ (кырг.)")]
@@ -25,6 +26,7 @@ namespace AisMKIT.Models
         public DictTheatricalLegalForm DictTheatricalLegalForm { get; set; }
 
         [Display(Name = "ИНН")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string INN { get; set; }
 
         [Display(Name = "Фамилия директора")]
@@ -46,7 +48,7 @@ namespace AisMKIT.Models
         public string PatronicNameOfArtsDirector { get; set; }
 
         [Display(Name = "Количество штатных единиц")]
-        public int NumEmployees { get; set; }
+        public int? NumEmployees { get; set; }
 
         [Display(Name = "Источник финансирования")]
         public int? DictTheatricalFinSourceId { get; set; }
@@ -57,12 +59,12 @@ namespace AisMKIT.Models
         [Display(Name = "Дата перерегистрации")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime ReregistrationDate { get; set; }
+        public DateTime? ReregistrationDate { get; set; }
 
         [Display(Name = "Дата ликвидации")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DeactiveDate { get; set; }
+        public DateTime? DeactiveDate { get; set; }
 
     }
 
@@ -71,10 +73,21 @@ namespace AisMKIT.Models
     {
         public int Id { get; set; }
 
+        
+        [Display(Name = "Театрально-зрелищное учреждение")]
+        [Required(ErrorMessage = "Обязательно заполните")]
+        public int ListOfTheatricalId { get; set; }
+
+        [Display(Name = "Театрально-зрелищное учреждение")]
+        public ListOfTheatrical ListOfTheatrical { get; set; }
+
+
         [Display(Name = "Фамилия")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string LastNameOfArts { get; set; }
 
         [Display(Name = "Имя")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string FirstNameOfArts { get; set; }
 
         [Display(Name = "Отчество")]
@@ -83,12 +96,12 @@ namespace AisMKIT.Models
         [Display(Name = "Дата включения в худ. совет ")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DateInArtCouncil { get; set; }
+        public DateTime? DateInArtCouncil { get; set; }
 
         [Display(Name = "Дата выхода из худ. совета")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DateOutArtCouncil { get; set; }
+        public DateTime? DateOutArtCouncil { get; set; }
     }
 
     public class ArtsCouncilTheatricalHistory
@@ -101,19 +114,30 @@ namespace AisMKIT.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Театрально-зрелищное учреждение")]
+        [Required(ErrorMessage = "Обязательно заполните")]
+        public int ListOfTheatricalId { get; set; }
+
+        [Display(Name = "Театрально-зрелищное учреждение")]
+        public ListOfTheatrical ListOfTheatrical { get; set; }
+
         [Display(Name = "Год")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string Year { get; set; }
 
         [Display(Name = "Месяц")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string Month { get; set; }
 
         [Display(Name = "День")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string DayOfMonth { get; set; }
 
         [Display(Name = "Время")]
         public string Time { get; set; }
 
         [Display(Name = "Наименование мероприятия")]
+        [Required(ErrorMessage = "Обязательно заполните")]
         public string NameOfEvent { get; set; }
 
         [Display(Name = "Наименование зала")]
