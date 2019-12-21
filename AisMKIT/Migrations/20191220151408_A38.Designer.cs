@@ -4,14 +4,16 @@ using AisMKIT.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AisMKIT.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191220151408_A38")]
+    partial class A38
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -913,7 +915,8 @@ namespace AisMKIT.Migrations
                     b.Property<DateTime?>("DateOfSuitPerm")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DictControlTypeId")
+                    b.Property<int?>("DictControlTypeId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("DictMediaControlResultId")
@@ -939,7 +942,8 @@ namespace AisMKIT.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ListOfMediaId")
+                    b.Property<int?>("ListOfMediaId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("NumberOfAct")

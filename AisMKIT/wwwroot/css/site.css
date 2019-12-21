@@ -77,13 +77,13 @@ body {
 }
 
 .bg-argentum1 {
-    background-color: #E95420; /*#E95420 -orange, #333333 - dark, #AEA79F - argentum1, #77216F - aubergine*/
+    background-color: #6f7c85; /*#E95420 -orange, #333333 - dark, #AEA79F - argentum1, #77216F - aubergine*/
     color: #fff;
 }
 
 .bg-argentum2 {
-    background-color: #333333; /*C6C1BB, DEDBD8*/
-    color: #fff;
+    background-color: #C6C1BB; /*C6C1BB, DEDBD8*/
+    color: #000;
 }
 
 .bg-argentum3 {

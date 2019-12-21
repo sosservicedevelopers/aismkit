@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AisMKIT.Data;
 using AisMKIT.Models;
+using Microsoft.AspNetCore.Hosting;
+using AisMKIT.ExtraClasses;
 
 namespace AisMKIT.Areas.Media.Controllers
 {
@@ -15,10 +17,18 @@ namespace AisMKIT.Areas.Media.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ListOfControlMediasController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _appEnvironment;
+
+        private readonly string _titleOfFile = "Проверки_СМИ";
+
+
+        public ListOfControlMediasController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+
+            _appEnvironment = webHostEnvironment;
         }
+
 
         // GET: Media/ListOfControlMedias
         public async Task<IActionResult> Index()
@@ -64,7 +74,7 @@ namespace AisMKIT.Areas.Media.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ListOfMediaId,DictControlTypeId,StartDate,EndDate,StartDatePeriod,EndDatePeriod,LastName,FirstName,PatronicName,ActDateControl,NumberOfAct,DictMediaControlResultId,NumberOfWarning,WarningDate,WarningEndDate,DateOfPenalty,DocNumPenalty,PenaltySum,DateOfPenaltyPay,AnulmentDate,NumberOfAnulment,DateOfSuit,NumberOfSuit,DateOfSuitPerm,NumberOfSuitPerm,DictMediaSuitPermId")] ListOfControlMedia listOfControlMedia)
+        public async Task<IActionResult> Create([Bind("Id,ListOfMediaId,DictControlTypeId,StartDate,EndDate,StartDatePeriod,EndDatePeriod,LastName,FirstName,PatronicName,ActDateControl,NumberOfAct,DictMediaControlResultId,NumberOfWarning,WarningDate,WarningEndDate,DateOfPenalty,DocNumPenalty,PenaltySum,DateOfPenaltyPay,AnulmentDate,NumberOfAnulment,DateOfSuit,NumberOfSuit,DateOfSuitPerm,NumberOfSuitPerm,DictMediaSuitPermId,WarningRemovalDate")] ListOfControlMedia listOfControlMedia)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +114,7 @@ namespace AisMKIT.Areas.Media.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ListOfMediaId,DictControlTypeId,StartDate,EndDate,StartDatePeriod,EndDatePeriod,LastName,FirstName,PatronicName,ActDateControl,NumberOfAct,DictMediaControlResultId,NumberOfWarning,WarningDate,WarningEndDate,DateOfPenalty,DocNumPenalty,PenaltySum,DateOfPenaltyPay,AnulmentDate,NumberOfAnulment,DateOfSuit,NumberOfSuit,DateOfSuitPerm,NumberOfSuitPerm,DictMediaSuitPermId")] ListOfControlMedia listOfControlMedia)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ListOfMediaId,DictControlTypeId,StartDate,EndDate,StartDatePeriod,EndDatePeriod,LastName,FirstName,PatronicName,ActDateControl,NumberOfAct,DictMediaControlResultId,NumberOfWarning,WarningDate,WarningEndDate,DateOfPenalty,DocNumPenalty,PenaltySum,DateOfPenaltyPay,AnulmentDate,NumberOfAnulment,DateOfSuit,NumberOfSuit,DateOfSuitPerm,NumberOfSuitPerm,DictMediaSuitPermId,WarningRemovalDate")] ListOfControlMedia listOfControlMedia)
         {
             if (id != listOfControlMedia.Id)
             {
@@ -174,6 +184,77 @@ namespace AisMKIT.Areas.Media.Controllers
         private bool ListOfControlMediaExists(int id)
         {
             return _context.ListOfControlMedia.Any(e => e.Id == id);
+        }
+
+
+        public FileResult GetPdf()
+        {
+            string html = GetHtml();
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreatePdf(_titleOfFile, html, _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public FileResult GetExcel()
+        {
+
+            FilesFromLists ffl = new FilesFromLists();
+
+            MkitFile file = ffl.CreateExcel<ListOfControlMedia>(_titleOfFile, _context.ListOfControlMedia.ToList(), _appEnvironment);
+
+            return File(file.Bytes, file.Type, file.Name);
+        }
+
+        public string GetHtml()
+        {
+            var model = _context.ListOfControlMedia.FirstOrDefault();
+
+            if (model == null)
+            {
+                return "<h1>нет данных в таблице</h1>";
+            }
+
+            string thead = @"
+        <tr>
+            <td>
+                Вид проверки
+            </td>
+            <td>
+                Дата начала проверки
+            </td>
+            <td>
+                Дата конца проверки
+            </td>
+            <td>
+                Результат проверки
+            </td>
+        </tr>";
+
+            string tbody = "";
+
+            var list = _context.ListOfControlMedia
+                .Include(l => l.DictControlType)
+                .Include(l => l.DictMediaControlResult)
+                .Include(l => l.DictMediaSuitPerm)
+                .Include(l => l.ListOfMedia)
+                .ToList();
+
+            foreach (var item in list)
+            {
+
+                tbody += "<tr><td>" + item.ListOfMedia.NameRus + "</td>";
+                tbody += "<td>" + item.DictControlType.NameRus + "</td>";
+                tbody += "<td>" + item.StartDate + "</td>";
+                tbody += "<td>" + item.EndDate + "</td>";
+                tbody += "<td>" + item.DictMediaControlResult.NameRus + "</td></tr>";
+            }
+
+            string result = "<table><thead>" + thead + "</thead><tbody> " + tbody + " </tbody></table>";
+
+            return result;
         }
     }
 }
